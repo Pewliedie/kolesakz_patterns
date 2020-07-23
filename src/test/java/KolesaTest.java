@@ -30,7 +30,7 @@ public class KolesaTest {
     }
 
     @Test(groups = {"UiTest"})
-    public void PublishAdvertTest() throws InterruptedException {
+    public void PublishAdvertTest(){
         SighInPage sighInPage = new HomePage(driver).open().openSignInPage();
         sighInPage.fillNumberInput(NUMBER).clickLoginButton().fillPasswordInput(PASSWORD).clickLoginButton();
         LoggedAccountPage loggedPage = new LoggedAccountPage(driver).postAdvert().customizeAdvert(PRICE, EMAIL).openMyAdverts();

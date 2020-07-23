@@ -6,7 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPageFactory {
-    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECOND = 20;
     protected WebDriver driver;
     protected WebDriverWait wait;
 

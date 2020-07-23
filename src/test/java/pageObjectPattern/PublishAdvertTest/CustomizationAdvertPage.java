@@ -1,5 +1,6 @@
 package pageObjectPattern.PublishAdvertTest;
 
+import org.openqa.selenium.WebElement;
 import pageObjectPattern.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,9 +27,8 @@ public class CustomizationAdvertPage extends AbstractPage {
         super(driver);
     }
 
-    public HomePage customizeAdvert(String price, String email) throws InterruptedException {
+    public HomePage customizeAdvert(String price, String email){
         setWaitForElementEnabled(ADVERT_OPTION_1_LOCATOR);
-        Thread.sleep(500);
         getDriver().findElement(ADVERT_OPTION_1_LOCATOR).click();
 
         setWaitForElementVisibility(ADVERT_OPTION_2_LOCATOR);
@@ -73,8 +73,7 @@ public class CustomizationAdvertPage extends AbstractPage {
         return this;
     }
 
-    public ChoosePostTypePage publishAdvert() throws InterruptedException {
-        Thread.sleep(1000);
+    public ChoosePostTypePage publishAdvert() {
         setWaitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         getDriver().findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
         return new ChoosePostTypePage(getDriver());
