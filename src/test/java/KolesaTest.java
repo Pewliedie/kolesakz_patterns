@@ -4,9 +4,7 @@ import factoryPattertn.searchWithPhotoTest.FoundResultPage;
 import factoryPattertn.searchWithPhotoTest.HomePageSearch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjectPattern.PublishAdvertTest.ChoosePostTypePage;
 import pageObjectPattern.PublishAdvertTest.HomePage;
 import pageObjectPattern.PublishAdvertTest.LoggedAccountPage;
@@ -22,9 +20,8 @@ public class KolesaTest {
     private static final String PRICE = "10_000_000";
     private static final String EMAIL = "wladyslaw.permyakov@gmail.com";
 
-    @BeforeClass
+    @BeforeMethod(groups = {"UiTest"})
     public void setUp() {
-
         System.setProperty("webdriver.chrome.driver", "A:\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
@@ -32,7 +29,7 @@ public class KolesaTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+    @Test(groups = {"UiTest"})
     public void PublishAdvertTest() throws InterruptedException {
         SighInPage sighInPage = new HomePage(driver).open().openSignInPage();
         sighInPage.fillNumberInput(NUMBER).clickLoginButton().fillPasswordInput(PASSWORD).clickLoginButton();
@@ -43,20 +40,20 @@ public class KolesaTest {
         loggedPage.isAdvertPresent().logOff();
     }
 
-    @Test
+    @Test(groups = {"UiTest"})
     public void SearchWithPhoto(){
         new HomePageSearch(driver).open().configureSearch();
         new FoundResultPage(driver).switchTab().dismissHint().checkPicture();
     }
 
-    @Test
-    public void AdvancedSearch(){
+    @Test(groups = {"UiTest"})
+    public void AdvancedSearch() {
         new BasePage(driver).open().configureAdvancedSearch();
         SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab().dismissHint();
         new SearchResultPage(driver).assertResults();
     }
 
-    @AfterClass
+    @AfterMethod(groups = {"UiTest"})
     public void kill(){
         driver.quit();
     }

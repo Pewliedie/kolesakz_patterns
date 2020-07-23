@@ -54,7 +54,7 @@ public class BasePage extends AbstractPageFactory {
     @FindBy(css = "div.element-group.element-group-parameter-auto-sweel")
     WebElement locationOfTheSteeringWheel;
 
-    @FindBy(css = "div.element-group.element-group-parameter-auto-sweel")
+    @FindBy(xpath = "//li[contains(.,'слева')]")
     WebElement location;
 
     @FindBy(css = "div.element-group.element-group-parameter-car-dwheel")
