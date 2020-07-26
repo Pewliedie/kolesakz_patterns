@@ -1,20 +1,15 @@
 package factoryPattertn.searchWithPhotoTest;
 
 import factoryPattertn.AbstractPageFactory;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 
 public class HomePageSearch extends AbstractPageFactory {
 
-    private static final String YEAR = "2020";
-    private static final String PRICE = "60_000_000";
-
     @FindBy(xpath = "//div[@class='menu-container container']//li[1]")
-    WebElement auto;
+    WebElement autoSection;
 
     @FindBy(xpath = "//li[4]//button")
     WebElement city;
@@ -44,39 +39,51 @@ public class HomePageSearch extends AbstractPageFactory {
         super(driver);
     }
 
-    public HomePageSearch open() {
-        getDriver().get("https://kolesa.kz/");
+    public HomePageSearch openAutoSection() {
+        wait.until(ExpectedConditions.elementToBeClickable(autoSection));
+        autoSection.click();
         return this;
     }
 
-    public HomePageSearch configureSearch() {
-        wait.until(ExpectedConditions.elementToBeClickable(auto));
-        auto.click();
-
+    public HomePageSearch chooseCity() {
         wait.until(ExpectedConditions.visibilityOf(city));
         city.click();
+        return this;
+    }
 
+    public HomePageSearch fillYearModel(String year){
         wait.until(ExpectedConditions.visibilityOf(yearInput));
-        yearInput.sendKeys(YEAR);
+        yearInput.sendKeys(year);
+        return this;
+    }
 
+    public HomePageSearch fillPrice(String price) {
         wait.until(ExpectedConditions.visibilityOf(priceInput));
-        priceInput.sendKeys(PRICE);
+        priceInput.sendKeys(price);
+        return this;
+    }
 
-        checkboxPhoto.click();
-
+    public HomePageSearch configureMark(){
         additionMarks.click();
-
         mark.click();
+        return this;
+    }
 
+    public HomePageSearch withPhoto(){
+        wait.until(ExpectedConditions.elementToBeClickable(checkboxPhoto));
+        checkboxPhoto.click();
+        return this;
+    }
+
+    public HomePageSearch clickSearchButton(){
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
+        return this;
+    }
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='results']//picture")));
-        Assert.assertTrue(driver.findElement(By.xpath("//div[@id='results']//picture")).isDisplayed());
-
+    public HomePageSearch openFoundResult(){
         wait.until(ExpectedConditions.visibilityOf(foundResult));
         foundResult.click();
-
         return this;
     }
 }

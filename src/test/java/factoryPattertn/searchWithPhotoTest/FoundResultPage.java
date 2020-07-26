@@ -32,7 +32,8 @@ public class FoundResultPage extends AbstractPageFactory {
     }
 
     public FoundResultPage checkPicture(){
-        Assert.assertTrue(getDriver().findElement(By.xpath("//button[@class='gallery__main js__gallery-main']//picture//img")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(By.xpath("//button[@class='gallery__main js__gallery-main']//picture//img"))
+                .isDisplayed(),"picture is not presented");
         return this;
     }
 }

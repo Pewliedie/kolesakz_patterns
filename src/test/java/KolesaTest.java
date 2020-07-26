@@ -5,52 +5,65 @@ import factoryPattertn.searchWithPhotoTest.HomePageSearch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import pageObjectPattern.PublishAdvertTest.ChoosePostTypePage;
-import pageObjectPattern.PublishAdvertTest.HomePage;
-import pageObjectPattern.PublishAdvertTest.LoggedAccountPage;
-import pageObjectPattern.PublishAdvertTest.SighInPage;
+import pageObjectPattern.publishAdvert.ChoosePostTypePage;
+import pageObjectPattern.publishAdvert.HomePage;
+import pageObjectPattern.publishAdvert.LoggedAccountPage;
+import pageObjectPattern.publishAdvert.LoginPage;
+import resources.ConfigProp;
+
+import static resources.ConfigProp.getProperty;
 
 import java.util.concurrent.TimeUnit;
 
 public class KolesaTest {
 
     private WebDriver driver;
-    private static final String NUMBER = "+7005450128";
-    private static final String PASSWORD = "qwerty123";
-    private static final String PRICE = "10_000_000";
-    private static final String EMAIL = "wladyslaw.permyakov@gmail.com";
 
     @BeforeMethod(groups = {"UiTest"})
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "A:\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", getProperty("chromedriver"));
         driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver.get(getProperty("homepage"));
     }
 
     @Test(groups = {"UiTest"})
     public void PublishAdvertTest(){
-        SighInPage sighInPage = new HomePage(driver).open().openSignInPage();
-        sighInPage.fillNumberInput(NUMBER).clickLoginButton().fillPasswordInput(PASSWORD).clickLoginButton();
-        LoggedAccountPage loggedPage = new LoggedAccountPage(driver).postAdvert().customizeAdvert(PRICE, EMAIL).openMyAdverts();
-        loggedPage.openDraft().editAdvert().continueCustomization().publishAdvert();
-        new ChoosePostTypePage(driver).chooseFreeAdvert();
+        LoginPage loginPage = new HomePage(driver).openLogInPage();
+        loginPage.fillNumberInput(ConfigProp.getProperty("phonenumber"))
+                .clickLoginButton().fillPasswordInput(ConfigProp.getProperty("password")).clickLoginButton();
+        LoggedAccountPage loggedPage = new LoggedAccountPage(driver)
+                .openCustomization().configureCategory().configureMark().configureModel().configureYearModel()
+                .configureEngineType().configureModification().fillPrice(getProperty("pricePublishAdvert"))
+                .configureCity().fillEmail(getProperty("email"))
+                .moveToHomePage().openMyAdverts();
+
+        loggedPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
+        new ChoosePostTypePage(driver).chooseFreeAdvert().isAdvertSent();
         new HomePage(driver).openMyAdverts();
         loggedPage.isAdvertPresent().logOff();
     }
 
     @Test(groups = {"UiTest"})
     public void SearchWithPhoto(){
-        new HomePageSearch(driver).open().configureSearch();
+        new HomePageSearch(driver).openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
+                .fillPrice(getProperty("priceSearchWithPhoto")).configureMark().withPhoto().
+        clickSearchButton().openFoundResult();
         new FoundResultPage(driver).switchTab().dismissHint().checkPicture();
     }
 
     @Test(groups = {"UiTest"})
     public void AdvancedSearch() {
-        new BasePage(driver).open().configureAdvancedSearch();
+        new BasePage(driver).openAutoSection().chooseCity().
+                fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
+                .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
+                .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"),getProperty("volumeEngineTo"))
+                .clickSearchButton().openFoundResult();
+
         SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab().dismissHint();
-        new SearchResultPage(driver).assertResults();
+        searchResultPage.assertResults();
     }
 
     @AfterMethod(groups = {"UiTest"})
