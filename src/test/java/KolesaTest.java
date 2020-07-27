@@ -89,8 +89,8 @@ public class KolesaTest {
         }
     }
 
-//    @AfterMethod(groups = {"UiTest"})
-//    public void kill() {
-//        driver.quit();
-//    }
+    @AfterMethod(groups = {"UiTest"})
+    public void kill() {
+        driver.quit();
+    }
 }
