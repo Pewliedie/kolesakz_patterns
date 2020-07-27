@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
-public class AbstractPageFactory {
+public abstract class AbstractPageFactory {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -22,4 +22,8 @@ public class AbstractPageFactory {
     protected WebDriver getDriver() {
         return this.driver;
     }
+
+    //bonus task
+    public abstract boolean checkPage();
+
 }

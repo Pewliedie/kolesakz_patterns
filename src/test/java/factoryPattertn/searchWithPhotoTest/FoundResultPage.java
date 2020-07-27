@@ -19,6 +19,10 @@ public class FoundResultPage extends AbstractPageFactory {
         super(driver);
     }
 
+    public boolean checkPage() {
+        return driver.getTitle().equals("Продажа BMW X6 M 2020 года в Караганде - №104299656: цена 76800000₸. Купить BMW X6 M — Колёса");
+    }
+
     public FoundResultPage switchTab(){
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));

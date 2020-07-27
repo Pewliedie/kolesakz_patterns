@@ -30,7 +30,7 @@ public class KolesaTest {
     }
 
     @Test(groups = {"UiTest"})
-    public void PublishAdvertTest(){
+    public void PublishAdvertTest() {
         LoginPage loginPage = new HomePage(driver).openLogInPage();
         loginPage.fillNumberInput(ConfigProp.getProperty("phonenumber"))
                 .clickLoginButton().fillPasswordInput(ConfigProp.getProperty("password")).clickLoginButton();
@@ -47,27 +47,50 @@ public class KolesaTest {
     }
 
     @Test(groups = {"UiTest"})
-    public void SearchWithPhoto(){
-        new HomePageSearch(driver).openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
-                .fillPrice(getProperty("priceSearchWithPhoto")).configureMark().withPhoto().
-        clickSearchButton().openFoundResult();
-        new FoundResultPage(driver).switchTab().dismissHint().checkPicture();
+    public void SearchWithPhoto() {
+        HomePageSearch pageSearch = new HomePageSearch(driver);
+        if (pageSearch.checkPage()) {
+            pageSearch.openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
+                    .fillPrice(getProperty("priceSearchWithPhoto")).configureMark().withPhoto().
+                    clickSearchButton().openFoundResult();
+        } else {
+            throw new RuntimeException("incorrect page");
+        }
+
+        FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab();
+        if (foundResultPage.checkPage()) {
+            foundResultPage.dismissHint().checkPicture();
+        } else {
+            throw new RuntimeException("incorrect page");
+        }
     }
 
     @Test(groups = {"UiTest"})
     public void AdvancedSearch() {
-        new BasePage(driver).openAutoSection().chooseCity().
-                fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
-                .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
-                .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"),getProperty("volumeEngineTo"))
-                .clickSearchButton().openFoundResult();
+        BasePage basePage = new BasePage(driver);
+        if (basePage.checkPage()) {
+            basePage.openAutoSection().chooseCity().
+                    fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
+                    .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
+                    .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"), getProperty("volumeEngineTo"))
+                    .clickSearchButton().openFoundResult();
+        }else {
+            throw new RuntimeException("incorrect page");
+        }
 
-        SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab().dismissHint();
-        searchResultPage.assertResults();
+        SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab();
+        if (searchResultPage.checkPage()) {
+            searchResultPage.checkPage();
+            searchResultPage.dismissHint();
+            searchResultPage.assertResults();
+        }
+        else {
+            throw new RuntimeException("incorrect page");
+        }
     }
 
-    @AfterMethod(groups = {"UiTest"})
-    public void kill(){
-        driver.quit();
-    }
+//    @AfterMethod(groups = {"UiTest"})
+//    public void kill() {
+//        driver.quit();
+//    }
 }

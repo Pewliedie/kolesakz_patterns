@@ -73,6 +73,10 @@ public class BasePage extends AbstractPageFactory {
         super(driver);
     }
 
+    public boolean checkPage() {
+        return driver.getTitle().equals("Колёса — продажа авто в Казахстане. Весь авторынок Казахстана на одном сайте kolesa.kz");
+    }
+
     public BasePage openAutoSection(){
         wait.until(ExpectedConditions.elementToBeClickable(autoSection));
         autoSection.click();
