@@ -1,4 +1,4 @@
-package pageObjectPattern.publishAdvert;
+package pageObjectPattern.publishAdvertPages;
 
 import pageObjectPattern.AbstractPage;
 import org.openqa.selenium.By;

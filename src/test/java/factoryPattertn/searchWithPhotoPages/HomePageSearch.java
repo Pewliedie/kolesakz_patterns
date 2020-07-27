@@ -1,4 +1,4 @@
-package factoryPattertn.searchWithPhotoTest;
+package factoryPattertn.searchWithPhotoPages;
 
 import factoryPattertn.AbstractPageFactory;
 import org.openqa.selenium.WebDriver;
@@ -37,10 +37,6 @@ public class HomePageSearch extends AbstractPageFactory {
 
     public HomePageSearch(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean checkPage() {
-        return driver.getTitle().equals("Колёса — продажа авто в Казахстане. Весь авторынок Казахстана на одном сайте kolesa.kz");
     }
 
     public HomePageSearch openAutoSection() {

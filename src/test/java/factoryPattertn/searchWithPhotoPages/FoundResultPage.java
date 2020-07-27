@@ -1,4 +1,4 @@
-package factoryPattertn.searchWithPhotoTest;
+package factoryPattertn.searchWithPhotoPages;
 
 import factoryPattertn.AbstractPageFactory;
 import org.openqa.selenium.By;
@@ -17,10 +17,6 @@ public class FoundResultPage extends AbstractPageFactory {
 
     public FoundResultPage(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean checkPage() {
-        return driver.getTitle().equals("Продажа BMW X6 M 2020 года в Караганде - №104299656: цена 76800000₸. Купить BMW X6 M — Колёса");
     }
 
     public FoundResultPage switchTab(){

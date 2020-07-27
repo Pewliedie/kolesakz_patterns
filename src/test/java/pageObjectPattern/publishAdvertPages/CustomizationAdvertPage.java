@@ -1,4 +1,4 @@
-package pageObjectPattern.publishAdvert;
+package pageObjectPattern.publishAdvertPages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import pageObjectPattern.AbstractPage;

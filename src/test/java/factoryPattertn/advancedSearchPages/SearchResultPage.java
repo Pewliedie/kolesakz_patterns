@@ -1,6 +1,6 @@
-package factoryPattertn.advancedSearch;
+package factoryPattertn.advancedSearchPages;
 
-import factoryPattertn.searchWithPhotoTest.FoundResultPage;
+import factoryPattertn.searchWithPhotoPages.FoundResultPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,10 +13,6 @@ public class SearchResultPage extends FoundResultPage {
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean checkPage() {
-        return driver.getTitle().equals("Продажа Rolls-Royce Cullinan 2019 года в Алматы - №107709577: цена 183000000₸. Купить Rolls-Royce Cullinan — Колёса");
     }
 
     public SearchResultPage assertResults(){

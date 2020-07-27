@@ -1,14 +1,14 @@
-import factoryPattertn.advancedSearch.BasePage;
-import factoryPattertn.advancedSearch.SearchResultPage;
-import factoryPattertn.searchWithPhotoTest.FoundResultPage;
-import factoryPattertn.searchWithPhotoTest.HomePageSearch;
+import factoryPattertn.advancedSearchPages.BasePage;
+import factoryPattertn.advancedSearchPages.SearchResultPage;
+import factoryPattertn.searchWithPhotoPages.FoundResultPage;
+import factoryPattertn.searchWithPhotoPages.HomePageSearch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import pageObjectPattern.publishAdvert.ChoosePostTypePage;
-import pageObjectPattern.publishAdvert.HomePage;
-import pageObjectPattern.publishAdvert.LoggedAccountPage;
-import pageObjectPattern.publishAdvert.LoginPage;
+import pageObjectPattern.publishAdvertPages.ChoosePostTypePage;
+import pageObjectPattern.publishAdvertPages.HomePage;
+import pageObjectPattern.publishAdvertPages.LoggedAccountPage;
+import pageObjectPattern.publishAdvertPages.LoginPage;
 import resources.ConfigProp;
 
 import static resources.ConfigProp.getProperty;
@@ -49,44 +49,33 @@ public class KolesaTest {
     @Test(groups = {"UiTest"})
     public void SearchWithPhoto() {
         HomePageSearch pageSearch = new HomePageSearch(driver);
-        if (pageSearch.checkPage()) {
-            pageSearch.openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
-                    .fillPrice(getProperty("priceSearchWithPhoto")).configureMark().withPhoto().
-                    clickSearchButton().openFoundResult();
-        } else {
-            throw new RuntimeException("incorrect page");
-        }
+        pageSearch.checkPage(getProperty("homepage"));
+        pageSearch.openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
+                .fillPrice(getProperty("priceSearchWithPhoto")).configureMark().withPhoto().
+                clickSearchButton().openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab();
-        if (foundResultPage.checkPage()) {
-            foundResultPage.dismissHint().checkPicture();
-        } else {
-            throw new RuntimeException("incorrect page");
-        }
+        pageSearch.checkPage(getProperty("urlResultPageSearchWithPhoto"));
+        foundResultPage.dismissHint().checkPicture();
+
     }
 
     @Test(groups = {"UiTest"})
     public void AdvancedSearch() {
+
         BasePage basePage = new BasePage(driver);
-        if (basePage.checkPage()) {
-            basePage.openAutoSection().chooseCity().
-                    fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
-                    .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
-                    .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"), getProperty("volumeEngineTo"))
-                    .clickSearchButton().openFoundResult();
-        }else {
-            throw new RuntimeException("incorrect page");
-        }
+        basePage.checkPage(getProperty("homepage"));
+        basePage.openAutoSection().chooseCity().
+                fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
+                .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
+                .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"), getProperty("volumeEngineTo"))
+                .clickSearchButton().openFoundResult();
 
         SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab();
-        if (searchResultPage.checkPage()) {
-            searchResultPage.checkPage();
-            searchResultPage.dismissHint();
-            searchResultPage.assertResults();
-        }
-        else {
-            throw new RuntimeException("incorrect page");
-        }
+        searchResultPage.checkPage(getProperty("urlResultPageAdvanced"));
+        searchResultPage.dismissHint();
+        searchResultPage.assertResults();
+
     }
 
     @AfterMethod(groups = {"UiTest"})

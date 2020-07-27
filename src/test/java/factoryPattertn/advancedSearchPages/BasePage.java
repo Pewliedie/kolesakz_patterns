@@ -1,4 +1,4 @@
-package factoryPattertn.advancedSearch;
+package factoryPattertn.advancedSearchPages;
 
 
 import factoryPattertn.AbstractPageFactory;
@@ -8,6 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BasePage extends AbstractPageFactory {
+    String COUNTRY = "Англия";
+    String CAR_STATUS = "На ходу";
+    String BODY_TYPE = "внедорожник";
+    String ENGINE_TYPE = "бензин";
+    String LOCATION_OF_WHEEL = "слева";
+    String DRIVE_UNIT = "полный привод";
+
 
     @FindBy(xpath = "//div[@class='menu-container container']//li[1]")
     WebElement autoSection;
@@ -24,38 +31,20 @@ public class BasePage extends AbstractPageFactory {
     @FindBy(css = "div.element-group.element-group-parameter-mark-country")
     WebElement countryParameter;
 
-    @FindBy(xpath = "//li[contains(.,'Англия')]")
-    WebElement county;
-
     @FindBy(css = "div.element-group.element-group-parameter-auto-emergency")
     WebElement vehicleStatus;
-
-    @FindBy(xpath = "//li[contains(.,'На ходу')]")
-    WebElement status;
 
     @FindBy(css = "div.element-group.element-group-parameter-auto-car-body")
     WebElement carBodyType;
 
-    @FindBy(xpath = "//li[contains(.,'внедорожник')]")
-    WebElement bodyType;
-
     @FindBy(css = "div.element-group.element-group-parameter-auto-fuel")
     WebElement engineType;
-
-    @FindBy(xpath = "//li[contains(.,'бензин')]")
-    WebElement type;
 
     @FindBy(css = "div.element-group.element-group-parameter-auto-sweel")
     WebElement locationOfWheel;
 
-    @FindBy(xpath = "//li[contains(.,'слева')]")
-    WebElement location;
-
     @FindBy(css = "div.element-group.element-group-parameter-car-dwheel")
     WebElement driveUnit;
-
-    @FindBy(xpath = "//li[contains(.,'полный привод')]")
-    WebElement unit;
 
     @FindBy(css = "#auto-car-volume\\[from\\]")
     WebElement engineVoulumeFrom;
@@ -71,10 +60,6 @@ public class BasePage extends AbstractPageFactory {
 
     public BasePage(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean checkPage() {
-        return driver.getTitle().equals("Колёса — продажа авто в Казахстане. Весь авторынок Казахстана на одном сайте kolesa.kz");
     }
 
     public BasePage openAutoSection(){
@@ -104,37 +89,37 @@ public class BasePage extends AbstractPageFactory {
     public BasePage configureCountry(){
         wait.until(ExpectedConditions.visibilityOf(countryParameter));
         countryParameter.click();
-        county.click();
+        parameter(COUNTRY).click();
         return this;
     }
 
     public BasePage configureVehicleStatus(){
         vehicleStatus.click();
-        status.click();
+        parameter(CAR_STATUS).click();
         return this;
     }
 
     public BasePage configureBodyType(){
         carBodyType.click();
-        bodyType.click();
+        parameter(BODY_TYPE).click();
         return this;
     }
 
     public BasePage configureEngineType(){
         engineType.click();
-        type.click();
+        parameter(ENGINE_TYPE).click();
         return this;
     }
 
     public BasePage configureLocationWheel(){
         locationOfWheel.click();
-        location.click();
+        parameter(LOCATION_OF_WHEEL).click();
         return this;
     }
 
     public BasePage configureDriveUnit(){
         driveUnit.click();
-        unit.click();
+        parameter(DRIVE_UNIT).click();
         return this;
     }
 
