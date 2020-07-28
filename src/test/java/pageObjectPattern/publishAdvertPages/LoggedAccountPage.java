@@ -8,7 +8,6 @@ public class LoggedAccountPage extends AbstractPage {
 
     private static final By POST_ADVERT_BUTTON_LOCATOR = By.xpath("//a[@class='btn btn-primary a-new-btn js__add-new']");
     private static final By DRAFT_LOCATOR = By.xpath("//li[3]//a[1]//span");
-    private static final By ADVERT_TEXT_LOCATOR = By.xpath("//span[@class='total-nb']");
     private static final By LOGGED_ACCOUNT_PAGE_LOCATOR = By.xpath("//span[@class='header-menu-dropdown__toggler-label']");
     private static final By LOGOUT_BUTTON_LOCATOR = By.xpath("//a[@class='header-menu-dropdown__menu-link logout-link']");
     private static final By LOGGED_OUT_ACCOUNT_BUTTON_LOCATOR = By.xpath("//span[contains(text(),'Личный кабинет')]");
