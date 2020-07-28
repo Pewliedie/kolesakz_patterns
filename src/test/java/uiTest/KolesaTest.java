@@ -1,33 +1,20 @@
+package uiTest;
+
 import factoryPattertn.advancedSearchPages.BasePage;
 import factoryPattertn.advancedSearchPages.SearchResultPage;
 import factoryPattertn.searchWithPhotoPages.FoundResultPage;
 import factoryPattertn.searchWithPhotoPages.HomePageSearch;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import pageObjectPattern.publishAdvertPages.ChoosePostTypePage;
 import pageObjectPattern.publishAdvertPages.HomePage;
 import pageObjectPattern.publishAdvertPages.LoggedAccountPage;
 import pageObjectPattern.publishAdvertPages.LoginPage;
 import resources.ConfigProp;
+import utils.WebdriverSetUp;
 
 import static resources.ConfigProp.*;
 
-import java.util.concurrent.TimeUnit;
-
-public class KolesaTest {
-
-    private WebDriver driver;
-
-    @BeforeMethod(groups = {"UiTest"})
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", getProperty("chromedriver"));
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(getProperty("homepage"));
-    }
+public class KolesaTest extends WebdriverSetUp {
 
     @Test(groups = {"UiTest"})
     public void PublishAdvertTest() {
@@ -78,10 +65,5 @@ public class KolesaTest {
         searchResultPage.dismissHint();
         searchResultPage.assertResults();
 
-    }
-
-    @AfterMethod(groups = {"UiTest"})
-    public void kill() {
-        driver.quit();
     }
 }

@@ -10,7 +10,7 @@
         </groups>
 
         <classes>
-            <class name="KolesaTest">
+            <class name="uiTest.KolesaTest">
                 <methods>
                     <include name="PublishAdvertTest"/>
                     <include name="SearchWithPhoto"/>
