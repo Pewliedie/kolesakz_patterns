@@ -63,7 +63,8 @@ public class KolesaTest extends WebdriverSetUp {
         SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab();
         searchResultPage.checkPage(getProperty("urlResultPageAdvanced"));
         searchResultPage.dismissHint();
-        searchResultPage.assertResults();
+        searchResultPage.assertResults(getProperty("bodyType"),getProperty("engineVolumeAndType"),getProperty("locationOfWheel")
+        ,getProperty("driveUnit"));
 
     }
 }
