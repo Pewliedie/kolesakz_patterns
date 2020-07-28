@@ -65,6 +65,5 @@ public class KolesaTest extends WebdriverSetUp {
         searchResultPage.dismissHint();
         searchResultPage.assertResults(getProperty("bodyType"),getProperty("engineVolumeAndType"),getProperty("locationOfWheel")
         ,getProperty("driveUnit"));
-
     }
 }
