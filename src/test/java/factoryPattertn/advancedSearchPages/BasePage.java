@@ -8,13 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BasePage extends AbstractPageFactory {
-    String COUNTRY = "Англия";
-    String CAR_STATUS = "На ходу";
-    String BODY_TYPE = "внедорожник";
-    String ENGINE_TYPE = "бензин";
-    String LOCATION_OF_WHEEL = "слева";
-    String DRIVE_UNIT = "полный привод";
-
 
     @FindBy(xpath = "//div[@class='menu-container container']//li[1]")
     WebElement autoSection;
@@ -86,40 +79,40 @@ public class BasePage extends AbstractPageFactory {
         return this;
     }
 
-    public BasePage configureCountry(){
+    public BasePage configureCountry(String param){
         wait.until(ExpectedConditions.visibilityOf(countryParameter));
         countryParameter.click();
-        parameter(COUNTRY).click();
+        parameter(param).click();
         return this;
     }
 
-    public BasePage configureVehicleStatus(){
+    public BasePage configureVehicleStatus(String param){
         vehicleStatus.click();
-        parameter(CAR_STATUS).click();
+        parameter(param).click();
         return this;
     }
 
-    public BasePage configureBodyType(){
+    public BasePage configureBodyType(String param){
         carBodyType.click();
-        parameter(BODY_TYPE).click();
+        parameter(param).click();
         return this;
     }
 
-    public BasePage configureEngineType(){
+    public BasePage configureEngineType(String param){
         engineType.click();
-        parameter(ENGINE_TYPE).click();
+        parameter(param).click();
         return this;
     }
 
-    public BasePage configureLocationWheel(){
+    public BasePage configureLocationWheel(String param){
         locationOfWheel.click();
-        parameter(LOCATION_OF_WHEEL).click();
+        parameter(param).click();
         return this;
     }
 
-    public BasePage configureDriveUnit(){
+    public BasePage configureDriveUnit(String param){
         driveUnit.click();
-        parameter(DRIVE_UNIT).click();
+        parameter(param).click();
         return this;
     }
 

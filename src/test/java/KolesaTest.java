@@ -11,7 +11,7 @@ import pageObjectPattern.publishAdvertPages.LoggedAccountPage;
 import pageObjectPattern.publishAdvertPages.LoginPage;
 import resources.ConfigProp;
 
-import static resources.ConfigProp.getProperty;
+import static resources.ConfigProp.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,8 +23,8 @@ public class KolesaTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", getProperty("chromedriver"));
         driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(getProperty("homepage"));
     }
@@ -65,10 +65,12 @@ public class KolesaTest {
 
         BasePage basePage = new BasePage(driver);
         basePage.checkPage(getProperty("homepage"));
+
         basePage.openAutoSection().chooseCity().
-                fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry()
-                .configureVehicleStatus().configureBodyType().configureEngineType().configureLocationWheel()
-                .configureDriveUnit().configureEngineVolume(getProperty("volumeEngineFrom"), getProperty("volumeEngineTo"))
+                fillPrice(getProperty("priceAdvancedSearch")).openAdvancedSearch().configureCountry(getProperty("country"))
+                .configureVehicleStatus(getProperty("carStatus")).configureBodyType(getProperty("bodyType"))
+                .configureEngineType(getProperty("engineType")).configureLocationWheel(getProperty("locationOfWheel"))
+                .configureDriveUnit(getProperty("driveUnit")).configureEngineVolume(getProperty("volumeEngineFrom"), getProperty("volumeEngineTo"))
                 .clickSearchButton().openFoundResult();
 
         SearchResultPage searchResultPage = (SearchResultPage) new SearchResultPage(driver).switchTab();
