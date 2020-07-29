@@ -17,7 +17,7 @@ import static resources.ConfigProp.*;
 public class KolesaTest extends WebdriverSetUp {
 
     @Test(groups = {"UiTest"})
-    public void PublishAdvertTest() {
+    public void publishAdvertTest() {
         LoginPage loginPage = new HomePage(driver).openLogInPage();
         loginPage.fillNumberInput(ConfigProp.getProperty("phonenumber"))
                 .clickLoginButton().fillPasswordInput(ConfigProp.getProperty("password")).clickLoginButton();
@@ -34,7 +34,7 @@ public class KolesaTest extends WebdriverSetUp {
     }
 
     @Test(groups = {"UiTest"})
-    public void SearchWithPhoto() {
+    public void searchWithPhoto() {
         HomePageSearch pageSearch = new HomePageSearch(driver);
         pageSearch.checkPage(getProperty("homepage"));
         pageSearch.openAutoSection().chooseCity().fillYearModel(getProperty("yearOfModel"))
@@ -48,7 +48,7 @@ public class KolesaTest extends WebdriverSetUp {
     }
 
     @Test(groups = {"UiTest"})
-    public void AdvancedSearch() {
+    public void advancedSearch() {
 
         BasePage basePage = new BasePage(driver);
         basePage.checkPage(getProperty("homepage"));
