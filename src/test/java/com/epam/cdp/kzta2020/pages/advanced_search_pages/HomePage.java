@@ -15,7 +15,6 @@ public class HomePage extends BasePage {
     private static final By DRIVE_UNIT_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-car-dwheel");
     private static final By ENGINE_VOLUME_FROM_LOCATOR = By.cssSelector("#auto-car-volume\\[from\\]");
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
-    private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
 
