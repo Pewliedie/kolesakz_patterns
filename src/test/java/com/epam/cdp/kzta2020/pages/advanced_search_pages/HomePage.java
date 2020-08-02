@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
 
-    private static final By CITY_LOCATOR = By.xpath("//li[1]//button");
+    private static final By CITY_LOCATOR = By.cssSelector("button[data-alias='almaty']");
     private static final By ADVANCED_SEARCH_LOCATOR = By.cssSelector("button.set-optional span.label");
     private static final By COUNTRY_PARAMETER_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-mark-country");
     private static final By VEHICLE_STATUS_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-auto-emergency");

@@ -25,7 +25,7 @@ public abstract class AbstractPage {
     }
 
     public WebElement parameter(String str){
-        return driver.findElement(By.xpath(String.format("//li[contains(.,'%s')]", str)));
+        return driver.findElement(By.cssSelector(String.format("li[data-label='%s']", str)));
     }
 
     public void waitForAlertDisplayed() {

@@ -4,7 +4,7 @@ import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 
 public class BasePage extends AbstractPage {
-    private static final By AUTO_SECTION_LOCATOR = By.xpath("//div[@class='menu-container container']//li[1]");
+    private static final By AUTO_SECTION_LOCATOR = By.cssSelector("span[data-alias=cars]");
     private static final By PRICE_INPUT_LOCATOR = By.id("price[from]");
     private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
 
@@ -25,5 +25,4 @@ public class BasePage extends AbstractPage {
         driver.findElement(SEARCH_BUTTON_LOCATOR).click();
         return this;
     }
-
 }

@@ -12,7 +12,7 @@
         <classes>
             <class name="com.epam.cdp.kzta2020.ui_tests.KolesaTest">
                 <methods>
-                    <include name="PublishAdvertTest"/>
+                    <exclude name="PublishAdvertTest"/>
                     <include name="SearchWithPhoto"/>
                     <include name="AdvancedSearch"/>
                 </methods>

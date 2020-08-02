@@ -4,12 +4,12 @@ import com.epam.cdp.kzta2020.pages.search_pages.BasePage;
 import org.openqa.selenium.By;
 
 public class HomePageSearch extends BasePage {
-    private static final By CITY_LOCATOR = By.xpath("//li[4]//button");
+    private static final By CITY_LOCATOR = By.cssSelector("button[data-alias='karaganda']");
     private static final By YEAR_INPUT_LOCATOR = By.id("year[from]");
-    private static final By ADDITION_MARKS_LOCATOR = By.xpath("//span[7]//span");
-    private static final By MARK_LOCATOR = By.xpath("//span[contains(text(),'BMW')]");
+    private static final By ADDITION_MARKS_LOCATOR = By.xpath("//span[@class='arrow-link']");
+    private static final By MARK_LOCATOR = By.cssSelector("span[data-alias='bmw']");
     private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox-0']");
-    private static final By FOUND_RESULT_LOCATOR = By.xpath("//a[contains(text(),'BMW X6 M')]");
+    private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
     public HomePageSearch chooseCity() {
         waitForElementVisibility(CITY_LOCATOR);

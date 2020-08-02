@@ -1,6 +1,6 @@
 package com.epam.cdp.kzta2020.domain;
 
-public class CarSearchTerm {
+public class KolesaTestTerm {
 
     private String price;
     private String country;
