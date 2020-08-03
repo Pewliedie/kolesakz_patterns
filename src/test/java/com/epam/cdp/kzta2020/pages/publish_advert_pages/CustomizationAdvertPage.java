@@ -91,10 +91,10 @@ public class CustomizationAdvertPage extends AbstractPage {
         return this;
     }
 
-    public ChoosePostTypePage chooseType() {
+    public PostTypePage chooseType() {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
-        return new ChoosePostTypePage();
+        return new PostTypePage();
     }
 }
