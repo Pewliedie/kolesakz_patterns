@@ -1,6 +1,6 @@
-package com.epam.cdp.kzta2020.pages.search_pages;
+package com.epam.cdp.kzta2020.pages;
 
-import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import org.openqa.selenium.By;
 
 public class BasePage extends AbstractPage {
@@ -15,13 +15,19 @@ public class BasePage extends AbstractPage {
         return this;
     }
 
+    public BasePage chooseCity(String city){
+        KolesaSearhWithPhotoSelect kolesaSearhWithPhotoSelect = new KolesaSearhWithPhotoSelect(driver);
+        kolesaSearhWithPhotoSelect.selectCity(city);
+        return this;
+    }
+
     public BasePage fillPrice(String price) {
         waitForElementVisibility(PRICE_INPUT_LOCATOR);
         driver.findElement(PRICE_INPUT_LOCATOR).sendKeys(price);
         return this;
     }
 
-    public BasePage clickSearchButton() {
+    public BasePage showResult() {
         driver.findElement(SEARCH_BUTTON_LOCATOR).click();
         return this;
     }

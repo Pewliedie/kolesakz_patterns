@@ -1,5 +1,6 @@
 package com.epam.cdp.kzta2020.pages;
 
+import com.epam.cdp.kzta2020.config.ConfigReader;
 import com.epam.cdp.kzta2020.config.Configuration;
 import com.epam.cdp.kzta2020.utils.WebDriverSetUp;
 import org.openqa.selenium.*;
@@ -15,17 +16,13 @@ public abstract class AbstractPage {
 
 
     public void waitForElementVisibility(By locator) {
-        new WebDriverWait(driver, Configuration.getWaitForElementTimeoutSecond()).ignoring(StaleElementReferenceException.class)
+        new WebDriverWait(driver, configuration.getWaitForElementTimeoutSecond()).ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public void waitForElementEnabled(By locator) {
-        new WebDriverWait(driver, Configuration.getPageLoadTimeOut()).ignoring(StaleElementReferenceException.class)
+        new WebDriverWait(driver, configuration.getPageLoadTimeOut()).ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public WebElement parameter(String str){
-        return driver.findElement(By.cssSelector(String.format("li[data-label='%s']", str)));
     }
 
     public void waitForAlertDisplayed() {

@@ -1,11 +1,12 @@
-package com.epam.cdp.kzta2020.pages.search_with_photo_pages;
+package com.epam.cdp.kzta2020.pages.search_with_photo;
 
-import com.epam.cdp.kzta2020.domain.KolesaTestTerm;
-import com.epam.cdp.kzta2020.domain.KolesaTestTermFactory;
+import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
+import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
 import org.openqa.selenium.By;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class FoundResultPage extends AbstractPage {
 
@@ -16,7 +17,7 @@ public class FoundResultPage extends AbstractPage {
     private static final By LOCATION_OF_WHEEL_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(5) > dd.value");
     private static final By DRIVE_UNIT_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(7) > dd.value");
 
-    KolesaTestTerm kolesaTestTerm = KolesaTestTermFactory.getAdvancedSearchCarTerm();
+    KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
 
     public FoundResultPage switchTab(){
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
@@ -30,26 +31,24 @@ public class FoundResultPage extends AbstractPage {
         return this;
     }
 
-
-
     public boolean isImageDisplayed(){
         return driver.findElement(IMAGE_LOCATOR).isDisplayed();
     }
 
     public boolean isBodyTypeCorrect(){
-        return driver.findElement(BODY_TYPE_PARAMETER_LOCATOR).getText().equals(kolesaTestTerm.getBodyType());
+        return Optional.of(driver.findElement(BODY_TYPE_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getBodyType());
     }
 
     public boolean isEngineVolumeCorrect(){
-        return driver.findElement(ENGINE_VOLUME_PARAMETER_LOCATOR).getText().equals(kolesaTestTerm.getEngineVolumeAndType());
+        return Optional.of(driver.findElement(ENGINE_VOLUME_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getEngineVolumeAndType());
     }
 
     public boolean isLocationOfWheelCorrect(){
-        return driver.findElement(LOCATION_OF_WHEEL_PARAMETER_LOCATOR).getText().equals(kolesaTestTerm.getLocationOfWheel());
+        return Optional.of(driver.findElement(LOCATION_OF_WHEEL_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getLocationOfWheel());
     }
 
     public boolean isDriveUnitCorrect(){
-        return driver.findElement(DRIVE_UNIT_PARAMETER_LOCATOR).getText().equals(kolesaTestTerm.getDriveUnit());
+        return Optional.of(driver.findElement(DRIVE_UNIT_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getDriveUnit());
     }
 
 

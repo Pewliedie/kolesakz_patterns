@@ -1,4 +1,4 @@
-package com.epam.cdp.kzta2020.pages.publish_advert_pages;
+package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;

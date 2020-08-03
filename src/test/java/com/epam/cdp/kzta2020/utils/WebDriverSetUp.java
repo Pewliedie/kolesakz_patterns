@@ -1,5 +1,6 @@
 package com.epam.cdp.kzta2020.utils;
 
+import com.epam.cdp.kzta2020.config.ConfigReader;
 import com.epam.cdp.kzta2020.config.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,7 @@ public class WebDriverSetUp {
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://kolesa.kz/");
         return driver;

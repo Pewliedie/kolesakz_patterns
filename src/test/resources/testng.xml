@@ -10,9 +10,9 @@
         </groups>
 
         <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.KolesaTest">
+            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa">
                 <methods>
-                    <exclude name="PublishAdvertTest"/>
+                    <include name="PublishAdvertTest"/>
                     <include name="SearchWithPhoto"/>
                     <include name="AdvancedSearch"/>
                 </methods>
