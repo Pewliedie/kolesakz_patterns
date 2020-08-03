@@ -2,11 +2,16 @@ package com.epam.cdp.kzta2020.pages;
 
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class BasePage extends AbstractPage {
     private static final By AUTO_SECTION_LOCATOR = By.cssSelector("span[data-alias=cars]");
     private static final By PRICE_INPUT_LOCATOR = By.id("price[from]");
     private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
+
+    public BasePage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public BasePage openAutoSection() {

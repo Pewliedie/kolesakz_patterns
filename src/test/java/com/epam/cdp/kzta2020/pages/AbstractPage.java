@@ -2,19 +2,21 @@ package com.epam.cdp.kzta2020.pages;
 
 import com.epam.cdp.kzta2020.config.ConfigReader;
 import com.epam.cdp.kzta2020.config.Configuration;
-import com.epam.cdp.kzta2020.utils.WebDriverSetUp;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
     protected WebDriver driver;
-    private Configuration configuration = ConfigReader.getConfiguration();
+    private final Configuration configuration = ConfigReader.getConfiguration();
 
-    public AbstractPage() {
-        this.driver = WebDriverSetUp.getDriverInstance();
+    public AbstractPage(WebDriver driver) {
+        this.driver = driver;
     }
 
+    protected WebDriver getDriver() {
+        return this.driver;
+    }
 
     public void waitForElementVisibility(By locator) {
         new WebDriverWait(driver, configuration.getWaitForElementTimeoutSecond()).ignoring(StaleElementReferenceException.class)

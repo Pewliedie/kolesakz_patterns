@@ -2,17 +2,13 @@ package com.epam.cdp.kzta2020.domain;
 
 import java.util.Optional;
 
-public class KolesaPostAdData {
+public class KolesaPostAdData extends KolesaCommonData{
 
     private String category1;
     private String category2;
-    private String mark;
     private String model;
     private String modelYear;
-    private String engineType;
     private String engineModification;
-    private String price;
-    private String city;
     private String email;
 
     public void setEmail(String email) {
@@ -27,10 +23,6 @@ public class KolesaPostAdData {
         this.category2 = category2;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
     public void setModel(String model) {
         this.model = model;
     }
@@ -39,20 +31,8 @@ public class KolesaPostAdData {
         this.modelYear = modelYear;
     }
 
-    public void setEngineType(String engineType) {
-        this.engineType = engineType;
-    }
-
     public void setEngineModification(String engineModification) {
         this.engineModification = engineModification;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public Optional<String> getCategory1() {
@@ -63,10 +43,6 @@ public class KolesaPostAdData {
         return Optional.ofNullable(category2);
     }
 
-    public Optional<String> getMark() {
-        return Optional.ofNullable(mark);
-    }
-
     public Optional<String> getModel() {
         return Optional.ofNullable(model);
     }
@@ -75,20 +51,8 @@ public class KolesaPostAdData {
         return Optional.ofNullable(modelYear);
     }
 
-    public Optional<String> getEngineType() {
-        return Optional.ofNullable(engineType);
-    }
-
     public Optional<String> getEngineModification() {
         return Optional.ofNullable(engineModification);
-    }
-
-    public Optional<String> getPrice() {
-        return Optional.ofNullable(price);
-    }
-
-    public Optional<String> getCity() {
-        return Optional.ofNullable(city);
     }
 
     public Optional<String> getEmail() {

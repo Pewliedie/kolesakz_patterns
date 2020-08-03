@@ -5,6 +5,7 @@ import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
 import org.openqa.selenium.JavascriptExecutor;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class CustomizationAdvertPage extends AbstractPage {
     private static final By ADVERT_OPTION_PRICE_INPUT_LOCATOR = By.cssSelector("label[class='ui-input a-form__price']");
@@ -13,6 +14,10 @@ public class CustomizationAdvertPage extends AbstractPage {
     private static final By HEADER_LOGO_IMAGE_BUTTON_LOCATOR = By.xpath("//a[@class='header-logo']//img");
     private static final By CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR = By.cssSelector(".ui-button--blue");
     private static final By PUBLISH_ADVERT_BUTTON_LOCATOR = By.cssSelector(".ui-button--shadow");
+
+    public CustomizationAdvertPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public CustomizationAdvertPage customizeAdvert(KolesaPostAdData kolesaPostAdData) {
@@ -63,7 +68,7 @@ public class CustomizationAdvertPage extends AbstractPage {
     }
 
     public CustomizationAdvertPage configureModification(String modification) {
-        ((JavascriptExecutor) driver).executeScript("scroll(0,200)");
+        ((JavascriptExecutor) driver).executeScript("scroll(0,900)");
         kolesaPostAdSelect.selectEngineModification(modification);
         return this;
     }
@@ -86,10 +91,10 @@ public class CustomizationAdvertPage extends AbstractPage {
         return this;
     }
 
-    public MainPage returnToHomePage() {
+    public HomePage returnToHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
-        return new MainPage();
+        return new HomePage(getDriver());
     }
 
     public CustomizationAdvertPage postAdvertFromCustomization() {
@@ -102,6 +107,6 @@ public class CustomizationAdvertPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
-        return new PostTypePage();
+        return new PostTypePage(getDriver());
     }
 }

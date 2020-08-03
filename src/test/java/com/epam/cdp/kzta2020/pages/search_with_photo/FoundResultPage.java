@@ -4,6 +4,7 @@ import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
 import org.openqa.selenium.By;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -18,6 +19,10 @@ public class FoundResultPage extends AbstractPage {
     private static final By DRIVE_UNIT_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(7) > dd.value");
 
     KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
+
+    public FoundResultPage(WebDriver driver) {
+        super(driver);
+    }
 
     public FoundResultPage switchTab(){
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());

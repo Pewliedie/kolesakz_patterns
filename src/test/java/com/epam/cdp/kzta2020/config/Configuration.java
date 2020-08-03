@@ -5,11 +5,8 @@ public class Configuration {
     private String baseUrl;
     private String phoneNumber;
     private String password;
-    private String email;
     private Long pageLoadTimeOut;
     private Long waitForElementTimeoutSecond;
-
-
 
     public String getBaseUrl() {
         return baseUrl;
@@ -33,14 +30,6 @@ public class Configuration {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Long getPageLoadTimeOut() {

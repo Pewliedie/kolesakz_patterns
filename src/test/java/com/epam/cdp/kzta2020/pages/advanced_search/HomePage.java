@@ -4,10 +4,10 @@ import com.epam.cdp.kzta2020.common.component.KolesaAdvancedSearchSelect;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
 
-    private static final String CITY_LOCATOR = "button[data-alias='%s']";
     private static final By ADVANCED_SEARCH_LOCATOR = By.cssSelector("button.set-optional span.label");
     private static final By COUNTRY_PARAMETER_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-mark-country");
     private static final By VEHICLE_STATUS_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-auto-emergency");
@@ -18,6 +18,10 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_FROM_LOCATOR = By.cssSelector("#auto-car-volume\\[from\\]");
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public HomePage configureAdvancedSearch(KolesaAdvancedSearchData kolesaAdvancedSearchData) {
@@ -34,14 +38,6 @@ public class HomePage extends BasePage {
         kolesaAdvancedSearchData.getEngineVolumeTo().ifPresent(this::configureEngineVolumeTO);
         return this;
     }
-
-
-    //    public HomePage chooseCity(String city) {
-//        By locator = By.cssSelector(String.format(CITY_LOCATOR, city));
-//        waitForElementVisibility(locator);
-//        driver.findElement(locator).click();
-//        return this;
-//    }
 
     public HomePage openAdvancedSearch() {
         waitForElementVisibility(ADVANCED_SEARCH_LOCATOR);
