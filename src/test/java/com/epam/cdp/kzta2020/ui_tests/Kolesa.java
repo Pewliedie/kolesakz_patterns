@@ -34,7 +34,8 @@ public class Kolesa {
 
     @Test(groups = {"UiTest"})
     public void publishAdvertTest() {
-        KolesaTestTerm kolesaTestTerm = KolesaTestTermFactory.getPublishAdTerm();
+        Configuration configuration = ConfigReader.getConfiguration();
+        KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
 
         new MainPage().openLogInPage().login(configuration.getPhoneNumber(),configuration.getPassword());

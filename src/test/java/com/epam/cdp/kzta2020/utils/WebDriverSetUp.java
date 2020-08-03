@@ -12,7 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverSetUp {
 
-    protected static WebDriver driver;
+    private static WebDriver driver;
+
+    static Configuration configuration = ConfigReader.getConfiguration();
+
 
     public static WebDriver getDriverInstance() {
         if (driver != null) {
@@ -21,9 +24,7 @@ public class WebDriverSetUp {
         return driver = setUp();
     }
 
-
-
-    @BeforeMethod(groups = {"UiTest"})
+    @BeforeMethod
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -35,14 +36,8 @@ public class WebDriverSetUp {
 
 
     public static void kill() {
-        driver.quit();
         if (driver != null) {
-            try {
-                driver.quit();
-            } catch (Exception e) {
-            } finally {
-                driver = null;
-            }
+            driver.quit();
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.epam.cdp.kzta2020.domain;
 
-public class KolesaTestTerm {
+import java.util.Optional;
+
+public class KolesaAdvancedSearchData {
 
     private String price;
     private String country;
@@ -62,72 +64,40 @@ public class KolesaTestTerm {
         return Optional.ofNullable(price);
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public Optional<String> getCountry() {
+        return Optional.ofNullable(country);
     }
 
-    public String getEngineVolumeFrom() {
-        return engineVolumeFrom;
+    public Optional<String> getVehicleStatus() {
+        return Optional.ofNullable(vehicleStatus);
     }
 
-    public void setEngineVolumeFrom(String engineVolumeFrom) {
-        this.engineVolumeFrom = engineVolumeFrom;
+    public Optional<String> getBodyType() {
+        return Optional.ofNullable(bodyType);
     }
 
-    public String getEngineVolumeTo() {
-        return engineVolumeTo;
+    public Optional<String> getEngineType() {
+        return Optional.ofNullable(engineType);
     }
 
-    public void setEngineVolumeTo(String engineVolumeTo) {
-        this.engineVolumeTo = engineVolumeTo;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCarStatus() {
-        return carStatus;
-    }
-
-    public void setCarStatus(String carStatus) {
-        this.carStatus = carStatus;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public void setBodyType(String bodyType) {
-        this.bodyType = bodyType;
-    }
-
-    public String getEngineType() {
-        return engineType;
-    }
-
-    public void setEngineType(String engineType) {
-        this.engineType = engineType;
-    }
-
-    public String getLocationOfWheel() {
-        return locationOfWheel;
-    }
-
-    public void setLocationOfWheel(String locationOfWheel) {
-        this.locationOfWheel = locationOfWheel;
+    public Optional<String> getLocationOfWheel() {
+        return Optional.ofNullable(locationOfWheel);
     }
 
     public Optional<String> getDriveUnit() {
         return Optional.ofNullable(driveUnit);
     }
 
-    public void setDriveUnit(String driveUnit) {
-        this.driveUnit = driveUnit;
+    public Optional<String> getEngineVolumeFrom() {
+        return Optional.ofNullable(engineVolumeFrom);
+    }
+
+    public Optional<String> getEngineVolumeTo() {
+        return Optional.ofNullable(engineVolumeTo);
+    }
+
+    public Optional<String> getEngineVolumeAndType() {
+        return Optional.ofNullable(engineVolumeAndType);
     }
 
     public Optional<String> getCity() {

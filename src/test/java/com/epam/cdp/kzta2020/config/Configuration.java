@@ -2,49 +2,60 @@ package com.epam.cdp.kzta2020.config;
 
 public class Configuration {
 
-    private String PHONE_NUMBER = "phonenumber";
-    private static String phoneNumber;
-    private String PASSWORD = "password";
-    private static String password;
-    private String EMAIL = "email";
-    private static String email;
-    private String PAGE_LOAD_TIMEOUT = "pageLoadTimeOut";
-    private static Long pageLoadTimeOut;
-    private String WAIT_FOR_ELEMENT_TIMEOUT_SECOND = "waitForElementTimeoutSecond";
-    private static Long waitForElementTimeoutSecond;
-
-    private static Configuration configuration;
+    private String baseUrl;
+    private String phoneNumber;
+    private String password;
+    private String email;
+    private Long pageLoadTimeOut;
+    private Long waitForElementTimeoutSecond;
 
 
-    public Configuration() {
-        phoneNumber = ConfigProp.getProperty(PHONE_NUMBER);
-        password = ConfigProp.getProperty(PASSWORD);
-        email = ConfigProp.getProperty(EMAIL);
-        pageLoadTimeOut = Long.valueOf(ConfigProp.getProperty(PAGE_LOAD_TIMEOUT));
-        waitForElementTimeoutSecond = Long.valueOf(ConfigProp.getProperty(WAIT_FOR_ELEMENT_TIMEOUT_SECOND));
+
+    public String getBaseUrl() {
+        return baseUrl;
     }
 
-    static {
-        configuration = new Configuration();
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
-    public static Long getPageLoadTimeOut() {
-        return pageLoadTimeOut;
-    }
-
-    public static String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public static String getPassword() {
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
         return password;
     }
 
-    public static String getEmail() {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public static Long getWaitForElementTimeoutSecond() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getPageLoadTimeOut() {
+        return pageLoadTimeOut;
+    }
+
+    public void setPageLoadTimeOut(Long pageLoadTimeOut) {
+        this.pageLoadTimeOut = pageLoadTimeOut;
+    }
+
+    public Long getWaitForElementTimeoutSecond() {
         return waitForElementTimeoutSecond;
+    }
+
+    public void setWaitForElementTimeoutSecond(Long waitForElementTimeoutSecond) {
+        this.waitForElementTimeoutSecond = waitForElementTimeoutSecond;
     }
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
     protected WebDriver driver;
+    private Configuration configuration = ConfigReader.getConfiguration();
 
     public AbstractPage() {
         this.driver = WebDriverSetUp.getDriverInstance();
