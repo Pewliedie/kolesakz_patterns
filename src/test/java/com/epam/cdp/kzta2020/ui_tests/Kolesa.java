@@ -73,14 +73,12 @@ public class Kolesa {
     public void advancedSearch() {
         KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
         SoftAssert softAssert2 = new SoftAssert();
-
         com.epam.cdp.kzta2020.pages.advanced_search.HomePage homePage = new com.epam.cdp.kzta2020.pages.advanced_search.HomePage(driver);
         homePage.openAutoSection();
         homePage.configureAdvancedSearch(kolesaTestTerm).showResult();
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
-
         softAssert2.assertTrue(foundResultPage.isBodyTypeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isDriveUnitCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isEngineVolumeCorrect(), "parameter does not match");
