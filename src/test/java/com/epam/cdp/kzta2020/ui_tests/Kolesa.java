@@ -10,15 +10,21 @@ import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search_with_photo.FoundResultPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Kolesa {
@@ -26,14 +32,59 @@ public class Kolesa {
     private WebDriver driver;
     private final Configuration configuration = ConfigReader.getConfiguration();
 
-    @BeforeMethod(groups = {"UiTest"})
-    public WebDriver setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+
+    @Parameters({"browser", "version", "platform", "screenResolution"})
+    @BeforeMethod(groups = {"UiTest"}, alwaysRun = true)
+    public void setUp(String browser, String version, String platform, String screenResolution) {
+
+        MutableCapabilities sauceOptions = new MutableCapabilities();
+        sauceOptions.setCapability("username", configuration.getSauceLabLogin());
+        sauceOptions.setCapability("accessKey", configuration.getSauceLabAccessKey());
+        sauceOptions.setCapability("screenResolution", screenResolution);
+
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setExperimentalOption("w3c", true);
+                chromeOptions.setCapability("platformName", platform);
+                chromeOptions.setCapability("browserVersion", version);
+                chromeOptions.setCapability("sauce:options", sauceOptions);
+                try {
+                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), chromeOptions);
+                } catch (
+                        MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "firefox":
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setCapability("platformName", platform);
+                firefoxOptions.setCapability("browserVersion", version);
+                firefoxOptions.setCapability("sauce:options", sauceOptions);
+                try {
+                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), firefoxOptions);
+                } catch (
+                        MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "edge":
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.setCapability("platformName", platform);
+                edgeOptions.setCapability("browserVersion", version);
+                edgeOptions.setCapability("sauce:options", sauceOptions);
+                try {
+                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), edgeOptions);
+                } catch (
+                        MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
         driver.get(configuration.getBaseUrl());
-        return driver;
+        driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
     }
 
 
@@ -42,7 +93,7 @@ public class Kolesa {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
 
-        new HomePage(driver).openLogInPage().login(configuration.getPhoneNumber(),configuration.getPassword());
+        new HomePage(driver).openLogInPage().login(configuration.getPhoneNumber(), configuration.getPassword());
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();

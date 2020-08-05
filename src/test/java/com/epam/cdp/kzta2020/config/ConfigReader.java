@@ -11,6 +11,13 @@ public class ConfigReader {
     private static final String PAGE_LOAD_TIMEOUT = "pageLoadTimeOut";
     private static final String WAIT_FOR_ELEMENT_TIMEOUT_SECOND = "waitForElementTimeoutSecond";
     private static final String BASE_URL = "baseUrl";
+    private static final String GRID_HUB_URL = "gridHubUrl";
+    private static final String SAUCELAB_LOGIN = "sauceLabLogin";
+    private static final String SAUCELAB_ACCESS_KEY = "sauceLabAccessKey";
+    private static final String LOGIN_YANDEX = "loginYandex";
+    private static final String PASSWORD_YANDEX = "passwordYandex";
+    private static final String SAUCELAB_URL = "sauceLabUrl";
+    private static final String YANDEX_BASE_URL = "yandexBaseUrl";
 
     private static final Properties PROPERTIES = new Properties();
 
@@ -32,6 +39,13 @@ public class ConfigReader {
         configuration.setPageLoadTimeOut(Long.valueOf(ConfigReader.getProperty(PAGE_LOAD_TIMEOUT)));
         configuration.setWaitForElementTimeoutSecond(Long.valueOf(ConfigReader.getProperty(WAIT_FOR_ELEMENT_TIMEOUT_SECOND)));
         configuration.setBaseUrl(ConfigReader.getProperty(BASE_URL));
+        configuration.setGridHubUrl(getProperty(GRID_HUB_URL));
+        configuration.setSauceLabLogin(getProperty(SAUCELAB_LOGIN));
+        configuration.setSauceLabAccessKey(getProperty(SAUCELAB_ACCESS_KEY));
+        configuration.setLoginYandex(getProperty(LOGIN_YANDEX));
+        configuration.setPasswordYandex(getProperty(PASSWORD_YANDEX));
+        configuration.setSauceLabUrl(getProperty(SAUCELAB_URL));
+        configuration.setYandexBaseUrl(getProperty(YANDEX_BASE_URL));
         return configuration;
     }
 
