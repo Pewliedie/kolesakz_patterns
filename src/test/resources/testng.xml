@@ -2,34 +2,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="UiTestSuite" parallel="tests" thread-count="2">
 
+    <test verbose="2"
+          name="UiTest">
+        <groups>
+            <run>
+                <include name = "UiTest" />
+            </run>
+        </groups>
 
-    <test verbose="2" name="ChromeWindows">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="version" value="83.0"/>
-        <parameter name="platform" value="Windows 10"/>
-        <parameter name="screenResolution" value="1600x1200"/>
         <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>
-        </classes>
-    </test>
-
-    <test verbose="2" name="FirefoxWindows">
-        <parameter name="browser" value="Firefox"/>
-        <parameter name="version" value="70.0"/>
-        <parameter name="platform" value="Windows 10"/>
-        <parameter name="screenResolution" value="1600x1200"/>
-        <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>
-        </classes>
-    </test>
-
-    <test verbose="2" name="EdgeWindows">
-        <parameter name="browser" value="Edge"/>
-        <parameter name="version" value="80.0"/>
-        <parameter name="platform" value="Windows 10"/>
-        <parameter name="screenResolution" value="1600x1200"/>
-        <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>
+            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa">
+                <methods>
+                    <include name="publishAdvertTest"/>
+                    <include name="AdvancedSearchTest"/>
+                    <include name="SearchWithPhotoTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 

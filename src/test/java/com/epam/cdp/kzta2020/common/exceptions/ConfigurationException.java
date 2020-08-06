@@ -1,4 +1,4 @@
-package com.epam.cdp.kzta2020.config;
+package com.epam.cdp.kzta2020.common.exceptions;
 
 public class ConfigurationException extends RuntimeException {
 

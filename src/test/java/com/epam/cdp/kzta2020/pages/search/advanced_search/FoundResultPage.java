@@ -1,9 +1,9 @@
-package com.epam.cdp.kzta2020.pages.search_with_photo;
+package com.epam.cdp.kzta2020.pages.search.advanced_search;
 
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
-import org.openqa.selenium.By;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import java.util.Optional;
 public class FoundResultPage extends AbstractPage {
 
     private static final By DISMISS_HINT_BUTTON_LOCATOR = By.cssSelector("button.kl-button.kl-button.js__tutorial-close");
-    private static final By IMAGE_LOCATOR = By.xpath("//button[@class='gallery__main js__gallery-main']//picture//img");
     private static final By BODY_TYPE_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(2) > dd.value");
     private static final By ENGINE_VOLUME_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(3) > dd.value");
     private static final By LOCATION_OF_WHEEL_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(5) > dd.value");
@@ -36,10 +35,6 @@ public class FoundResultPage extends AbstractPage {
         return this;
     }
 
-    public boolean isImageDisplayed(){
-        return driver.findElement(IMAGE_LOCATOR).isDisplayed();
-    }
-
     public boolean isBodyTypeCorrect(){
         return Optional.of(driver.findElement(BODY_TYPE_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getBodyType());
     }
@@ -55,6 +50,4 @@ public class FoundResultPage extends AbstractPage {
     public boolean isDriveUnitCorrect(){
         return Optional.of(driver.findElement(DRIVE_UNIT_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getDriveUnit());
     }
-
-
 }

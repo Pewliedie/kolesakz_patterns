@@ -1,4 +1,6 @@
-package com.epam.cdp.kzta2020.config;
+package com.epam.cdp.kzta2020.common.config;
+
+import com.epam.cdp.kzta2020.common.exceptions.ConfigurationException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,10 +16,8 @@ public class ConfigReader {
     private static final String GRID_HUB_URL = "gridHubUrl";
     private static final String SAUCELAB_LOGIN = "sauceLabLogin";
     private static final String SAUCELAB_ACCESS_KEY = "sauceLabAccessKey";
-    private static final String LOGIN_YANDEX = "loginYandex";
-    private static final String PASSWORD_YANDEX = "passwordYandex";
     private static final String SAUCELAB_URL = "sauceLabUrl";
-    private static final String YANDEX_BASE_URL = "yandexBaseUrl";
+
 
     private static final Properties PROPERTIES = new Properties();
 
@@ -42,10 +42,7 @@ public class ConfigReader {
         configuration.setGridHubUrl(getProperty(GRID_HUB_URL));
         configuration.setSauceLabLogin(getProperty(SAUCELAB_LOGIN));
         configuration.setSauceLabAccessKey(getProperty(SAUCELAB_ACCESS_KEY));
-        configuration.setLoginYandex(getProperty(LOGIN_YANDEX));
-        configuration.setPasswordYandex(getProperty(PASSWORD_YANDEX));
         configuration.setSauceLabUrl(getProperty(SAUCELAB_URL));
-        configuration.setYandexBaseUrl(getProperty(YANDEX_BASE_URL));
         return configuration;
     }
 

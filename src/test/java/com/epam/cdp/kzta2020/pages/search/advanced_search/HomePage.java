@@ -1,8 +1,8 @@
-package com.epam.cdp.kzta2020.pages.advanced_search;
+package com.epam.cdp.kzta2020.pages.search.advanced_search;
 
 import com.epam.cdp.kzta2020.common.component.KolesaAdvancedSearchSelect;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
-import com.epam.cdp.kzta2020.pages.BasePage;
+import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

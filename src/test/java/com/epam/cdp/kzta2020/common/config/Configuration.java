@@ -1,4 +1,4 @@
-package com.epam.cdp.kzta2020.config;
+package com.epam.cdp.kzta2020.common.config;
 
 public class Configuration {
 
@@ -10,10 +10,7 @@ public class Configuration {
     private String gridHubUrl;
     private String sauceLabLogin;
     private String sauceLabAccessKey;
-    private String loginYandex;
-    private String passwordYandex;
     private String sauceLabUrl;
-    private String yandexBaseUrl;
 
 
     public String getBaseUrl() {
@@ -80,35 +77,11 @@ public class Configuration {
         this.sauceLabAccessKey = sauceLabAccessKey;
     }
 
-    public String getLoginYandex() {
-        return loginYandex;
-    }
-
-    public void setLoginYandex(String loginYandex) {
-        this.loginYandex = loginYandex;
-    }
-
-    public String getPasswordYandex() {
-        return passwordYandex;
-    }
-
-    public void setPasswordYandex(String passwordYandex) {
-        this.passwordYandex = passwordYandex;
-    }
-
     public String getSauceLabUrl() {
         return sauceLabUrl;
     }
 
     public void setSauceLabUrl(String sauceLabUrl) {
         this.sauceLabUrl = sauceLabUrl;
-    }
-
-    public String getYandexBaseUrl() {
-        return yandexBaseUrl;
-    }
-
-    public void setYandexBaseUrl(String yandexBaseUrl) {
-        this.yandexBaseUrl = yandexBaseUrl;
     }
 }

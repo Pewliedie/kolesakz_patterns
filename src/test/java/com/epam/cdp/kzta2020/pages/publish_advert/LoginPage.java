@@ -1,5 +1,6 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
+import com.epam.cdp.kzta2020.business_objects.KolesakzUser;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,10 +15,10 @@ public class LoginPage extends AbstractPage {
         super(driver);
     }
 
-    public LoginPage login(String number,String password){
-        fillNumberInput(number);
+    public LoginPage login(KolesakzUser user){
+        fillNumberInput(user.getLogin());
         clickLoginButton();
-        fillPasswordInput(password);
+        fillPasswordInput(user.getPassword());
         clickLoginButton();
         return this;
     }
