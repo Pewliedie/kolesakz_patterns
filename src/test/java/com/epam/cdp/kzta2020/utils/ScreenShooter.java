@@ -1,10 +1,10 @@
 package com.epam.cdp.kzta2020.utils;
 
 
+import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
