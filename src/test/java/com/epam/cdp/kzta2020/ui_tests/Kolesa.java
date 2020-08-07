@@ -10,6 +10,10 @@ import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search_with_photo.FoundResultPage;
+import com.epam.cdp.kzta2020.webdriver_factory.ChromeDriverCreator;
+import com.epam.cdp.kzta2020.webdriver_factory.EdgeDriverCreator;
+import com.epam.cdp.kzta2020.webdriver_factory.FirefoxDriverCreator;
+import com.epam.cdp.kzta2020.webdriver_factory.WebDriverCreator;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -44,44 +48,18 @@ public class Kolesa {
 
         switch (browser.toLowerCase()) {
             case "chrome":
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setExperimentalOption("w3c", true);
-                chromeOptions.setCapability("platformName", platform);
-                chromeOptions.setCapability("browserVersion", version);
-                chromeOptions.setCapability("sauce:options", sauceOptions);
-                try {
-                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), chromeOptions);
-                } catch (
-                        MalformedURLException e) {
-                    e.printStackTrace();
-                }
+                WebDriverCreator chromeDriverCreator = new ChromeDriverCreator();
+                driver = chromeDriverCreator.webDriverFactory(driver, version, platform, sauceOptions, configuration.getSauceLabUrl());
                 break;
 
             case "firefox":
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setCapability("platformName", platform);
-                firefoxOptions.setCapability("browserVersion", version);
-                firefoxOptions.setCapability("sauce:options", sauceOptions);
-                try {
-                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), firefoxOptions);
-                } catch (
-                        MalformedURLException e) {
-                    e.printStackTrace();
-                }
+                WebDriverCreator firefoxDriverCreator = new FirefoxDriverCreator();
+                driver = firefoxDriverCreator.webDriverFactory(driver, version, platform, sauceOptions, configuration.getSauceLabUrl());
                 break;
 
             case "edge":
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.setCapability("platformName", platform);
-                edgeOptions.setCapability("browserVersion", version);
-                edgeOptions.setCapability("sauce:options", sauceOptions);
-                try {
-                    driver = new RemoteWebDriver(new URL(configuration.getSauceLabUrl()), edgeOptions);
-                } catch (
-                        MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                break;
+                WebDriverCreator edgeDriverCreator = new EdgeDriverCreator();
+                driver = edgeDriverCreator.webDriverFactory(driver, version, platform, sauceOptions, configuration.getSauceLabUrl());
         }
         driver.get(configuration.getBaseUrl());
         driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
