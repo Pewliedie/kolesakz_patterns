@@ -2,9 +2,9 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.common.component.KolesaPostAdSelect;
 import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
-import org.openqa.selenium.JavascriptExecutor;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class CustomizationAdvertPage extends AbstractPage {

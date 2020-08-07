@@ -2,8 +2,8 @@ package com.epam.cdp.kzta2020.pages.search_with_photo;
 
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
-import org.openqa.selenium.By;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
