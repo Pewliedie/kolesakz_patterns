@@ -54,6 +54,7 @@ public class Kolesa {
             case "edge":
                 WebDriverCreator edgeDriverCreator = new EdgeDriverCreator();
                 driver = edgeDriverCreator.webDriverFactory(driver, version, platform, sauceOptions, configuration.getSauceLabUrl());
+                break;
         }
         driver.get(configuration.getBaseUrl());
         driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
