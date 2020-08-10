@@ -13,12 +13,6 @@ public class KolesaSearhWithPhotoSelect extends AbstractPage {
         super(webDriver);
     }
 
-
-    public KolesaSearhWithPhotoSelect(WebDriver webDriver, By rootElementLocator) {
-        super(webDriver);
-        this.rootElementLocator = rootElementLocator;
-    }
-
     public void selectCity(String string) {
         waitForElementEnabled(By.cssSelector(String.format("button[data-alias='%s']", string)));
         getDriver().findElement(By.cssSelector(String.format("button[data-alias='%s']", string))).click();
