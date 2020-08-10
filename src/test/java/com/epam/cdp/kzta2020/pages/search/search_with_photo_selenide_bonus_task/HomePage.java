@@ -1,13 +1,10 @@
 package com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task;
 
-import com.codeborne.selenide.Condition;
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;
 import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage extends BasePage {
     private static final By YEAR_INPUT_LOCATOR = By.id("year[from]");
