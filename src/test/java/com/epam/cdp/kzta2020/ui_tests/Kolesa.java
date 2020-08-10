@@ -6,6 +6,7 @@ import com.epam.cdp.kzta2020.common.config.Configuration;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
 import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
+import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;
 import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
@@ -14,6 +15,7 @@ import com.epam.cdp.kzta2020.utils.ScreenShooter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -74,6 +76,20 @@ public class Kolesa {
         softAssert2.assertTrue(foundResultPage.isLocationOfWheelCorrect(), "parameter does not match");
         ScreenShooter.takeScreenShoot();
         softAssert2.assertAll();
+    }
+
+    @Test(groups = {"UiTest"})
+    public void searchWithPhoto() {
+        KolesaSearchWithPhotoData kolesaSearchWithPhotoData = KolesaDataFactory.getSearchWithPhotoCarData();
+        com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage(driver);
+        homePage.openAutoSection();
+        homePage.configureSearch(kolesaSearchWithPhotoData).enablePhotoCheckbox()
+                .showResult();
+        homePage.openFoundResult();
+
+        FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab();
+        foundResultPage.dismissHint();
+        Assert.assertTrue(foundResultPage.isImageDisplayed(), "picture is not displayed");
     }
 
     @AfterMethod(groups = {"UiTest"})

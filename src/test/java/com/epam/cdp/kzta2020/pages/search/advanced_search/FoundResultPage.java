@@ -16,6 +16,7 @@ public class FoundResultPage extends AbstractPage {
     private static final By ENGINE_VOLUME_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(3) > dd.value");
     private static final By LOCATION_OF_WHEEL_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(5) > dd.value");
     private static final By DRIVE_UNIT_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(7) > dd.value");
+    private static final By IMAGE_LOCATOR = By.xpath("//button[@class='gallery__main js__gallery-main']//picture//img");
 
     KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
 
@@ -33,6 +34,10 @@ public class FoundResultPage extends AbstractPage {
         waitForElementEnabled(DISMISS_HINT_BUTTON_LOCATOR);
         driver.findElement(DISMISS_HINT_BUTTON_LOCATOR).click();
         return this;
+    }
+
+    public boolean isImageDisplayed(){
+        return driver.findElement(IMAGE_LOCATOR).isDisplayed();
     }
 
     public boolean isBodyTypeCorrect(){
