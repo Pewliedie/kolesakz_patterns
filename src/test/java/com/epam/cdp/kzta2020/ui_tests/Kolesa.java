@@ -41,8 +41,8 @@ public class Kolesa {
     public void publishAdvertTest() {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
-        ScreenShooter.takeScreenShoot();
         new HomePage(driver).openLogInPage().login(new KolesakzUser());
+        ScreenShooter.takeScreenShoot();
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();

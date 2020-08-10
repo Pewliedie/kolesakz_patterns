@@ -23,7 +23,7 @@ public class ScreenShooter extends AbstractPage {
             String screenShootName = SCREENSHOOTS_NAME_TPL + System.nanoTime();
             File copy = new File(screenShootName + ".png");
             FileUtils.copyFile(screenShoot,copy);
-        }catch (IOException e){
+        }catch (IOException ignored){
 
         }
     }
