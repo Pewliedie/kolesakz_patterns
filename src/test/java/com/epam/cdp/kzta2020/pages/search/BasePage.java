@@ -3,7 +3,6 @@ package com.epam.cdp.kzta2020.pages.search;
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class BasePage extends AbstractPage {
     private static final By AUTO_SECTION_LOCATOR = By.cssSelector("span[data-alias=cars]");

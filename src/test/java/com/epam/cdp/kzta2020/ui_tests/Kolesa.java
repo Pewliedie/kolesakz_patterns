@@ -1,8 +1,6 @@
 package com.epam.cdp.kzta2020.ui_tests;
 
 import com.epam.cdp.kzta2020.business_objects.KolesakzUser;
-import com.epam.cdp.kzta2020.common.config.ConfigReader;
-import com.epam.cdp.kzta2020.common.config.Configuration;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
 import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
@@ -13,16 +11,10 @@ import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
 import com.epam.cdp.kzta2020.utils.ScreenShooter;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.util.concurrent.TimeUnit;
 
 public class Kolesa {
 

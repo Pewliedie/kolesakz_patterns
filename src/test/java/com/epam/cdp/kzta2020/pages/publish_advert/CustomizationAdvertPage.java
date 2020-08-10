@@ -5,7 +5,6 @@ import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 
 public class CustomizationAdvertPage extends AbstractPage {
     private static final By ADVERT_OPTION_PRICE_INPUT_LOCATOR = By.cssSelector("label[class='ui-input a-form__price']");
