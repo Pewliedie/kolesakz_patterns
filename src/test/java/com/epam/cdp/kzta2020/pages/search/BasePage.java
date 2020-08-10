@@ -10,9 +10,9 @@ public class BasePage extends AbstractPage {
     private static final By PRICE_INPUT_LOCATOR = By.id("price[from]");
     private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
 
-    public BasePage(WebDriver driver) {
-        super(driver);
-    }
+//    public BasePage(WebDriver driver) {
+//        super(driver);
+//    }
 
 
     public BasePage openAutoSection() {

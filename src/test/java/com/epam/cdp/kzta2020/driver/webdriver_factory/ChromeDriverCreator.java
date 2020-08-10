@@ -1,4 +1,4 @@
-package com.epam.cdp.kzta2020.webdriver_factory;
+package com.epam.cdp.kzta2020.driver.webdriver_factory;
 
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;

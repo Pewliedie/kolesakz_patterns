@@ -11,10 +11,6 @@ public class LoginPage extends AbstractPage {
     private static final By PASSWORD_INPUT_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector(".form-item button");
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
     public LoginPage login(KolesakzUser user){
         fillNumberInput(user.getLogin());
         clickLoginButton();

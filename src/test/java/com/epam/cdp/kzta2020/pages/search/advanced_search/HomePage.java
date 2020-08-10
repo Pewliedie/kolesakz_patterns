@@ -19,9 +19,9 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
+//    public HomePage(WebDriver driver) {
+//        super(driver);
+//    }
 
 
     public HomePage configureAdvancedSearch(KolesaAdvancedSearchData kolesaAdvancedSearchData) {

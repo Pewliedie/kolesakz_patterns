@@ -12,9 +12,9 @@ public class HomePage extends BasePage {
     private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox-0']");
     private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
+//    public HomePage(WebDriver driver) {
+//        super(driver);
+//    }
 
     public HomePage configureSearch(KolesaSearchWithPhotoData kolesaSearchWithPhotoData) {
         kolesaSearchWithPhotoData.getPrice().ifPresent(this::fillPrice);

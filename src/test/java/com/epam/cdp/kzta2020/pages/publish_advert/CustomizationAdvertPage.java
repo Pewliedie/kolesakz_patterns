@@ -15,11 +15,6 @@ public class CustomizationAdvertPage extends AbstractPage {
     private static final By CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR = By.cssSelector(".ui-button--blue");
     private static final By PUBLISH_ADVERT_BUTTON_LOCATOR = By.cssSelector(".ui-button--shadow");
 
-    public CustomizationAdvertPage(WebDriver driver) {
-        super(driver);
-    }
-
-
     public CustomizationAdvertPage customizeAdvert(KolesaPostAdData kolesaPostAdData) {
         kolesaPostAdData.getCategory1().ifPresent(this::configureCategory1);
         kolesaPostAdData.getCategory2().ifPresent(this::configureCategory2);
@@ -94,7 +89,7 @@ public class CustomizationAdvertPage extends AbstractPage {
     public HomePage returnToHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
-        return new HomePage(getDriver());
+        return new HomePage();
     }
 
     public CustomizationAdvertPage postAdvertFromCustomization() {
@@ -107,6 +102,6 @@ public class CustomizationAdvertPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
-        return new PostTypePage(getDriver());
+        return new PostTypePage();
     }
 }

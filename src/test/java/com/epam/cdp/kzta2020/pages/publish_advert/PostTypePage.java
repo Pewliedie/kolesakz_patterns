@@ -11,9 +11,6 @@ public class PostTypePage extends AbstractPage {
 
     private static final String AD_SENT_TO_MODERATOR_TEXT = "Объявление отправлено на проверку!";
 
-    public PostTypePage(WebDriver driver) {
-        super(driver);
-    }
 
     public PostTypePage chooseFreeAdvert() {
         waitForElementVisibility(PUBLISH_FREE_ADVERT_LOCATOR);

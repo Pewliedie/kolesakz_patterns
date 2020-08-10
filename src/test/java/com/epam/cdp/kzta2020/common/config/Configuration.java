@@ -5,9 +5,8 @@ public class Configuration {
     private String baseUrl;
     private String phoneNumber;
     private String password;
-    private Long pageLoadTimeOut;
+    private static Long pageLoadTimeOut;
     private Long waitForElementTimeoutSecond;
-    private String gridHubUrl;
     private String sauceLabLogin;
     private String sauceLabAccessKey;
     private String sauceLabUrl;
@@ -37,12 +36,12 @@ public class Configuration {
         this.password = password;
     }
 
-    public Long getPageLoadTimeOut() {
+    public static Long getPageLoadTimeOut() {
         return pageLoadTimeOut;
     }
 
     public void setPageLoadTimeOut(Long pageLoadTimeOut) {
-        this.pageLoadTimeOut = pageLoadTimeOut;
+        Configuration.pageLoadTimeOut = pageLoadTimeOut;
     }
 
     public Long getWaitForElementTimeoutSecond() {
@@ -51,14 +50,6 @@ public class Configuration {
 
     public void setWaitForElementTimeoutSecond(Long waitForElementTimeoutSecond) {
         this.waitForElementTimeoutSecond = waitForElementTimeoutSecond;
-    }
-
-    public String getGridHubUrl() {
-        return gridHubUrl;
-    }
-
-    public void setGridHubUrl(String gridHubUrl) {
-        this.gridHubUrl = gridHubUrl;
     }
 
     public String getSauceLabLogin() {

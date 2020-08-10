@@ -10,25 +10,25 @@ public class KolesaSearhWithPhotoSelect extends AbstractPage {
     private By rootElementLocator;
 
     public KolesaSearhWithPhotoSelect(WebDriver webDriver) {
-        super(webDriver);
+//        super(webDriver);
     }
 
 
     public KolesaSearhWithPhotoSelect(WebDriver webDriver, By rootElementLocator) {
-        super(webDriver);
+//        super(webDriver);
         this.rootElementLocator = rootElementLocator;
     }
 
     public void selectCity(String string) {
         waitForElementEnabled(By.cssSelector(String.format("button[data-alias='%s']", string)));
-        getDriver().findElement(By.cssSelector(String.format("button[data-alias='%s']", string))).click();
+        driver.findElement(By.cssSelector(String.format("button[data-alias='%s']", string))).click();
     }
 
     public void selectMark(String string) {
         waitForElementEnabled(rootElementLocator);
-        getDriver().findElement(rootElementLocator).click();
+        driver.findElement(rootElementLocator).click();
         waitForElementEnabled(By.cssSelector(String.format("span[data-alias='%s']", string)));
-        WebElement element = getDriver().findElement(By.cssSelector(String.format("span[data-alias='%s']", string)));
+        WebElement element = driver.findElement(By.cssSelector(String.format("span[data-alias='%s']", string)));
         element.click();
     }
 }

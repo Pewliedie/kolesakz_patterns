@@ -11,42 +11,42 @@ public class KolesaPostAdSelect extends AbstractPage {
     private By rootElementLocator;
 
     public KolesaPostAdSelect(WebDriver webDriver) {
-        super(webDriver);
+//        super(webDriver);
     }
 
     public KolesaPostAdSelect(WebDriver webDriver, By rootElementLocator) {
-        super(webDriver);
+//        super(webDriver);
         this.rootElementLocator = rootElementLocator;
     }
 
     public void select(String text) {
         waitForElementEnabled(By.xpath(String.format("//label[contains(text(),'%s')]", text)));
-        getDriver().findElement(By.xpath(String.format("//label[contains(text(),'%s')]", text))).click();
+        driver.findElement(By.xpath(String.format("//label[contains(text(),'%s')]", text))).click();
     }
 
     public void selectCategory(String text) {
         waitForElementEnabled(By.xpath(String.format("//option[contains(.,'%s')]", text)));
-        getDriver().findElement(By.xpath(String.format("//option[contains(.,'%s')]", text))).click();
+        driver.findElement(By.xpath(String.format("//option[contains(.,'%s')]", text))).click();
     }
 
     public void selectMark(String text) {
         waitForElementEnabled(By.xpath(String.format("//div[contains(text(),'%s')]", text)));
-        getDriver().findElement(By.xpath(String.format("//div[contains(text(),'%s')]", text))).click();
+        driver.findElement(By.xpath(String.format("//div[contains(text(),'%s')]", text))).click();
     }
 
     public void selectModel(String text) {
         waitForElementEnabled(By.xpath(String.format("//button[contains(text(),'%s')]", text)));
-        getDriver().findElement(By.xpath(String.format("//button[contains(text(),'%s')]", text))).click();
+        driver.findElement(By.xpath(String.format("//button[contains(text(),'%s')]", text))).click();
     }
 
     public void selectEngineModification(String text) {
         waitForElementEnabled(By.xpath(String.format("//span[contains(text(),'%s')]", text)));
-        getDriver().findElement(By.xpath(String.format("//span[contains(text(),'%s')]", text))).click();
+        driver.findElement(By.xpath(String.format("//span[contains(text(),'%s')]", text))).click();
     }
 
     public void selectCity(String text) {
-        getDriver().findElement(rootElementLocator).click();
-        WebElement item = getDriver().findElement(new ByChained(rootElementLocator, By.xpath(String.format("//ul/li[contains(.,'%s')]", text))));
+        driver.findElement(rootElementLocator).click();
+        WebElement item = driver.findElement(new ByChained(rootElementLocator, By.xpath(String.format("//ul/li[contains(.,'%s')]", text))));
         waitForElementEnabled(By.xpath(String.format("//ul/li[contains(.,'%s')]", text)));
         item.click();
     }
