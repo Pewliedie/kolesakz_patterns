@@ -23,7 +23,6 @@ public class WebDriverInitializer {
         return driver = setUp();
     }
 
-
     @BeforeMethod(groups = {"UiTest"})
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
