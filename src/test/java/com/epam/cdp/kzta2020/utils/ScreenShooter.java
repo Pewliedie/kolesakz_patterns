@@ -10,12 +10,8 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenShooter extends AbstractPage {
+public class ScreenShooter{
     public static final String SCREENSHOOTS_NAME_TPL = "screenshots/src";
-
-//    public ScreenShooter(WebDriver driver) {
-//        super(driver);
-//    }
 
     public static void takeScreenShoot() {
         File screenShoot = ((TakesScreenshot) WebDriverSingleton.getDriverInstance()).getScreenshotAs(OutputType.FILE);
@@ -24,7 +20,6 @@ public class ScreenShooter extends AbstractPage {
             File copy = new File(screenShootName + ".png");
             FileUtils.copyFile(screenShoot,copy);
         }catch (IOException e){
-
         }
     }
 }

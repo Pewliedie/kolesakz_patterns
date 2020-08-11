@@ -19,10 +19,6 @@ public class FoundResultPage extends AbstractPage {
 
     KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
 
-//    public FoundResultPage(WebDriver driver) {
-//        super(driver);
-//    }
-
     public FoundResultPage switchTab(){
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));

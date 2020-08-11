@@ -18,11 +18,6 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
-//    public HomePage(WebDriver driver) {
-//        super(driver);
-//    }
-
-
     public HomePage configureAdvancedSearch(KolesaAdvancedSearchData kolesaAdvancedSearchData) {
         kolesaAdvancedSearchData.getCity().ifPresent(this::chooseCity);
         kolesaAdvancedSearchData.getPrice().ifPresent(this::fillPrice);
@@ -45,37 +40,37 @@ public class HomePage extends BasePage {
     }
 
     public HomePage configureCountry(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, COUNTRY_PARAMETER_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(COUNTRY_PARAMETER_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }
 
     public HomePage configureVehicleStatus(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, VEHICLE_STATUS_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(VEHICLE_STATUS_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }
 
     public HomePage configureBodyType(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, CAR_BODY_TYPE_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(CAR_BODY_TYPE_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }
 
     public HomePage configureEngineType(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, ENGINE_TYPE_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(ENGINE_TYPE_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }
 
     public HomePage configureLocationWheel(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, LOCATION_OF_WHEEL_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(LOCATION_OF_WHEEL_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }
 
     public HomePage configureDriveUnit(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(driver, DRIVE_UNIT_LOCATOR);
+        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(DRIVE_UNIT_LOCATOR);
         kolesaAdvancedSearchSelect.select(param);
         return this;
     }

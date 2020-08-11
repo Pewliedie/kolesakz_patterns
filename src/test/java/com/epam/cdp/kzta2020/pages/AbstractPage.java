@@ -15,10 +15,6 @@ public abstract class AbstractPage {
         this.driver = WebDriverSingleton.getDriverInstance();
     }
 
-//    protected WebDriver () {
-//        return driver;
-//    }
-
     public void waitForElementVisibility(By locator) {
         new WebDriverWait(driver, configuration.getWaitForElementTimeoutSecond()).ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));

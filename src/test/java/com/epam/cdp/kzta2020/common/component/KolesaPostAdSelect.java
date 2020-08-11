@@ -10,12 +10,10 @@ public class KolesaPostAdSelect extends AbstractPage {
 
     private By rootElementLocator;
 
-    public KolesaPostAdSelect(WebDriver webDriver) {
-//        super(webDriver);
+    public KolesaPostAdSelect() {
     }
 
-    public KolesaPostAdSelect(WebDriver webDriver, By rootElementLocator) {
-//        super(webDriver);
+    public KolesaPostAdSelect (By rootElementLocator) {
         this.rootElementLocator = rootElementLocator;
     }
 

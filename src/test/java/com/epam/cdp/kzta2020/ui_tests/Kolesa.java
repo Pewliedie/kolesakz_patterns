@@ -18,20 +18,6 @@ import org.testng.asserts.SoftAssert;
 
 public class Kolesa {
 
-//    private WebDriver driver;
-//    private final Configuration configuration = ConfigReader.getConfiguration();
-
-
-//    @BeforeMethod(groups = {"UiTest"})
-//    public void setUp() {
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
-//        driver.get(configuration.getBaseUrl());
-//    }
-
-
     @Test(groups = {"UiTest"})
     public void publishAdvertTest() {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();

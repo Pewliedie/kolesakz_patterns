@@ -9,13 +9,11 @@ public class KolesaSearhWithPhotoSelect extends AbstractPage {
 
     private By rootElementLocator;
 
-    public KolesaSearhWithPhotoSelect(WebDriver webDriver) {
-//        super(webDriver);
+    public KolesaSearhWithPhotoSelect() {
     }
 
 
     public KolesaSearhWithPhotoSelect(WebDriver webDriver, By rootElementLocator) {
-//        super(webDriver);
         this.rootElementLocator = rootElementLocator;
     }
 

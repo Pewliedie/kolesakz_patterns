@@ -28,7 +28,7 @@ public class CustomizationAdvertPage extends AbstractPage {
         return this;
     }
 
-    private final KolesaPostAdSelect kolesaPostAdSelect = new KolesaPostAdSelect(driver);
+    private final KolesaPostAdSelect kolesaPostAdSelect = new KolesaPostAdSelect();
 
     public CustomizationAdvertPage configureCategory1(String category1) {
         kolesaPostAdSelect.selectCategory(category1);
@@ -74,7 +74,7 @@ public class CustomizationAdvertPage extends AbstractPage {
     }
 
     public CustomizationAdvertPage configureCity(String city) {
-        KolesaPostAdSelect kolesaPostSelect = new KolesaPostAdSelect(driver, ADVERT_OPTION_CHOOSE_CITY_LOCATOR);
+        KolesaPostAdSelect kolesaPostSelect = new KolesaPostAdSelect(ADVERT_OPTION_CHOOSE_CITY_LOCATOR);
         kolesaPostSelect.selectCity(city);
         return this;
     }
