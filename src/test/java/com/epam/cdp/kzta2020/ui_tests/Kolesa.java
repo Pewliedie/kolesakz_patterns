@@ -22,6 +22,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import sun.plugin.dom.exception.BrowserNotSupportedException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -55,6 +56,9 @@ public class Kolesa {
                 WebDriverCreator edgeDriverCreator = new EdgeDriverCreator();
                 driver = edgeDriverCreator.webDriverFactory(driver, version, platform, sauceOptions, configuration.getSauceLabUrl());
                 break;
+
+            default:
+                throw new BrowserNotSupportedException("Incorrect browser");
         }
         driver.get(configuration.getBaseUrl());
         driver.manage().timeouts().pageLoadTimeout(configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
