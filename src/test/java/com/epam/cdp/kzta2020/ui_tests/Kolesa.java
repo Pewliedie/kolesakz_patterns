@@ -10,7 +10,7 @@ import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
-import com.epam.cdp.kzta2020.utils.ScreenShooter;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,7 +42,7 @@ public class Kolesa {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
         new HomePage(driver).openLogInPage().login(new KolesakzUser());
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
@@ -50,9 +50,9 @@ public class Kolesa {
         PostTypePage postTypePage = new PostTypePage(driver).chooseFreeAdvert();
         softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
         new HomePage(driver).openAccountPage();
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         softAssert.assertAll();
     }
 
@@ -61,10 +61,10 @@ public class Kolesa {
         KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
         SoftAssert softAssert2 = new SoftAssert();
         com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage(driver);
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         homePage.openAutoSection();
         homePage.configureAdvancedSearch(kolesaTestTerm).showResult();
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
@@ -72,7 +72,7 @@ public class Kolesa {
         softAssert2.assertTrue(foundResultPage.isDriveUnitCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isEngineVolumeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isLocationOfWheelCorrect(), "parameter does not match");
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot();
         softAssert2.assertAll();
     }
 
