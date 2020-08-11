@@ -2,7 +2,7 @@ package com.epam.cdp.kzta2020.common.config;
 
 public class Configuration {
 
-    private String baseUrl;
+    private static String baseUrl;
     private String phoneNumber;
     private String password;
     private static Long pageLoadTimeOut;
@@ -12,12 +12,12 @@ public class Configuration {
     private String sauceLabUrl;
 
 
-    public String getBaseUrl() {
+    public static String getBaseUrl() {
         return baseUrl;
     }
 
     public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
+        Configuration.baseUrl = baseUrl;
     }
 
     public String getPhoneNumber() {

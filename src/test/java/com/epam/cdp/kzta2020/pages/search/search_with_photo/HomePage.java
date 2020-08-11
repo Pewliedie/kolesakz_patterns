@@ -1,4 +1,4 @@
-package com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task;
+package com.epam.cdp.kzta2020.pages.search.search_with_photo;
 
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;

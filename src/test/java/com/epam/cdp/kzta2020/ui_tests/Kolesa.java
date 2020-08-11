@@ -5,12 +5,12 @@ import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
 import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
 import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;
-import com.epam.cdp.kzta2020.driver.WebDriverSingleton;
+import com.epam.cdp.kzta2020.driver.WebDriverInitializer;
 import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
 import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
-import com.epam.cdp.kzta2020.utils.ScreenShooter;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class Kolesa {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
         new HomePage().openLogInPage().login(new KolesakzUser());
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         AccountPage accountPage = new AccountPage();
         accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
@@ -31,9 +31,9 @@ public class Kolesa {
         PostTypePage postTypePage = new PostTypePage().chooseFreeAdvert();
         softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
         new HomePage().openAccountPage();
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         softAssert.assertAll();
     }
 
@@ -42,10 +42,10 @@ public class Kolesa {
         KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
         SoftAssert softAssert2 = new SoftAssert();
         com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage();
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         homePage.openAutoSection();
         homePage.configureAdvancedSearch(kolesaTestTerm).showResult();
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage().switchTab().dismissHint();
@@ -53,14 +53,14 @@ public class Kolesa {
         softAssert2.assertTrue(foundResultPage.isDriveUnitCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isEngineVolumeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isLocationOfWheelCorrect(), "parameter does not match");
-        ScreenShooter.takeScreenShoot();
+        ScreenShoter.takeScreenShot();
         softAssert2.assertAll();
     }
 
     @Test(groups = {"UiTest"})
     public void searchWithPhoto() {
         KolesaSearchWithPhotoData kolesaSearchWithPhotoData = KolesaDataFactory.getSearchWithPhotoCarData();
-        com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage();
+        com.epam.cdp.kzta2020.pages.search.search_with_photo.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.search_with_photo.HomePage();
         homePage.openAutoSection();
         homePage.configureSearch(kolesaSearchWithPhotoData).enablePhotoCheckbox()
                 .showResult();
@@ -73,6 +73,6 @@ public class Kolesa {
 
     @AfterMethod(groups = {"UiTest"})
     public void kill() {
-        WebDriverSingleton.kill();
+        WebDriverInitializer.kill();
     }
 }

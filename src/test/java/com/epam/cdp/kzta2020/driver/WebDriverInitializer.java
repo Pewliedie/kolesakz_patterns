@@ -9,12 +9,11 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class WebDriverSingleton {
+public class WebDriverInitializer {
 
     protected static WebDriver driver;
 
-    private WebDriverSingleton() {
-
+    private WebDriverInitializer() {
     }
 
     public static WebDriver getDriverInstance() {
@@ -31,7 +30,7 @@ public class WebDriverSingleton {
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://kolesa.kz/");
+        driver.get(Configuration.getBaseUrl());
         return driver;
     }
 

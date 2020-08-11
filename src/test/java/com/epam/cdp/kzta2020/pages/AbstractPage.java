@@ -2,7 +2,7 @@ package com.epam.cdp.kzta2020.pages;
 
 import com.epam.cdp.kzta2020.common.config.ConfigReader;
 import com.epam.cdp.kzta2020.common.config.Configuration;
-import com.epam.cdp.kzta2020.driver.WebDriverSingleton;
+import com.epam.cdp.kzta2020.driver.WebDriverInitializer;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +12,7 @@ public abstract class AbstractPage {
     private final Configuration configuration = ConfigReader.getConfiguration();
 
     protected AbstractPage() {
-        this.driver = WebDriverSingleton.getDriverInstance();
+        this.driver = WebDriverInitializer.getDriverInstance();
     }
 
     public void waitForElementVisibility(By locator) {
