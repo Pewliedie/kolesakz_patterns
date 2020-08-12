@@ -1,6 +1,7 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public class PostTypePage extends AbstractPage {
 
     public PostTypePage chooseFreeAdvert() {
         waitForElementVisibility(PUBLISH_FREE_ADVERT_LOCATOR);
+        ScreenShoter.takeScreenShoot(driver);
         driver.findElement(PUBLISH_FREE_ADVERT_LOCATOR).click();
         return this;
     }

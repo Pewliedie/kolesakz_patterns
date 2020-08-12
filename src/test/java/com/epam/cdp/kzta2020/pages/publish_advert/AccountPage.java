@@ -1,6 +1,7 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -29,6 +30,7 @@ public class AccountPage extends AbstractPage {
     }
 
     public boolean isAdvertPosted(){
+        ScreenShoter.takeScreenShoot(driver);
         return driver.findElement(ADVERTS_ON_PAGE_TEXT_LOCATOR).getText().equals(ADVERTS_ON_PAGE_TEXT);
     }
 

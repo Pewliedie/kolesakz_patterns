@@ -2,6 +2,7 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.business_objects.KolesakzUser;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,6 +21,7 @@ public class LoginPage extends AbstractPage {
         clickLoginButton();
         fillPasswordInput(user.getPassword());
         clickLoginButton();
+        ScreenShoter.takeScreenShoot(driver);
         return this;
     }
 

@@ -3,6 +3,7 @@ package com.epam.cdp.kzta2020.pages.search.advanced_search;
 import com.epam.cdp.kzta2020.common.component.KolesaAdvancedSearchSelect;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.pages.search.BasePage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -36,6 +37,7 @@ public class HomePage extends BasePage {
         kolesaAdvancedSearchData.getDriveUnit().ifPresent(this::configureDriveUnit);
         kolesaAdvancedSearchData.getEngineVolumeFrom().ifPresent(this::configureEngineVolumeFrom);
         kolesaAdvancedSearchData.getEngineVolumeTo().ifPresent(this::configureEngineVolumeTO);
+        ScreenShoter.takeScreenShoot(driver);
         return this;
     }
 

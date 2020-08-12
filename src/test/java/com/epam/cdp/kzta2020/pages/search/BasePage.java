@@ -2,6 +2,7 @@ package com.epam.cdp.kzta2020.pages.search;
 
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public class BasePage extends AbstractPage {
 
     public BasePage openAutoSection() {
         waitForElementEnabled(AUTO_SECTION_LOCATOR);
+        ScreenShoter.takeScreenShoot(driver);
         driver.findElement(AUTO_SECTION_LOCATOR).click();
         return this;
     }

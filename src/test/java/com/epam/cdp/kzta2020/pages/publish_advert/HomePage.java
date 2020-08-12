@@ -1,6 +1,7 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -22,6 +23,7 @@ public class HomePage extends AbstractPage {
         waitForElementVisibility(LOGGED_ACCOUNT_LOCATOR);
         driver.findElement(LOGGED_ACCOUNT_LOCATOR).click();
         driver.findElement(MY_ADVERTS_LOCATOR).click();
+        ScreenShoter.takeScreenShoot(driver);
         waitForElementVisibility(By.xpath("//div[@class='col-xs-9']"));
         return new AccountPage(getDriver());
     }

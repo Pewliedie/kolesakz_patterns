@@ -26,7 +26,6 @@ public class Kolesa {
     private WebDriver driver;
     private final Configuration configuration = ConfigReader.getConfiguration();
 
-
     @BeforeMethod(groups = {"UiTest"})
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -42,7 +41,6 @@ public class Kolesa {
         KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
         new HomePage(driver).openLogInPage().login(new KolesakzUser());
-        ScreenShoter.takeScreenShoot();
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
@@ -50,9 +48,7 @@ public class Kolesa {
         PostTypePage postTypePage = new PostTypePage(driver).chooseFreeAdvert();
         softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
         new HomePage(driver).openAccountPage();
-        ScreenShoter.takeScreenShoot();
         softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
-        ScreenShoter.takeScreenShoot();
         softAssert.assertAll();
     }
 
@@ -61,10 +57,8 @@ public class Kolesa {
         KolesaAdvancedSearchData kolesaTestTerm = KolesaDataFactory.getAdvancedSearchData();
         SoftAssert softAssert2 = new SoftAssert();
         com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage homePage = new com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage(driver);
-        ScreenShoter.takeScreenShoot();
         homePage.openAutoSection();
         homePage.configureAdvancedSearch(kolesaTestTerm).showResult();
-        ScreenShoter.takeScreenShoot();
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
@@ -72,7 +66,7 @@ public class Kolesa {
         softAssert2.assertTrue(foundResultPage.isDriveUnitCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isEngineVolumeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isLocationOfWheelCorrect(), "parameter does not match");
-        ScreenShoter.takeScreenShoot();
+        ScreenShoter.takeScreenShoot(driver);
         softAssert2.assertAll();
     }
 
