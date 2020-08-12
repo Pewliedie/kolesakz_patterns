@@ -1,5 +1,6 @@
 package com.epam.cdp.kzta2020.ui_tests;
 
+import com.epam.cdp.kzta2020.common.exeptions.BrowserNotSupportedException;
 import com.epam.cdp.kzta2020.config.ConfigReader;
 import com.epam.cdp.kzta2020.config.Configuration;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
@@ -22,7 +23,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import sun.plugin.dom.exception.BrowserNotSupportedException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +30,6 @@ public class Kolesa {
 
     private WebDriver driver;
     private final Configuration configuration = ConfigReader.getConfiguration();
-
 
     @Parameters({"browser", "version", "platform", "screenResolution"})
     @BeforeMethod(groups = {"UiTest"}, alwaysRun = true)

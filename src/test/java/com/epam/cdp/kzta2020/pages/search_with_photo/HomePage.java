@@ -3,6 +3,7 @@ package com.epam.cdp.kzta2020.pages.search_with_photo;
 import com.epam.cdp.kzta2020.common.component.KolesaSearhWithPhotoSelect;
 import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;
 import com.epam.cdp.kzta2020.pages.BasePage;
+import com.epam.cdp.kzta2020.utils.JsExecutorUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,24 +27,28 @@ public class HomePage extends BasePage {
 
     public HomePage fillYearModel(String year) {
         waitForElementVisibility(YEAR_INPUT_LOCATOR);
+        JsExecutorUtils.highlightElement(driver,YEAR_INPUT_LOCATOR);
         driver.findElement(YEAR_INPUT_LOCATOR).sendKeys(year);
         return this;
     }
 
     public HomePage configureMark(String mark) {
         KolesaSearhWithPhotoSelect kolesaSearhWithPhotoSelect = new KolesaSearhWithPhotoSelect(driver,ADDITION_MARKS_LOCATOR);
+        JsExecutorUtils.highlightElement(driver,ADDITION_MARKS_LOCATOR);
         kolesaSearhWithPhotoSelect.selectMark(mark);
         return this;
     }
 
     public HomePage enablePhotoCheckbox() {
         waitForElementEnabled(CHECKBOX_PHOTO_LOCATOR);
+        JsExecutorUtils.highlightElement(driver,CHECKBOX_PHOTO_LOCATOR);
         driver.findElement(CHECKBOX_PHOTO_LOCATOR).click();
         return this;
     }
 
     public HomePage openFoundResult() {
         waitForElementVisibility(FOUND_RESULT_LOCATOR);
+        JsExecutorUtils.highlightElement(driver,FOUND_RESULT_LOCATOR);
         driver.findElement(FOUND_RESULT_LOCATOR).click();
         return this;
     }

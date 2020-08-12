@@ -1,5 +1,7 @@
 package com.epam.cdp.kzta2020.config;
 
+import com.epam.cdp.kzta2020.common.exeptions.ConfigurationException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;

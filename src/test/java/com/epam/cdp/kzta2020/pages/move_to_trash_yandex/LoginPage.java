@@ -10,7 +10,7 @@ public class LoginPage extends AbstractPage {
 
     private static final By LOGIN_FIELD = By.cssSelector("#passp-field-login");
     private static final By PASSWORD_FIELD = By.cssSelector("#passp-field-passwd");
-    private static final By LOGIN_BUTTON = By.xpath("//button[@class='Button2 Button2_type_submit Button2_width_max Button2_view_action Button2_size_auth-l']");
+    private static final By LOGIN_BUTTON = By.xpath("//button[@class='Button2 Button2_size_auth-l Button2_view_action Button2_width_max Button2_type_submit']");
 
     public LoginPage(WebDriver driver) {
         super(driver);

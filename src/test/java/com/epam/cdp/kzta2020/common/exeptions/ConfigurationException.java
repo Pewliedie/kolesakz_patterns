@@ -1,10 +1,6 @@
-package com.epam.cdp.kzta2020.config;
+package com.epam.cdp.kzta2020.common.exeptions;
 
 public class ConfigurationException extends RuntimeException {
-
-    public ConfigurationException() {
-    }
-
     public ConfigurationException(StackTraceElement[] stackTrace) {
     }
 }

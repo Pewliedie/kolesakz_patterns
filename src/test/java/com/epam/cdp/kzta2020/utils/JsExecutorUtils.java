@@ -1,0 +1,13 @@
+package com.epam.cdp.kzta2020.utils;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
+public class JsExecutorUtils{
+    public static void highlightElement(WebDriver driver, By locator){
+
+        //"arguments[0].style.border='3px solid red'"
+        ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", driver.findElement(locator));
+    }
+}
