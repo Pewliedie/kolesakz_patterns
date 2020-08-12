@@ -11,10 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverInitializer {
 
-    protected static WebDriver driver;
-
-    private WebDriverInitializer() {
-    }
+    private static WebDriver driver;
 
     public static WebDriver getDriverInstance() {
         if (driver != null) {

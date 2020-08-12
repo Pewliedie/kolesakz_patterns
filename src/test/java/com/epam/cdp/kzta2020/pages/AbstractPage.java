@@ -8,8 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
-    protected  WebDriver driver;
+    protected WebDriver driver;
     private final Configuration configuration = ConfigReader.getConfiguration();
+
 
     protected AbstractPage() {
         this.driver = WebDriverInitializer.getDriverInstance();
