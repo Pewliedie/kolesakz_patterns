@@ -1,5 +1,6 @@
 package ui_tests;
 
+import com.epam.kzta2020.business_objects.Car;
 import com.epam.kzta2020.common.config.ConfigReader;
 import com.epam.kzta2020.common.config.Configuration;
 import com.epam.kzta2020.domain.AdvancedSearchData;
@@ -10,6 +11,7 @@ import com.epam.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.kzta2020.pages.search.advanced_search.FoundResultPage;
 import com.epam.kzta2020.pages.search.advanced_search.HomePage;
 import com.epam.kzta2020.utils.CarBOCreator;
+import com.epam.kzta2020.utils.RandomNumberGenerator;
 import com.epam.kzta2020.utils.ScreenShoter;
 import com.epam.kzta2020.utils.UserCreator;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -62,13 +64,28 @@ public class Kolesa {
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
-        CarBOCreator.createCar(driver);
         softAssert2.assertTrue(foundResultPage.isBodyTypeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isDriveUnitCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isEngineVolumeCorrect(), "parameter does not match");
         softAssert2.assertTrue(foundResultPage.isLocationOfWheelCorrect(), "parameter does not match");
         ScreenShoter.takeScreenShoot(driver);
         softAssert2.assertAll();
+    }
+
+    @Test
+    public void findRandomCar() {
+        HomePage homePage = new HomePage(driver);
+        SoftAssert softAssert3 = new SoftAssert();
+        homePage.openAutoSection().showResult();
+        homePage.openRandomFoundResult(RandomNumberGenerator.generateNumber());
+        FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
+        Car car = CarBOCreator.createCar(driver);
+
+        softAssert3.assertTrue(foundResultPage.isLocationCorrect(car), "parameter does not match");
+        softAssert3.assertTrue(foundResultPage.isPriceCorrect(car), "parameter does not match");
+        softAssert3.assertTrue(foundResultPage.isMarkCorrect(car), "parameter does not match");
+        softAssert3.assertTrue(foundResultPage.isModelCorrect(car), "parameter does not match");
+        softAssert3.assertAll();
     }
 
     @AfterMethod(groups = {"UiTest"})

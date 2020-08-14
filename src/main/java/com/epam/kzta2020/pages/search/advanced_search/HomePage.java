@@ -20,6 +20,7 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_FROM_LOCATOR = By.cssSelector("#auto-car-volume\\[from\\]");
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+    private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -80,6 +81,7 @@ public class HomePage extends BasePage {
 
     public void select(String text, By rootElementLocator) {
         driver.findElement(rootElementLocator).click();
+        //TODO: убрать локатор в константы
         WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format("li[data-label='%s']", text))));
         element.click();
     }
@@ -99,4 +101,12 @@ public class HomePage extends BasePage {
         driver.findElement(SEARCH_RESULT_LOCATOR).click();
         return this;
     }
+
+    public HomePage openRandomFoundResult(String randomNumber) {
+        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR,"10"))));
+        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR,"10"))).click();
+        return this;
+    }
+
+
 }

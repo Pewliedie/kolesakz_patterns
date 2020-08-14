@@ -1,11 +1,11 @@
 package ui_tests;
 
 import com.codeborne.selenide.Configuration;
-import com.epam.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage;
 import com.epam.kzta2020.common.config.ConfigReader;
 import com.epam.kzta2020.domain.DataFactory;
 import com.epam.kzta2020.domain.SearchWithPhotoData;
 import com.epam.kzta2020.pages.search.search_with_photo_selenide_bonus_task.FoundResultPage;
+import com.epam.kzta2020.pages.search.search_with_photo_selenide_bonus_task.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

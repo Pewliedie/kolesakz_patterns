@@ -36,6 +36,7 @@ public class BasePage extends AbstractPage {
     }
 
     public BasePage showResult() {
+        waitForElementEnabled(SEARCH_BUTTON_LOCATOR);
         driver.findElement(SEARCH_BUTTON_LOCATOR).click();
         return this;
     }

@@ -1,5 +1,6 @@
 package com.epam.kzta2020.pages.search.advanced_search;
 
+import com.epam.kzta2020.business_objects.Car;
 import com.epam.kzta2020.domain.AdvancedSearchData;
 import com.epam.kzta2020.domain.DataFactory;
 import com.epam.kzta2020.pages.AbstractPage;
@@ -17,37 +18,62 @@ public class FoundResultPage extends AbstractPage {
     private static final By LOCATION_OF_WHEEL_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(5) > dd.value");
     private static final By DRIVE_UNIT_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(7) > dd.value");
 
+    private static final By CAR_LOCATION_LOCATOR = By.cssSelector("dl:nth-child(1) > dd.value");
+    private static final By OFFER_PRICE_LOCATOR = By.cssSelector("div.offer__price");
+    private static final By MARK_LOCATOR = By.cssSelector("h1.offer__title > span:nth-child(1)");
+    private static final By MODEL_LOCATOR = By.cssSelector("h1.offer__title > span:nth-child(2)");
+
     private final AdvancedSearchData kolesaTestTerm = DataFactory.getAdvancedSearchData();
 
     public FoundResultPage(WebDriver driver) {
         super(driver);
     }
 
-    public FoundResultPage switchTab(){
+    public FoundResultPage switchTab() {
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         return this;
     }
 
-    public FoundResultPage dismissHint(){
+    public FoundResultPage dismissHint() {
         waitForElementEnabled(DISMISS_HINT_BUTTON_LOCATOR);
         driver.findElement(DISMISS_HINT_BUTTON_LOCATOR).click();
         return this;
     }
 
-    public boolean isBodyTypeCorrect(){
+    public boolean isBodyTypeCorrect() {
         return Optional.of(driver.findElement(BODY_TYPE_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getBodyType());
     }
 
-    public boolean isEngineVolumeCorrect(){
+    public boolean isEngineVolumeCorrect() {
         return Optional.of(driver.findElement(ENGINE_VOLUME_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getEngineVolumeAndType());
     }
 
-    public boolean isLocationOfWheelCorrect(){
+    public boolean isLocationOfWheelCorrect() {
         return Optional.of(driver.findElement(LOCATION_OF_WHEEL_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getLocationOfWheel());
     }
 
-    public boolean isDriveUnitCorrect(){
+    public boolean isDriveUnitCorrect() {
         return Optional.of(driver.findElement(DRIVE_UNIT_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getDriveUnit());
+    }
+
+    public boolean isLocationCorrect(Car car) {
+        System.out.println(car.getCity());
+         return driver.findElement(CAR_LOCATION_LOCATOR).getText().equals(car.getCity());
+    }
+
+    public boolean isPriceCorrect(Car car) {
+        System.out.println(car.getPrice());
+        return driver.findElement(OFFER_PRICE_LOCATOR).getText().equals(car.getPrice());
+    }
+
+    public boolean isMarkCorrect(Car car) {
+        System.out.println(car.getMark());
+        return driver.findElement(MARK_LOCATOR).getText().equals(car.getMark());
+    }
+
+    public boolean isModelCorrect(Car car) {
+        System.out.println(car.getModel());
+        return driver.findElement(MODEL_LOCATOR).getText().equals(car.getModel());
     }
 }
