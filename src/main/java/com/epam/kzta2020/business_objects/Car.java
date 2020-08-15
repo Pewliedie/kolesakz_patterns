@@ -1,7 +1,10 @@
 package com.epam.kzta2020.business_objects;
 
+import java.util.Optional;
+
 public class Car {
-    private String price;
+    private String priceFrom;
+    private String priceTo;
     private String city;
     private String mark;
     private String model;
@@ -10,8 +13,8 @@ public class Car {
         this.city = city;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPriceFrom(String priceFrom) {
+        this.priceFrom = priceFrom;
     }
 
     public void setMark(String mark) {
@@ -22,19 +25,27 @@ public class Car {
         this.model = model;
     }
 
-    public String getPrice() {
-        return price;
+    public void setPriceTo(String priceTo) {
+        this.priceTo = priceTo;
     }
 
-    public String getCity() {
-        return city;
+    public Optional<String> getPriceFrom() {
+        return Optional.ofNullable(priceFrom);
     }
 
-    public String getMark() {
-        return mark;
+    public Optional<String> getCity() {
+        return Optional.ofNullable(city);
     }
 
-    public String getModel() {
-        return model;
+    public Optional<String> getMark() {
+        return Optional.ofNullable(mark);
+    }
+
+    public Optional<String> getModel() {
+        return Optional.ofNullable(model);
+    }
+
+    public Optional<String> getPriceTo() {
+        return Optional.ofNullable(priceTo);
     }
 }

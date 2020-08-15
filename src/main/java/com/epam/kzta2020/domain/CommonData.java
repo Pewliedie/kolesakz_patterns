@@ -3,17 +3,18 @@ package com.epam.kzta2020.domain;
 import java.util.Optional;
 
 public class CommonData {
-    private String price;
+    private String priceFrom;
     private String city;
     private String mark;
+    private String model;
     private String engineType;
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPriceFrom(String priceFrom) {
+        this.priceFrom = priceFrom;
     }
 
     public void setMark(String mark) {
@@ -24,8 +25,12 @@ public class CommonData {
         this.engineType = engineType;
     }
 
-    public Optional<String> getPrice() {
-        return Optional.ofNullable(price);
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Optional<String> getPriceFrom() {
+        return Optional.ofNullable(priceFrom);
     }
 
     public Optional<String> getCity() {
@@ -38,5 +43,9 @@ public class CommonData {
 
     public Optional<String> getEngineType() {
         return Optional.ofNullable(engineType);
+    }
+
+    public Optional<String> getModel() {
+        return Optional.ofNullable(model);
     }
 }

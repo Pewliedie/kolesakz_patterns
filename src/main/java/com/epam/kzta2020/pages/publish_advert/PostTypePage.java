@@ -26,5 +26,4 @@ public class PostTypePage extends AbstractPage {
     public boolean isAdSent() {
         return driver.findElement(AD_SENT_TO_MODERATOR_TEXT_LOCATOR).getText().equals(AD_SENT_TO_MODERATOR_TEXT);
     }
-
 }

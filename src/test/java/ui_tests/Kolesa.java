@@ -3,9 +3,7 @@ package ui_tests;
 import com.epam.kzta2020.business_objects.Car;
 import com.epam.kzta2020.common.config.ConfigReader;
 import com.epam.kzta2020.common.config.Configuration;
-import com.epam.kzta2020.domain.AdvancedSearchData;
 import com.epam.kzta2020.domain.DataFactory;
-import com.epam.kzta2020.domain.PostAdData;
 import com.epam.kzta2020.pages.publish_advert.AccountPage;
 import com.epam.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.kzta2020.pages.search.advanced_search.FoundResultPage;
@@ -40,11 +38,10 @@ public class Kolesa {
 
     @Test(groups = {"UiTest"})
     public void publishAdvertTest() {
-        PostAdData kolesaPostAdData = DataFactory.getPublishAdTermData();
         SoftAssert softAssert = new SoftAssert();
         new com.epam.kzta2020.pages.publish_advert.HomePage(driver).openLogInPage().signIn(UserCreator.getUser());
         AccountPage accountPage = new AccountPage(driver);
-        accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
+        accountPage.openCustomization().customizeAdvert(DataFactory.getPublishAdData()).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
 
         PostTypePage postTypePage = new PostTypePage(driver).chooseFreeAdvert();
@@ -57,10 +54,9 @@ public class Kolesa {
     @Test(groups = {"UiTest"})
     public void advancedSearch() {
         SoftAssert softAssert2 = new SoftAssert();
-        AdvancedSearchData data = DataFactory.getAdvancedSearchData();
         HomePage homePage = new HomePage(driver);
         homePage.openAutoSection();
-        homePage.configureAdvancedSearch(data).showResult();
+        homePage.configureAdvancedSearch(DataFactory.getAdvancedSearchData()).showResult();
         homePage.openFoundResult();
 
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
@@ -76,11 +72,12 @@ public class Kolesa {
     public void findRandomCar() {
         HomePage homePage = new HomePage(driver);
         SoftAssert softAssert3 = new SoftAssert();
-        homePage.openAutoSection().showResult();
+        Car car = CarBOCreator.createCar();
+        homePage.openAutoSection();
+        homePage.configureRandomSearch(car);
+        homePage.showResult();
         homePage.openRandomFoundResult(RandomNumberGenerator.generateNumber());
         FoundResultPage foundResultPage = new FoundResultPage(driver).switchTab().dismissHint();
-        Car car = CarBOCreator.createCar(driver);
-
         softAssert3.assertTrue(foundResultPage.isLocationCorrect(car), "parameter does not match");
         softAssert3.assertTrue(foundResultPage.isPriceCorrect(car), "parameter does not match");
         softAssert3.assertTrue(foundResultPage.isMarkCorrect(car), "parameter does not match");

@@ -32,5 +32,4 @@ public class AccountPage extends AbstractPage {
         ScreenShoter.takeScreenShoot(driver);
         return driver.findElement(ADVERTS_ON_PAGE_TEXT_LOCATOR).getText().equals(ADVERTS_ON_PAGE_TEXT);
     }
-
 }

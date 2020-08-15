@@ -3,8 +3,8 @@ package com.epam.kzta2020.domain;
 public class DataFactory {
     public static AdvancedSearchData getAdvancedSearchData(){
         AdvancedSearchData advancedSearchData = new AdvancedSearchData();
-        advancedSearchData.setCity("almaty");
-        advancedSearchData.setPrice("110000000");
+        advancedSearchData.setCity("Алматы");
+        advancedSearchData.setPriceFrom("110000000");
         advancedSearchData.setCountry("Англия");
         advancedSearchData.setVehicleStatus("На ходу");
         advancedSearchData.setBodyType("седан");
@@ -20,15 +20,15 @@ public class DataFactory {
     public static SearchWithPhotoData getSearchWithPhotoCarData(){
         SearchWithPhotoData kolesaSearchWithPhotoData = new SearchWithPhotoData();
         kolesaSearchWithPhotoData.setCity("karaganda");
-        kolesaSearchWithPhotoData.setPrice("60000000");
+        kolesaSearchWithPhotoData.setPriceFrom("60000000");
         kolesaSearchWithPhotoData.setModelYear("2020");
         kolesaSearchWithPhotoData.setMark("bmw");
         return kolesaSearchWithPhotoData;
     }
 
-    public static PostAdData getPublishAdTermData(){
+    public static PostAdData getPublishAdData(){
         PostAdData kolesaPostAdData = new PostAdData();
-        kolesaPostAdData.setPrice("10000000");
+        kolesaPostAdData.setPriceFrom("10000000");
         kolesaPostAdData.setCategory1("Машины");
         kolesaPostAdData.setCategory2("Легковые");
         kolesaPostAdData.setMark("Toyota");
@@ -40,5 +40,4 @@ public class DataFactory {
         kolesaPostAdData.setEmail("qqq@com.com");
         return kolesaPostAdData;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.epam.kzta2020.pages.search.advanced_search;
 
+import com.epam.kzta2020.business_objects.Car;
 import com.epam.kzta2020.domain.AdvancedSearchData;
 import com.epam.kzta2020.pages.search.BasePage;
 import com.epam.kzta2020.utils.ScreenShoter;
@@ -21,15 +22,16 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
     private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
+    private static final String MARK_LOCATOR = "span[data-alias='%s']";
+    private static final String ITEM_SELECTED_LOCATOR = "li[data-label='%s']";
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-
     public HomePage configureAdvancedSearch(AdvancedSearchData advancedSearchData) {
         advancedSearchData.getCity().ifPresent(this::chooseCity);
-        advancedSearchData.getPrice().ifPresent(this::fillPrice);
+        advancedSearchData.getPriceFrom().ifPresent(this::fillPriceFrom);
         openAdvancedSearch();
         advancedSearchData.getCountry().ifPresent(this::configureCountry);
         advancedSearchData.getVehicleStatus().ifPresent(this::configureVehicleStatus);
@@ -40,6 +42,15 @@ public class HomePage extends BasePage {
         advancedSearchData.getEngineVolumeFrom().ifPresent(this::configureEngineVolumeFrom);
         advancedSearchData.getEngineVolumeTo().ifPresent(this::configureEngineVolumeTO);
         ScreenShoter.takeScreenShoot(driver);
+        return this;
+    }
+
+    public HomePage configureRandomSearch(Car car) {
+        car.getCity().ifPresent(this::chooseCity);
+        car.getPriceFrom().ifPresent(this::fillPriceFrom);
+        car.getPriceTo().ifPresent(this::fillPriceTO);
+        car.getMark().ifPresent(this::configureMark);
+        car.getModel().ifPresent(this::configureModel);
         return this;
     }
 
@@ -75,14 +86,13 @@ public class HomePage extends BasePage {
     }
 
     public HomePage configureDriveUnit(String param) {
-      select(param,DRIVE_UNIT_LOCATOR);
+        select(param, DRIVE_UNIT_LOCATOR);
         return this;
     }
 
     public void select(String text, By rootElementLocator) {
         driver.findElement(rootElementLocator).click();
-        //TODO: убрать локатор в константы
-        WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format("li[data-label='%s']", text))));
+        WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format(ITEM_SELECTED_LOCATOR, text))));
         element.click();
     }
 
@@ -102,11 +112,22 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage openRandomFoundResult(String randomNumber) {
-        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR,"10"))));
-        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR,"10"))).click();
+    public HomePage configureMark(String mark) {
+        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, mark)));
+        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, mark))).click();
+        return this;
+    }
+
+    public HomePage configureModel(String model) {
+        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, model)));
+        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
         return this;
     }
 
 
+    public HomePage openRandomFoundResult(String randomNumber) {
+        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))));
+        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
+        return this;
+    }
 }

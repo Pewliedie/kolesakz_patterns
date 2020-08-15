@@ -16,7 +16,7 @@ public class HomePage {
     private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
 
     public HomePage configureSearch(SearchWithPhotoData kolesaSearchWithPhotoData) {
-        kolesaSearchWithPhotoData.getPrice().ifPresent(this::fillPrice);
+        kolesaSearchWithPhotoData.getPriceFrom().ifPresent(this::fillPrice);
         kolesaSearchWithPhotoData.getCity().ifPresent(this::chooseCity);
         kolesaSearchWithPhotoData.getModelYear().ifPresent(this::fillYearModel);
         kolesaSearchWithPhotoData.getMark().ifPresent(this::configureMark);

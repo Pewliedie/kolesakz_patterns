@@ -17,7 +17,6 @@ public class FoundResultPage extends AbstractPage {
     private static final By ENGINE_VOLUME_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(3) > dd.value");
     private static final By LOCATION_OF_WHEEL_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(5) > dd.value");
     private static final By DRIVE_UNIT_PARAMETER_LOCATOR = By.cssSelector("dl:nth-child(7) > dd.value");
-
     private static final By CAR_LOCATION_LOCATOR = By.cssSelector("dl:nth-child(1) > dd.value");
     private static final By OFFER_PRICE_LOCATOR = By.cssSelector("div.offer__price");
     private static final By MARK_LOCATOR = By.cssSelector("h1.offer__title > span:nth-child(1)");
@@ -59,21 +58,21 @@ public class FoundResultPage extends AbstractPage {
 
     public boolean isLocationCorrect(Car car) {
         System.out.println(car.getCity());
-         return driver.findElement(CAR_LOCATION_LOCATOR).getText().equals(car.getCity());
+        return car.getCity().toString().contains(driver.findElement(CAR_LOCATION_LOCATOR).getText());
     }
 
     public boolean isPriceCorrect(Car car) {
-        System.out.println(car.getPrice());
-        return driver.findElement(OFFER_PRICE_LOCATOR).getText().equals(car.getPrice());
+        System.out.println(car.getPriceFrom());
+        return car.getPriceFrom().toString().contains(driver.findElement(OFFER_PRICE_LOCATOR).getText());
     }
 
     public boolean isMarkCorrect(Car car) {
         System.out.println(car.getMark());
-        return driver.findElement(MARK_LOCATOR).getText().equals(car.getMark());
+        return Optional.of(driver.findElement(MARK_LOCATOR).getText().toLowerCase()).equals(car.getMark());
     }
 
     public boolean isModelCorrect(Car car) {
         System.out.println(car.getModel());
-        return driver.findElement(MODEL_LOCATOR).getText().equals(car.getModel());
+        return Optional.of(driver.findElement(MODEL_LOCATOR).getText().toLowerCase()).equals(car.getModel());
     }
 }

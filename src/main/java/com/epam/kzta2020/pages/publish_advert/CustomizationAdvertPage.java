@@ -39,7 +39,7 @@ public class CustomizationAdvertPage extends AbstractPage {
         kolesaPostAdData.getModelYear().ifPresent(this::configureModelYear);
         kolesaPostAdData.getEngineType().ifPresent(this::configureEngineType);
         kolesaPostAdData.getEngineModification().ifPresent(this::configureModification);
-        kolesaPostAdData.getPrice().ifPresent(this::fillPrice);
+        kolesaPostAdData.getPriceFrom().ifPresent(this::fillPrice);
         kolesaPostAdData.getCity().ifPresent(this::configureCity);
         kolesaPostAdData.getEmail().ifPresent(this::fillEmail);
         ScreenShoter.takeScreenShoot(driver);
