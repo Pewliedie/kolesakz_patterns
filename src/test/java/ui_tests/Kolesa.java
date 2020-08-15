@@ -1,17 +1,17 @@
 package ui_tests;
 
-import com.epam.kzta2020.business_objects.Car;
-import com.epam.kzta2020.common.config.ConfigReader;
-import com.epam.kzta2020.common.config.Configuration;
-import com.epam.kzta2020.domain.DataFactory;
-import com.epam.kzta2020.pages.publish_advert.AccountPage;
-import com.epam.kzta2020.pages.publish_advert.PostTypePage;
-import com.epam.kzta2020.pages.search.advanced_search.FoundResultPage;
-import com.epam.kzta2020.pages.search.advanced_search.HomePage;
-import com.epam.kzta2020.utils.CarBOCreator;
-import com.epam.kzta2020.utils.RandomNumberGenerator;
-import com.epam.kzta2020.utils.ScreenShoter;
-import com.epam.kzta2020.utils.UserCreator;
+import com.epam.cdp.kzta2020.business_objects.Car;
+import com.epam.cdp.kzta2020.common.config.ConfigReader;
+import com.epam.cdp.kzta2020.common.config.Configuration;
+import com.epam.cdp.kzta2020.domain.DataFactory;
+import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
+import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
+import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
+import com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage;
+import com.epam.cdp.kzta2020.utils.CarBOCreator;
+import com.epam.cdp.kzta2020.utils.RandomNumberGenerator;
+import com.epam.cdp.kzta2020.utils.ScreenShoter;
+import com.epam.cdp.kzta2020.utils.UserCreator;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,14 +39,14 @@ public class Kolesa {
     @Test(groups = {"UiTest"})
     public void publishAdvertTest() {
         SoftAssert softAssert = new SoftAssert();
-        new com.epam.kzta2020.pages.publish_advert.HomePage(driver).openLogInPage().signIn(UserCreator.getUser());
+        new com.epam.cdp.kzta2020.pages.publish_advert.HomePage(driver).openLogInPage().signIn(UserCreator.getUser());
         AccountPage accountPage = new AccountPage(driver);
         accountPage.openCustomization().customizeAdvert(DataFactory.getPublishAdData()).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
 
         PostTypePage postTypePage = new PostTypePage(driver).chooseFreeAdvert();
         softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
-        new com.epam.kzta2020.pages.publish_advert.HomePage(driver).openAccountPage();
+        new com.epam.cdp.kzta2020.pages.publish_advert.HomePage(driver).openAccountPage();
         softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
         softAssert.assertAll();
     }
