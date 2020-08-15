@@ -10,7 +10,7 @@
 <!--            </run>-->
 <!--        </groups>-->
 <!--        <classes>-->
-<!--            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa">-->
+<!--            <class name="ui_tests.Kolesa">-->
     <!--                <methods>-->
     <!--                    <include name="publishAdvertTest"/>-->
     <!--                    <include name="AdvancedSearchTest"/>-->
@@ -23,21 +23,21 @@
     <test verbose="2" name="ChromeWindows">
         <parameter name="browserConfigs" value="chrome"/>
         <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>
+            <class name="ui_tests.Kolesa"/>
         </classes>
     </test>
 
     <test verbose="2" name="FirefoxWindows">
         <parameter name="browserConfigs" value="Firefox"/>
         <classes>
-            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>
+            <class name="ui_tests.Kolesa"/>
         </classes>
     </test>
 
 <!--    <test verbose="2" name="EdgeWindows">-->
 <!--        <parameter name="browserConfigs" value="Edge"/>-->
 <!--        <classes>-->
-<!--            <class name="com.epam.cdp.kzta2020.ui_tests.Kolesa"/>-->
+<!--            <class name="ui_tests.Kolesa"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 

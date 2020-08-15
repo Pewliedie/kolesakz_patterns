@@ -1,9 +1,14 @@
-package com.epam.cdp.kzta2020.ui_tests;
+package ui_tests;
 
+import com.epam.cdp.kzta2020.business_objects.KolesakzUser;
 import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.KolesaDataFactory;
+import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
 import com.epam.cdp.kzta2020.domain.KolesaSearchWithPhotoData;
 import com.epam.cdp.kzta2020.driver.WebDriverInitializer;
+import com.epam.cdp.kzta2020.pages.publish_advert.AccountPage;
+import com.epam.cdp.kzta2020.pages.publish_advert.HomePage;
+import com.epam.cdp.kzta2020.pages.publish_advert.PostTypePage;
 import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
 import com.epam.cdp.kzta2020.utils.ScreenShoter;
 import org.testng.Assert;
@@ -13,24 +18,24 @@ import org.testng.asserts.SoftAssert;
 
 public class Kolesa {
 
-//    @Test(groups = {"UiTest"})
-//    public void publishAdvertTest() {
-//        KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
-//        SoftAssert softAssert = new SoftAssert();
-//        new HomePage().openLogInPage().login(new KolesakzUser());
-//        ScreenShoter.takeScreenShot();
-//        AccountPage accountPage = new AccountPage();
-//        accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
-//        accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
-//
-//        PostTypePage postTypePage = new PostTypePage().chooseFreeAdvert();
-//        softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
-//        new HomePage().openAccountPage();
-//        ScreenShoter.takeScreenShot();
-//        softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
-//        ScreenShoter.takeScreenShot();
-//        softAssert.assertAll();
-//    }
+    @Test(groups = {"UiTest"})
+    public void publishAdvertTest() {
+        KolesaPostAdData kolesaPostAdData = KolesaDataFactory.getPublishAdTermData();
+        SoftAssert softAssert = new SoftAssert();
+        new HomePage().openLogInPage().login(new KolesakzUser());
+        ScreenShoter.takeScreenShot();
+        AccountPage accountPage = new AccountPage();
+        accountPage.openCustomization().customizeAdvert(kolesaPostAdData).returnToHomePage().openAccountPage();
+        accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
+
+        PostTypePage postTypePage = new PostTypePage().chooseFreeAdvert();
+        softAssert.assertTrue(postTypePage.isAdSent(), "Advert is not posted");
+        new HomePage().openAccountPage();
+        ScreenShoter.takeScreenShot();
+        softAssert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");
+        ScreenShoter.takeScreenShot();
+        softAssert.assertAll();
+    }
 
     @Test(groups = {"UiTest"})
     public void advancedSearch() {
