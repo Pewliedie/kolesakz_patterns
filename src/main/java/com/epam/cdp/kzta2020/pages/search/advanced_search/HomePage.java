@@ -1,9 +1,11 @@
 package com.epam.cdp.kzta2020.pages.search.advanced_search;
 
-import com.epam.cdp.kzta2020.common.component.KolesaAdvancedSearchSelect;
-import com.epam.cdp.kzta2020.domain.KolesaAdvancedSearchData;
+import com.epam.cdp.kzta2020.business_objects.Car;
+import com.epam.cdp.kzta2020.domain.AdvancedSearchData;
 import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.pagefactory.ByChained;
 
 public class HomePage extends BasePage {
 
@@ -16,20 +18,33 @@ public class HomePage extends BasePage {
     private static final By DRIVE_UNIT_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-car-dwheel");
     private static final By ENGINE_VOLUME_FROM_LOCATOR = By.cssSelector("#auto-car-volume\\[from\\]");
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
-    private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+//    private static final String MARK_LOCATOR = "span[data-alias='%s']";
+//    private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+    private static final String ITEM_SELECTED_LOCATOR = "li[data-label='%s']";
+//    private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
 
-    public HomePage configureAdvancedSearch(KolesaAdvancedSearchData kolesaAdvancedSearchData) {
-        kolesaAdvancedSearchData.getCity().ifPresent(this::chooseCity);
-        kolesaAdvancedSearchData.getPrice().ifPresent(this::fillPrice);
+
+    public HomePage configureAdvancedSearch(AdvancedSearchData advancedSearchData) {
+        advancedSearchData.getCity().ifPresent(this::chooseCity);
+        advancedSearchData.getPriceFrom().ifPresent(this::fillPriceFrom);
         openAdvancedSearch();
-        kolesaAdvancedSearchData.getCountry().ifPresent(this::configureCountry);
-        kolesaAdvancedSearchData.getVehicleStatus().ifPresent(this::configureVehicleStatus);
-        kolesaAdvancedSearchData.getBodyType().ifPresent(this::configureBodyType);
-        kolesaAdvancedSearchData.getEngineType().ifPresent(this::configureEngineType);
-        kolesaAdvancedSearchData.getLocationOfWheel().ifPresent(this::configureLocationWheel);
-        kolesaAdvancedSearchData.getDriveUnit().ifPresent(this::configureDriveUnit);
-        kolesaAdvancedSearchData.getEngineVolumeFrom().ifPresent(this::configureEngineVolumeFrom);
-        kolesaAdvancedSearchData.getEngineVolumeTo().ifPresent(this::configureEngineVolumeTO);
+        advancedSearchData.getCountry().ifPresent(this::configureCountry);
+        advancedSearchData.getVehicleStatus().ifPresent(this::configureVehicleStatus);
+        advancedSearchData.getBodyType().ifPresent(this::configureBodyType);
+        advancedSearchData.getEngineType().ifPresent(this::configureEngineType);
+        advancedSearchData.getLocationOfWheel().ifPresent(this::configureLocationWheel);
+        advancedSearchData.getDriveUnit().ifPresent(this::configureDriveUnit);
+        advancedSearchData.getEngineVolumeFrom().ifPresent(this::configureEngineVolumeFrom);
+        advancedSearchData.getEngineVolumeTo().ifPresent(this::configureEngineVolumeTO);
+        return this;
+    }
+
+    public HomePage configureRandomSearch(Car car) {
+        car.getCity().ifPresent(this::chooseCity);
+        car.getPriceFrom().ifPresent(this::fillPriceFrom);
+        car.getPriceTo().ifPresent(this::fillPriceTO);
+        car.getMark().ifPresent(this::configureMark);
+        car.getModel().ifPresent(this::configureModel);
         return this;
     }
 
@@ -40,39 +55,39 @@ public class HomePage extends BasePage {
     }
 
     public HomePage configureCountry(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(COUNTRY_PARAMETER_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, COUNTRY_PARAMETER_LOCATOR);
         return this;
     }
 
     public HomePage configureVehicleStatus(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(VEHICLE_STATUS_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, VEHICLE_STATUS_LOCATOR);
         return this;
     }
 
     public HomePage configureBodyType(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(CAR_BODY_TYPE_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, CAR_BODY_TYPE_LOCATOR);
         return this;
     }
 
     public HomePage configureEngineType(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(ENGINE_TYPE_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, ENGINE_TYPE_LOCATOR);
         return this;
     }
 
     public HomePage configureLocationWheel(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(LOCATION_OF_WHEEL_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, LOCATION_OF_WHEEL_LOCATOR);
         return this;
     }
 
     public HomePage configureDriveUnit(String param) {
-        KolesaAdvancedSearchSelect kolesaAdvancedSearchSelect = new KolesaAdvancedSearchSelect(DRIVE_UNIT_LOCATOR);
-        kolesaAdvancedSearchSelect.select(param);
+        select(param, DRIVE_UNIT_LOCATOR);
         return this;
+    }
+
+    public void select(String text, By rootElementLocator) {
+        driver.findElement(rootElementLocator).click();
+        WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format(ITEM_SELECTED_LOCATOR, text))));
+        element.click();
     }
 
     public HomePage configureEngineVolumeFrom(String volumeFrom) {
@@ -85,9 +100,28 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage openFoundResult() {
-        waitForElementVisibility(SEARCH_RESULT_LOCATOR);
-        driver.findElement(SEARCH_RESULT_LOCATOR).click();
-        return this;
-    }
+//    public HomePage configureMark(String mark) {
+//        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, mark)));
+//        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, mark))).click();
+//        return this;
+//    }
+//
+//    public HomePage configureModel(String model) {
+//        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, model)));
+//        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
+//        return this;
+//    }
+//
+//    public HomePage openRandomFoundResult(String randomNumber) {
+//        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))));
+//        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
+//        return this;
+//    }
+
+
+//    public HomePage openFoundResult() {
+//        waitForElementVisibility(SEARCH_RESULT_LOCATOR);
+//        driver.findElement(SEARCH_RESULT_LOCATOR).click();
+//        return this;
+//    }
 }

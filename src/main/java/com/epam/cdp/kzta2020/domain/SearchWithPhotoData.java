@@ -2,7 +2,7 @@ package com.epam.cdp.kzta2020.domain;
 
 import java.util.Optional;
 
-public class KolesaSearchWithPhotoData extends KolesaCommonData{
+public class SearchWithPhotoData extends CommonData {
 
     private String modelYear;
 

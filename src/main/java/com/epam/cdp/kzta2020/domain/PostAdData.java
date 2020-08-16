@@ -2,7 +2,7 @@ package com.epam.cdp.kzta2020.domain;
 
 import java.util.Optional;
 
-public class KolesaPostAdData extends KolesaCommonData{
+public class PostAdData extends CommonData {
 
     private String category1;
     private String category2;

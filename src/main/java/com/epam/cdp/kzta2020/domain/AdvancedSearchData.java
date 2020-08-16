@@ -2,7 +2,7 @@ package com.epam.cdp.kzta2020.domain;
 
 import java.util.Optional;
 
-public class KolesaAdvancedSearchData extends KolesaCommonData{
+public class AdvancedSearchData extends CommonData {
 
     private String country;
     private String vehicleStatus;

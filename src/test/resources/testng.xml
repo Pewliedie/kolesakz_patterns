@@ -2,43 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="UiTestSuite" parallel="tests" thread-count="2">
 
-<!--    <test verbose="2"-->
-<!--          name="UiTest">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name = "UiTest" />-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="ui_tests.Kolesa">-->
-    <!--                <methods>-->
-    <!--                    <include name="publishAdvertTest"/>-->
-    <!--                    <include name="AdvancedSearchTest"/>-->
-    <!--                    <include name="SearchWithPhotoTest"/>-->
-    <!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test verbose="2" name="ChromeWindows">
-        <parameter name="browserConfigs" value="chrome"/>
+    <test verbose="2"
+          name="UiTest">
+        <groups>
+            <run>
+                <include name = "UiTest" />
+            </run>
+        </groups>
         <classes>
             <class name="ui_tests.Kolesa"/>
         </classes>
     </test>
-
-    <test verbose="2" name="FirefoxWindows">
-        <parameter name="browserConfigs" value="Firefox"/>
-        <classes>
-            <class name="ui_tests.Kolesa"/>
-        </classes>
-    </test>
-
-<!--    <test verbose="2" name="EdgeWindows">-->
-<!--        <parameter name="browserConfigs" value="Edge"/>-->
-<!--        <classes>-->
-<!--            <class name="ui_tests.Kolesa"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
 </suite>

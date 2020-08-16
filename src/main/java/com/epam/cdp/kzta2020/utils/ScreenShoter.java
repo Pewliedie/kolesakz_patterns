@@ -9,16 +9,17 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenShoter {
+public class ScreenShoter{
     public static final String SCREENSHOOTS_NAME_TPL = "screenshots/src";
 
     public static void takeScreenShot() {
-        File screenShoot = ((TakesScreenshot) WebDriverInitializer.getDriverInstance()).getScreenshotAs(OutputType.FILE);
+        File screenShot = ((TakesScreenshot) WebDriverInitializer.getDriverInstance()).getScreenshotAs(OutputType.FILE);
         try {
             String screenShootName = SCREENSHOOTS_NAME_TPL + System.nanoTime();
             File copy = new File(screenShootName + ".png");
-            FileUtils.copyFile(screenShoot,copy);
-        }catch (IOException e){
+            FileUtils.copyFile(screenShot,copy);
+        }catch (IOException ignored){
+
         }
     }
 }

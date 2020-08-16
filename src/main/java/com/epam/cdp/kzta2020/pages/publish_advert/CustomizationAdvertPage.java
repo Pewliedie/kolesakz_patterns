@@ -1,10 +1,11 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
-import com.epam.cdp.kzta2020.common.component.KolesaPostAdSelect;
-import com.epam.cdp.kzta2020.domain.KolesaPostAdData;
+import com.epam.cdp.kzta2020.domain.PostAdData;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.pagefactory.ByChained;
 
 public class CustomizationAdvertPage extends AbstractPage {
     private static final By ADVERT_OPTION_PRICE_INPUT_LOCATOR = By.cssSelector("label[class='ui-input a-form__price']");
@@ -13,8 +14,15 @@ public class CustomizationAdvertPage extends AbstractPage {
     private static final By HEADER_LOGO_IMAGE_BUTTON_LOCATOR = By.xpath("//a[@class='header-logo']//img");
     private static final By CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR = By.cssSelector(".ui-button--blue");
     private static final By PUBLISH_ADVERT_BUTTON_LOCATOR = By.cssSelector(".ui-button--shadow");
+    private static final String CATEGORY_LOCATOR  = "//option[contains(.,'%s')]";
+    private static final String MARK_LOCATOR  = "//div[contains(text(),'%s')]";
+    private static final String MODEL_YEAR_LOCATOR  = "//label[contains(text(),'%s')]";
+    private static final String MODEL_LOCATOR  = "//button[contains(text(),'%s')]";
+    private static final String MODIFICATION_LOCATOR  = "//span[contains(text(),'%s')]";
+    private static final String CITY_LOCATOR  = "//ul/li[contains(.,'%s')]";
+    private static final String ENGINE_TYPE_LOCATOR  = "//label[contains(text(),'%s')]";
 
-    public CustomizationAdvertPage customizeAdvert(KolesaPostAdData kolesaPostAdData) {
+    public CustomizationAdvertPage customizeAdvert(PostAdData kolesaPostAdData) {
         kolesaPostAdData.getCategory1().ifPresent(this::configureCategory1);
         kolesaPostAdData.getCategory2().ifPresent(this::configureCategory2);
         kolesaPostAdData.getMark().ifPresent(this::configureMark);
@@ -22,48 +30,54 @@ public class CustomizationAdvertPage extends AbstractPage {
         kolesaPostAdData.getModelYear().ifPresent(this::configureModelYear);
         kolesaPostAdData.getEngineType().ifPresent(this::configureEngineType);
         kolesaPostAdData.getEngineModification().ifPresent(this::configureModification);
-        kolesaPostAdData.getPrice().ifPresent(this::fillPrice);
+        kolesaPostAdData.getPriceFrom().ifPresent(this::fillPrice);
         kolesaPostAdData.getCity().ifPresent(this::configureCity);
         kolesaPostAdData.getEmail().ifPresent(this::fillEmail);
         return this;
     }
 
-    private final KolesaPostAdSelect kolesaPostAdSelect = new KolesaPostAdSelect();
 
     public CustomizationAdvertPage configureCategory1(String category1) {
-        kolesaPostAdSelect.selectCategory(category1);
+        waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category1)));
+        driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category1))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureCategory2(String category2) {
-        kolesaPostAdSelect.selectCategory(category2);
+        waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category2)));
+        driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category2))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureMark(String mark) {
-        kolesaPostAdSelect.selectMark(mark);
+        waitForElementEnabled(By.xpath(String.format(MARK_LOCATOR, mark)));
+        driver.findElement(By.xpath(String.format(MARK_LOCATOR, mark))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureModel(String model) {
-        kolesaPostAdSelect.selectModel(model);
+        waitForElementEnabled(By.xpath(String.format(MODEL_LOCATOR, model)));
+        driver.findElement(By.xpath(String.format(MODEL_LOCATOR, model))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureModelYear(String year) {
-        kolesaPostAdSelect.select(year);
+        waitForElementEnabled(By.xpath(String.format(MODEL_YEAR_LOCATOR, year)));
+        driver.findElement(By.xpath(String.format(MODEL_YEAR_LOCATOR, year))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureEngineType(String type) {
         ((JavascriptExecutor) driver).executeScript("scroll(0,300)");
-        kolesaPostAdSelect.select(type);
+        waitForElementEnabled(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type)));
+        driver.findElement(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type))).click();
         return this;
     }
 
     public CustomizationAdvertPage configureModification(String modification) {
         ((JavascriptExecutor) driver).executeScript("scroll(0,900)");
-        kolesaPostAdSelect.selectEngineModification(modification);
+        waitForElementEnabled(By.xpath(String.format(MODIFICATION_LOCATOR, modification)));
+        driver.findElement(By.xpath(String.format(MODIFICATION_LOCATOR, modification))).click();
         return this;
     }
 
@@ -74,8 +88,10 @@ public class CustomizationAdvertPage extends AbstractPage {
     }
 
     public CustomizationAdvertPage configureCity(String city) {
-        KolesaPostAdSelect kolesaPostSelect = new KolesaPostAdSelect(ADVERT_OPTION_CHOOSE_CITY_LOCATOR);
-        kolesaPostSelect.selectCity(city);
+        driver.findElement(ADVERT_OPTION_CHOOSE_CITY_LOCATOR).click();
+        WebElement item = driver.findElement(new ByChained(ADVERT_OPTION_CHOOSE_CITY_LOCATOR, By.xpath(String.format("//ul/li[contains(.,'%s')]", city))));
+        waitForElementEnabled(By.xpath(String.format(CITY_LOCATOR, city)));
+        item.click();
         return this;
     }
 

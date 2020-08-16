@@ -1,6 +1,6 @@
 package com.epam.cdp.kzta2020.pages.publish_advert;
 
-import com.epam.cdp.kzta2020.business_objects.KolesakzUser;
+import com.epam.cdp.kzta2020.business_objects.User;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 
@@ -10,7 +10,7 @@ public class LoginPage extends AbstractPage {
     private static final By PASSWORD_INPUT_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector(".form-item button");
 
-    public LoginPage login(KolesakzUser user){
+    public LoginPage signIn(User user){
         fillNumberInput(user.getLogin());
         clickLoginButton();
         fillPasswordInput(user.getPassword());
