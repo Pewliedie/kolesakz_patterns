@@ -57,22 +57,18 @@ public class FoundResultPage extends AbstractPage {
     }
 
     public boolean isLocationCorrect(Car car) {
-        System.out.println(car.getCity());
         return car.getCity().toString().contains(driver.findElement(CAR_LOCATION_LOCATOR).getText());
     }
 
     public boolean isPriceCorrect(Car car) {
-        System.out.println(car.getPriceFrom());
         return car.getPriceFrom().toString().contains(driver.findElement(OFFER_PRICE_LOCATOR).getText());
     }
 
     public boolean isMarkCorrect(Car car) {
-        System.out.println(car.getMark());
         return Optional.of(driver.findElement(MARK_LOCATOR).getText().toLowerCase()).equals(car.getMark());
     }
 
     public boolean isModelCorrect(Car car) {
-        System.out.println(car.getModel());
         return Optional.of(driver.findElement(MODEL_LOCATOR).getText().toLowerCase()).equals(car.getModel());
     }
 }
