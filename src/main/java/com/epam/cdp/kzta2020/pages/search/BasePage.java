@@ -11,6 +11,9 @@ public class BasePage extends AbstractPage {
     private static final By PRICE_INPUT_TO_LOCATOR = By.id("price[to]");
     private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector("button.primary-button");
     private static final String CITY_LOCATOR = "//button/span[contains(text(),'%s')]";
+    private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+    private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
+    private static final String MARK_LOCATOR = "span[data-alias='%s']";
 
     public BasePage(WebDriver driver) {
         super(driver);
@@ -44,6 +47,30 @@ public class BasePage extends AbstractPage {
 
     public BasePage showResult() {
         driver.findElement(SEARCH_BUTTON_LOCATOR).click();
+        return this;
+    }
+
+    public BasePage openFoundResult() {
+        waitForElementVisibility(SEARCH_RESULT_LOCATOR);
+        driver.findElement(SEARCH_RESULT_LOCATOR).click();
+        return this;
+    }
+
+    public BasePage configureMark(String mark) {
+        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, mark)));
+        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, mark))).click();
+        return this;
+    }
+
+    public BasePage configureModel(String model) {
+        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, model)));
+        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
+        return this;
+    }
+
+    public BasePage openRandomFoundResult(String randomNumber) {
+        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))));
+        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
         return this;
     }
 }

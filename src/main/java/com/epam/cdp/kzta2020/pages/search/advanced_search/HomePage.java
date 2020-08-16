@@ -20,9 +20,6 @@ public class HomePage extends BasePage {
     private static final By DRIVE_UNIT_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-car-dwheel");
     private static final By ENGINE_VOLUME_FROM_LOCATOR = By.cssSelector("#auto-car-volume\\[from\\]");
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
-    private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
-    private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
-    private static final String MARK_LOCATOR = "span[data-alias='%s']";
     private static final String ITEM_SELECTED_LOCATOR = "li[data-label='%s']";
 
     public HomePage(WebDriver driver) {
@@ -103,31 +100,6 @@ public class HomePage extends BasePage {
 
     public HomePage configureEngineVolumeTO(String volumeTo) {
         driver.findElement(ENGINE_VOLUME_TO_LOCATOR).sendKeys(volumeTo);
-        return this;
-    }
-
-    public HomePage openFoundResult() {
-        waitForElementVisibility(SEARCH_RESULT_LOCATOR);
-        driver.findElement(SEARCH_RESULT_LOCATOR).click();
-        return this;
-    }
-
-    public HomePage configureMark(String mark) {
-        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, mark)));
-        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, mark))).click();
-        return this;
-    }
-
-    public HomePage configureModel(String model) {
-        waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, model)));
-        driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
-        return this;
-    }
-
-
-    public HomePage openRandomFoundResult(String randomNumber) {
-        waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))));
-        driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
         return this;
     }
 }
