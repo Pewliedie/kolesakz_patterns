@@ -1,7 +1,6 @@
 package ui_tests;
 
 import com.epam.cdp.kzta2020.business_objects.Car;
-import com.epam.cdp.kzta2020.business_objects.User;
 import com.epam.cdp.kzta2020.domain.DataFactory;
 import com.epam.cdp.kzta2020.domain.SearchWithPhotoData;
 import com.epam.cdp.kzta2020.driver.WebDriverInitializer;
@@ -24,7 +23,7 @@ public class Kolesa {
         SoftAssert softAssert = new SoftAssert();
         new HomePage().openLogInPage().signIn(UserCreator.getUser());
         AccountPage accountPage = new AccountPage();
-        accountPage.openCustomization().customizeAdvert(DataFactory.getPublishAdTermData()).returnToHomePage().openAccountPage();
+        accountPage.openCustomization().customizeAdvert(DataFactory.getCustomizationData()).returnToHomePage().openAccountPage();
         accountPage.openDraft().editAdvert().postAdvertFromCustomization().chooseType();
 
         PostTypePage postTypePage = new PostTypePage().chooseFreeAdvert();

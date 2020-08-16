@@ -24,6 +24,7 @@ public class WebDriverInitializer {
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver = new WebDriverDecorator(driver);
         driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(Configuration.getBaseUrl());

@@ -5,6 +5,7 @@ import com.epam.cdp.kzta2020.domain.AdvancedSearchData;
 import com.epam.cdp.kzta2020.domain.DataFactory;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
+import static com.epam.cdp.kzta2020.utils.PageUtil.getText;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -24,55 +25,51 @@ public class FoundResultPage extends AbstractPage {
 
     AdvancedSearchData kolesaTestTerm = DataFactory.getAdvancedSearchData();
 
-    public FoundResultPage switchTab(){
+    public FoundResultPage switchTab() {
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         return this;
     }
 
-    public FoundResultPage dismissHint(){
+    public FoundResultPage dismissHint() {
         waitForElementEnabled(DISMISS_HINT_BUTTON_LOCATOR);
         driver.findElement(DISMISS_HINT_BUTTON_LOCATOR).click();
         return this;
     }
 
-    public boolean isImageDisplayed(){
+    public boolean isImageDisplayed() {
         return driver.findElement(IMAGE_LOCATOR).isDisplayed();
     }
 
-    public boolean isBodyTypeCorrect(){
-        return Optional.of(driver.findElement(BODY_TYPE_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getBodyType());
+    public boolean isBodyTypeCorrect() {
+        return Optional.of(getText(BODY_TYPE_PARAMETER_LOCATOR)).equals(kolesaTestTerm.getBodyType());
     }
 
-    public boolean isEngineVolumeCorrect(){
-        return Optional.of(driver.findElement(ENGINE_VOLUME_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getEngineVolumeAndType());
+    public boolean isEngineVolumeCorrect() {
+        return Optional.of(getText(ENGINE_VOLUME_PARAMETER_LOCATOR)).equals(kolesaTestTerm.getEngineVolumeAndType());
     }
 
-    public boolean isLocationOfWheelCorrect(){
-        return Optional.of(driver.findElement(LOCATION_OF_WHEEL_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getLocationOfWheel());
+    public boolean isLocationOfWheelCorrect() {
+        return Optional.of(getText(LOCATION_OF_WHEEL_PARAMETER_LOCATOR)).equals(kolesaTestTerm.getLocationOfWheel());
     }
 
-    public boolean isDriveUnitCorrect(){
-        return Optional.of(driver.findElement(DRIVE_UNIT_PARAMETER_LOCATOR).getText()).equals(kolesaTestTerm.getDriveUnit());
+    public boolean isDriveUnitCorrect() {
+        return Optional.of(getText(DRIVE_UNIT_PARAMETER_LOCATOR)).equals(kolesaTestTerm.getDriveUnit());
     }
 
     public boolean isLocationCorrect(Car car) {
-        System.out.println(car.getCity());
-        return car.getCity().toString().contains(driver.findElement(CAR_LOCATION_LOCATOR).getText());
+        return car.getCity().toString().contains(getText(CAR_LOCATION_LOCATOR));
     }
 
     public boolean isPriceCorrect(Car car) {
-        System.out.println(car.getPriceFrom());
-        return car.getPriceFrom().toString().contains(driver.findElement(OFFER_PRICE_LOCATOR).getText());
+        return car.getPriceFrom().toString().contains(getText(OFFER_PRICE_LOCATOR));
     }
 
     public boolean isMarkCorrect(Car car) {
-        System.out.println(car.getMark());
-        return Optional.of(driver.findElement(MARK_LOCATOR).getText().toLowerCase()).equals(car.getMark());
+        return Optional.of(getText(MARK_LOCATOR).toLowerCase()).equals(car.getMark());
     }
 
     public boolean isModelCorrect(Car car) {
-        System.out.println(car.getModel());
-        return Optional.of(driver.findElement(MODEL_LOCATOR).getText().toLowerCase()).equals(car.getModel());
+        return Optional.of(getText(MODEL_LOCATOR).toLowerCase()).equals(car.getModel());
     }
 }

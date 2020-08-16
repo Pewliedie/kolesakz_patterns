@@ -75,7 +75,6 @@ public class CustomizationAdvertPage extends AbstractPage {
     }
 
     public CustomizationAdvertPage configureModification(String modification) {
-        ((JavascriptExecutor) driver).executeScript("scroll(0,900)");
         waitForElementEnabled(By.xpath(String.format(MODIFICATION_LOCATOR, modification)));
         driver.findElement(By.xpath(String.format(MODIFICATION_LOCATOR, modification))).click();
         return this;

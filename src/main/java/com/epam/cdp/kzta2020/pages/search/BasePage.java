@@ -12,7 +12,6 @@ public class BasePage extends AbstractPage {
     private static final String CITY_LOCATOR = "//button/span[contains(text(),'%s')]";
     private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
     private static final String MARK_LOCATOR = "span[data-alias='%s']";
-    private static final By SEARCH_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
     private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
     public BasePage openAutoSection() {

@@ -26,7 +26,7 @@ public class DataFactory {
         return kolesaSearchWithPhotoData;
     }
 
-    public static PostAdData getPublishAdTermData(){
+    public static PostAdData getCustomizationData(){
         PostAdData kolesaPostAdData = new PostAdData();
         kolesaPostAdData.setPriceFrom("10000000");
         kolesaPostAdData.setCategory1("Машины");

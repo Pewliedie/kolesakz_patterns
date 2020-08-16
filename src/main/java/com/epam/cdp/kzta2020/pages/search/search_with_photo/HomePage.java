@@ -8,7 +8,6 @@ public class HomePage extends BasePage {
     private static final By YEAR_INPUT_LOCATOR = By.id("year[from]");
     private static final By ADDITION_MARKS_LOCATOR = By.xpath("//span[@class='arrow-link']");
     private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox-0']");
-//    private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
     private static final String MARK_LOCATOR = "span[data-alias='%s']";
 
     public HomePage configureSearch(SearchWithPhotoData kolesaSearchWithPhotoData) {
@@ -38,10 +37,4 @@ public class HomePage extends BasePage {
         driver.findElement(CHECKBOX_PHOTO_LOCATOR).click();
         return this;
     }
-
-//    public HomePage openFoundResult() {
-//        waitForElementVisibility(FOUND_RESULT_LOCATOR);
-//        driver.findElement(FOUND_RESULT_LOCATOR).click();
-//        return this;
-//    }
 }
