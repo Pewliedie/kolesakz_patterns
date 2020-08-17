@@ -1,8 +1,9 @@
 package com.epam.cdp.kzta2020.pages.search;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
-import com.epam.cdp.kzta2020.pages.search.search_with_photo.HomePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class BasePage extends AbstractPage {
     private static final By AUTO_SECTION_LOCATOR = By.cssSelector("span[data-alias=cars]");
@@ -52,12 +53,16 @@ public class BasePage extends AbstractPage {
 
     public BasePage openFoundResult() {
         waitForElementVisibility(FOUND_RESULT_LOCATOR);
+        WebElement element = driver.findElement(FOUND_RESULT_LOCATOR);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(FOUND_RESULT_LOCATOR).click();
         return this;
     }
 
     public BasePage openRandomFoundResult(String randomNumber) {
         waitForElementVisibility((By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))));
+        WebElement element = driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber)));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
         return this;
     }

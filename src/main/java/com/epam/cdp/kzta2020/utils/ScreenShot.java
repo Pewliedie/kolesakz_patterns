@@ -16,8 +16,8 @@ public class ScreenShot {
     public static void takeScreenShot(WebDriver driver) {
         File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            String screenShootName = SCREENSHOTS_NAME_TPL + System.nanoTime();
-            File copy = new File(screenShootName + ".png");
+            String screenShotName = SCREENSHOTS_NAME_TPL + System.nanoTime();
+            File copy = new File(screenShotName + ".png");
             FileUtils.copyFile(screenShot, copy);
         } catch (IOException ignored) {
         }

@@ -4,6 +4,6 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
     public static String generateNumber(){
-        return String.valueOf(new Random().nextInt(20));
+        return String.valueOf(new Random().nextInt(40));
     }
 }

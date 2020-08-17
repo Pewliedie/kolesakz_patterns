@@ -40,5 +40,4 @@ public class DataFactory {
         kolesaPostAdData.setEmail("qqq@com.com");
         return kolesaPostAdData;
     }
-
 }

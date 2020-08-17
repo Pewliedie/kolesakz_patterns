@@ -45,7 +45,7 @@ public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
 
     @Override
     public String getPageSource() {
-        return null;
+        return driver.getPageSource();
     }
 
     @Override
@@ -85,11 +85,11 @@ public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
 
     @Override
     public Object executeScript(String s, Object... objects) {
-        return null;
+        return ((JavascriptExecutor) driver).executeScript(s,objects);
     }
 
     @Override
     public Object executeAsyncScript(String s, Object... objects) {
-        return null;
+        return ((JavascriptExecutor) driver).executeAsyncScript(s,objects);
     }
 }

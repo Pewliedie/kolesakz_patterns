@@ -2,6 +2,7 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.business_objects.User;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.utils.AlertHandler;
 import org.openqa.selenium.By;
 
 public class LoginPage extends AbstractPage {
@@ -26,7 +27,7 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage clickLoginButton() {
         driver.findElement(LOGIN_BUTTON_LOCATOR).click();
-        waitForAlertDisplayed();
+        AlertHandler.waitForAlertDisplayed(driver);
         return this;
     }
 

@@ -13,6 +13,9 @@ public class WebDriverInitializer {
 
     private static WebDriver driver;
 
+    private WebDriverInitializer() {
+    }
+
     public static WebDriver getDriverInstance() {
         if (driver != null) {
             return driver;
@@ -20,7 +23,7 @@ public class WebDriverInitializer {
         return driver = setUp();
     }
 
-    @BeforeMethod(groups = {"UiTest"})
+    @BeforeMethod
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -31,7 +34,7 @@ public class WebDriverInitializer {
         return driver;
     }
 
-    @AfterMethod(groups = {"UiTest"})
+    @AfterMethod
     public static void kill() {
         driver.quit();
         driver = null;

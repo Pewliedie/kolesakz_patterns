@@ -5,12 +5,12 @@ import java.util.Optional;
 public class Car {
     private String priceFrom;
     private String priceTo;
-    private String city;
+    private String location;
     private String mark;
     private String model;
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public void setPriceFrom(String priceFrom) {
@@ -33,8 +33,8 @@ public class Car {
         return Optional.ofNullable(priceFrom);
     }
 
-    public Optional<String> getCity() {
-        return Optional.ofNullable(city);
+    public Optional<String> getLocation() {
+        return Optional.ofNullable(location);
     }
 
     public Optional<String> getMark() {

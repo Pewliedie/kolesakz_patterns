@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ByChained;
 
-public class CustomizationAdvertPage extends AbstractPage {
+public class CustomizationAdPage extends AbstractPage {
     private static final By ADVERT_OPTION_PRICE_INPUT_LOCATOR = By.cssSelector("label[class='ui-input a-form__price']");
     private static final By ADVERT_OPTION_CHOOSE_CITY_LOCATOR = By.xpath("//input[@placeholder='Выберите']");
     private static final By ADVERT_OPTION_EMAIL_INPUT_LOCATOR = By.xpath("//label[@class='ui-input a-form__email']");
@@ -22,7 +22,7 @@ public class CustomizationAdvertPage extends AbstractPage {
     private static final String CITY_LOCATOR  = "//ul/li[contains(.,'%s')]";
     private static final String ENGINE_TYPE_LOCATOR  = "//label[contains(text(),'%s')]";
 
-    public CustomizationAdvertPage customizeAdvert(PostAdData kolesaPostAdData) {
+    public CustomizationAdPage customizeAdvert(PostAdData kolesaPostAdData) {
         kolesaPostAdData.getCategory1().ifPresent(this::configureCategory1);
         kolesaPostAdData.getCategory2().ifPresent(this::configureCategory2);
         kolesaPostAdData.getMark().ifPresent(this::configureMark);
@@ -37,56 +37,56 @@ public class CustomizationAdvertPage extends AbstractPage {
     }
 
 
-    public CustomizationAdvertPage configureCategory1(String category1) {
+    public CustomizationAdPage configureCategory1(String category1) {
         waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category1)));
         driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category1))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureCategory2(String category2) {
+    public CustomizationAdPage configureCategory2(String category2) {
         waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category2)));
         driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category2))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureMark(String mark) {
+    public CustomizationAdPage configureMark(String mark) {
         waitForElementEnabled(By.xpath(String.format(MARK_LOCATOR, mark)));
         driver.findElement(By.xpath(String.format(MARK_LOCATOR, mark))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureModel(String model) {
+    public CustomizationAdPage configureModel(String model) {
         waitForElementEnabled(By.xpath(String.format(MODEL_LOCATOR, model)));
         driver.findElement(By.xpath(String.format(MODEL_LOCATOR, model))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureModelYear(String year) {
+    public CustomizationAdPage configureModelYear(String year) {
         waitForElementEnabled(By.xpath(String.format(MODEL_YEAR_LOCATOR, year)));
         driver.findElement(By.xpath(String.format(MODEL_YEAR_LOCATOR, year))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureEngineType(String type) {
+    public CustomizationAdPage configureEngineType(String type) {
         ((JavascriptExecutor) driver).executeScript("scroll(0,300)");
         waitForElementEnabled(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type)));
         driver.findElement(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type))).click();
         return this;
     }
 
-    public CustomizationAdvertPage configureModification(String modification) {
+    public CustomizationAdPage configureModification(String modification) {
         waitForElementEnabled(By.xpath(String.format(MODIFICATION_LOCATOR, modification)));
         driver.findElement(By.xpath(String.format(MODIFICATION_LOCATOR, modification))).click();
         return this;
     }
 
-    public CustomizationAdvertPage fillPrice(String price) {
+    public CustomizationAdPage fillPrice(String price) {
         waitForElementVisibility(ADVERT_OPTION_PRICE_INPUT_LOCATOR);
         driver.findElement(ADVERT_OPTION_PRICE_INPUT_LOCATOR).sendKeys(price);
         return this;
     }
 
-    public CustomizationAdvertPage configureCity(String city) {
+    public CustomizationAdPage configureCity(String city) {
         driver.findElement(ADVERT_OPTION_CHOOSE_CITY_LOCATOR).click();
         WebElement item = driver.findElement(new ByChained(ADVERT_OPTION_CHOOSE_CITY_LOCATOR, By.xpath(String.format("//ul/li[contains(.,'%s')]", city))));
         waitForElementEnabled(By.xpath(String.format(CITY_LOCATOR, city)));
@@ -94,7 +94,7 @@ public class CustomizationAdvertPage extends AbstractPage {
         return this;
     }
 
-    public CustomizationAdvertPage fillEmail(String email) {
+    public CustomizationAdPage fillEmail(String email) {
         waitForElementVisibility(ADVERT_OPTION_EMAIL_INPUT_LOCATOR);
         driver.findElement(ADVERT_OPTION_EMAIL_INPUT_LOCATOR).sendKeys(email);
         return this;
@@ -106,7 +106,7 @@ public class CustomizationAdvertPage extends AbstractPage {
         return new HomePage();
     }
 
-    public CustomizationAdvertPage postAdvertFromCustomization() {
+    public CustomizationAdPage postAdvertFromCustomization() {
         waitForElementVisibility(CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR);
         driver.findElement(CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR).click();
         return this;

@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 public class DraftPage extends AbstractPage {
     private static final By EDIT_TEXT_DRAFT_ADVERT_LOCATOR = By.cssSelector("a[class='link a-action-link']");
 
-    public CustomizationAdvertPage editAdvert() {
+    public CustomizationAdPage editAdvert() {
         waitForElementVisibility(EDIT_TEXT_DRAFT_ADVERT_LOCATOR);
         driver.findElement(EDIT_TEXT_DRAFT_ADVERT_LOCATOR).click();
-        return new CustomizationAdvertPage();
+        return new CustomizationAdPage();
     }
 }

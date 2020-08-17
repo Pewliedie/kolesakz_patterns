@@ -4,6 +4,7 @@ import com.epam.cdp.kzta2020.business_objects.Car;
 import com.epam.cdp.kzta2020.domain.AdvancedSearchData;
 import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ByChained;
 
@@ -37,7 +38,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage configureRandomSearch(Car car) {
-        car.getCity().ifPresent(this::chooseCity);
+        car.getLocation().ifPresent(this::chooseCity);
         car.getPriceFrom().ifPresent(this::fillPriceFrom);
         car.getPriceTo().ifPresent(this::fillPriceTO);
         car.getMark().ifPresent(this::configureMark);
@@ -81,13 +82,8 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public void select(String text, By rootElementLocator) {
-        driver.findElement(rootElementLocator).click();
-        WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format(ITEM_SELECTED_LOCATOR, text))));
-        element.click();
-    }
-
     public HomePage configureEngineVolumeFrom(String volumeFrom) {
+        ((JavascriptExecutor) driver).executeScript("scrollTo(0,150)");
         driver.findElement(ENGINE_VOLUME_FROM_LOCATOR).sendKeys(volumeFrom);
         return this;
     }
@@ -95,5 +91,11 @@ public class HomePage extends BasePage {
     public HomePage configureEngineVolumeTO(String volumeTo) {
         driver.findElement(ENGINE_VOLUME_TO_LOCATOR).sendKeys(volumeTo);
         return this;
+    }
+
+    public void select(String text, By rootElementLocator) {
+        driver.findElement(rootElementLocator).click();
+        WebElement element = driver.findElement(new ByChained(rootElementLocator, By.cssSelector(String.format(ITEM_SELECTED_LOCATOR, text))));
+        element.click();
     }
 }

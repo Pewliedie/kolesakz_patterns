@@ -11,10 +11,10 @@ public class AccountPage extends AbstractPage {
 
     private static final String ADVERTS_ON_PAGE_TEXT = "Ваши объявления на сайте";
 
-    public CustomizationAdvertPage openCustomization() {
+    public CustomizationAdPage openCustomization() {
         waitForElementVisibility(POST_ADVERT_BUTTON_LOCATOR);
         driver.findElement(POST_ADVERT_BUTTON_LOCATOR).click();
-        return new CustomizationAdvertPage();
+        return new CustomizationAdPage();
     }
 
     public DraftPage openDraft() {
@@ -26,5 +26,4 @@ public class AccountPage extends AbstractPage {
     public boolean isAdvertPosted(){
         return driver.findElement(ADVERTS_ON_PAGE_TEXT_LOCATOR).getText().equals(ADVERTS_ON_PAGE_TEXT);
     }
-
 }
