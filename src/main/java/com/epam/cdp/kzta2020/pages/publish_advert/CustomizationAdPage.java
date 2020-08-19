@@ -4,6 +4,7 @@ import com.epam.cdp.kzta2020.domain.PostAdData;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ByChained;
 
@@ -12,15 +13,19 @@ public class CustomizationAdPage extends AbstractPage {
     private static final By ADVERT_OPTION_CHOOSE_CITY_LOCATOR = By.xpath("//input[@placeholder='Выберите']");
     private static final By ADVERT_OPTION_EMAIL_INPUT_LOCATOR = By.xpath("//label[@class='ui-input a-form__email']");
     private static final By HEADER_LOGO_IMAGE_BUTTON_LOCATOR = By.xpath("//a[@class='header-logo']//img");
-    private static final By CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR = By.cssSelector(".ui-button--blue");
-    private static final By PUBLISH_ADVERT_BUTTON_LOCATOR = By.cssSelector(".ui-button--shadow");
-    private static final String CATEGORY_LOCATOR  = "//option[contains(.,'%s')]";
-    private static final String MARK_LOCATOR  = "//div[contains(text(),'%s')]";
-    private static final String MODEL_YEAR_LOCATOR  = "//label[contains(text(),'%s')]";
-    private static final String MODEL_LOCATOR  = "//button[contains(text(),'%s')]";
-    private static final String MODIFICATION_LOCATOR  = "//span[contains(text(),'%s')]";
-    private static final String CITY_LOCATOR  = "//ul/li[contains(.,'%s')]";
-    private static final String ENGINE_TYPE_LOCATOR  = "//label[contains(text(),'%s')]";
+    private static final By CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR = By.cssSelector("[class='kl-ui-button a-form-confirm__button kl-ui-button--blue']");
+    private static final By PUBLISH_ADVERT_BUTTON_LOCATOR = By.cssSelector("[class='kl-ui-button a-form-submit__button kl-ui-button--blue kl-ui-button--shadow']");
+    private static final String CATEGORY_LOCATOR = "//option[contains(.,'%s')]";
+    private static final String MARK_LOCATOR = "//div[contains(text(),'%s')]";
+    private static final String MODEL_YEAR_LOCATOR = "//label[contains(text(),'%s')]";
+    private static final String MODEL_LOCATOR = "//button[contains(text(),'%s')]";
+    private static final String MODIFICATION_LOCATOR = "//span[contains(text(),'%s')]";
+    private static final String CITY_LOCATOR = "//ul/li[contains(.,'%s')]";
+    private static final String ENGINE_TYPE_LOCATOR = "//label[contains(text(),'%s')]";
+
+    public CustomizationAdPage(WebDriver driver) {
+        super(driver);
+    }
 
     public CustomizationAdPage customizeAdvert(PostAdData kolesaPostAdData) {
         kolesaPostAdData.getCategory1().ifPresent(this::configureCategory1);
@@ -103,7 +108,7 @@ public class CustomizationAdPage extends AbstractPage {
     public HomePage returnToHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
-        return new HomePage();
+        return new HomePage(getDriver());
     }
 
     public CustomizationAdPage postAdvertFromCustomization() {
@@ -116,6 +121,6 @@ public class CustomizationAdPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
-        return new PostTypePage();
+        return new PostTypePage(getDriver());
     }
 }

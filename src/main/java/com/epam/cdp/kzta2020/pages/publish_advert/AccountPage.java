@@ -2,6 +2,7 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class AccountPage extends AbstractPage {
 
@@ -11,16 +12,20 @@ public class AccountPage extends AbstractPage {
 
     private static final String ADVERTS_ON_PAGE_TEXT = "Ваши объявления на сайте";
 
+    public AccountPage(WebDriver driver) {
+        super(driver);
+    }
+
     public CustomizationAdPage openCustomization() {
         waitForElementVisibility(POST_ADVERT_BUTTON_LOCATOR);
         driver.findElement(POST_ADVERT_BUTTON_LOCATOR).click();
-        return new CustomizationAdPage();
+        return new CustomizationAdPage(getDriver());
     }
 
     public DraftPage openDraft() {
         waitForElementVisibility(DRAFT_LOCATOR);
         driver.findElement(DRAFT_LOCATOR).click();
-        return new DraftPage();
+        return new DraftPage(getDriver());
     }
 
     public boolean isAdvertPosted(){

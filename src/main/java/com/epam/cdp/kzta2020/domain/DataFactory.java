@@ -6,7 +6,6 @@ public class DataFactory {
         advancedSearchData.setCity("Алматы");
         advancedSearchData.setPriceFrom("110000000");
         advancedSearchData.setCountry("Англия");
-        advancedSearchData.setVehicleStatus("На ходу");
         advancedSearchData.setBodyType("седан");
         advancedSearchData.setEngineType("бензин");
         advancedSearchData.setLocationOfWheel("слева");

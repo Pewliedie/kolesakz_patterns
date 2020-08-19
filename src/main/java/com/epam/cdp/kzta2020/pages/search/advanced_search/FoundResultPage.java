@@ -6,6 +6,7 @@ import com.epam.cdp.kzta2020.domain.DataFactory;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -29,6 +30,10 @@ public class FoundResultPage extends AbstractPage {
 
     AdvancedSearchData data = DataFactory.getAdvancedSearchData();
 
+    public FoundResultPage(WebDriver driver) {
+        super(driver);
+    }
+
     public FoundResultPage switchTab() {
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
@@ -47,35 +52,35 @@ public class FoundResultPage extends AbstractPage {
     }
 
     public boolean isBodyTypeCorrect() {
-        return Optional.of(getText(BODY_TYPE_PARAMETER_LOCATOR)).equals(data.getBodyType());
+        return Optional.of(getText(BODY_TYPE_PARAMETER_LOCATOR,driver)).equals(data.getBodyType());
     }
 
     public boolean isEngineVolumeCorrect() {
-        return Optional.of(getText(ENGINE_VOLUME_PARAMETER_LOCATOR)).equals(data.getEngineVolumeAndType());
+        return Optional.of(getText(ENGINE_VOLUME_PARAMETER_LOCATOR,driver)).equals(data.getEngineVolumeAndType());
     }
 
     public boolean isLocationOfWheelCorrect() {
-        return Optional.of(getText(LOCATION_OF_WHEEL_PARAMETER_LOCATOR)).equals(data.getLocationOfWheel());
+        return Optional.of(getText(LOCATION_OF_WHEEL_PARAMETER_LOCATOR,driver)).equals(data.getLocationOfWheel());
     }
 
     public boolean isDriveUnitCorrect() {
-        return Optional.of(getText(DRIVE_UNIT_PARAMETER_LOCATOR)).equals(data.getDriveUnit());
+        return Optional.of(getText(DRIVE_UNIT_PARAMETER_LOCATOR,driver)).equals(data.getDriveUnit());
     }
 
     public boolean isLocationCorrect(Car car) {
-        return Optional.of(getText(CAR_LOCATION_LOCATOR)).equals(car.getLocation());
+        return Optional.of(getText(CAR_LOCATION_LOCATOR,driver)).equals(car.getLocation());
     }
 
     public boolean isPriceCorrect(Car car) {
-        return convertToInt(car.getPriceFrom()) <= convertToInt(getText(OFFER_PRICE_LOCATOR))
-                && convertToInt(car.getPriceTo()) >= convertToInt(getText(OFFER_PRICE_LOCATOR));
+        return convertToInt(car.getPriceFrom()) <= convertToInt(getText(OFFER_PRICE_LOCATOR,driver))
+                && convertToInt(car.getPriceTo()) >= convertToInt(getText(OFFER_PRICE_LOCATOR,driver));
     }
 
     public boolean isMarkCorrect(Car car) {
-        return Optional.of(getText(MARK_LOCATOR).toLowerCase()).equals(car.getMark());
+        return Optional.of(getText(MARK_LOCATOR,driver).toLowerCase()).equals(car.getMark());
     }
 
     public boolean isModelCorrect(Car car) {
-        return Optional.of(getText(MODEL_LOCATOR).toLowerCase()).equals(car.getModel());
+        return Optional.of(getText(MODEL_LOCATOR,driver).toLowerCase()).equals(car.getModel());
     }
 }

@@ -5,7 +5,6 @@ import java.util.Optional;
 public class AdvancedSearchData extends CommonData {
 
     private String country;
-    private String vehicleStatus;
     private String bodyType;
     private String locationOfWheel;
     private String driveUnit;
@@ -17,9 +16,6 @@ public class AdvancedSearchData extends CommonData {
         this.country = country;
     }
 
-    public void setVehicleStatus(String vehicleStatus) {
-        this.vehicleStatus = vehicleStatus;
-    }
 
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
@@ -47,10 +43,6 @@ public class AdvancedSearchData extends CommonData {
 
     public Optional<String> getCountry() {
         return Optional.ofNullable(country);
-    }
-
-    public Optional<String> getVehicleStatus() {
-        return Optional.ofNullable(vehicleStatus);
     }
 
     public Optional<String> getBodyType() {

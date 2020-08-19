@@ -3,6 +3,7 @@ package com.epam.cdp.kzta2020.pages.search;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class BasePage extends AbstractPage {
@@ -14,6 +15,10 @@ public class BasePage extends AbstractPage {
     private static final String RANDOM_RESULT_LOCATOR = "(//a[@class='list-link ddl_product_link'])[%s]";
     private static final String MARK_LOCATOR = "span[data-alias='%s']";
     private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
+
+    public BasePage(WebDriver driver) {
+        super(driver);
+    }
 
     public BasePage openAutoSection() {
         waitForElementEnabled(AUTO_SECTION_LOCATOR);

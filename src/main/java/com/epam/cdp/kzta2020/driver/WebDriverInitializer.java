@@ -1,32 +1,30 @@
 package com.epam.cdp.kzta2020.driver;
 
 import com.epam.cdp.kzta2020.common.config.Configuration;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.cdp.kzta2020.driver.wd_factory.DriverManager;
+import com.epam.cdp.kzta2020.driver.wd_factory.DriverManagerFactory;
+import com.epam.cdp.kzta2020.driver.wd_factory.DriverType;
+import com.epam.cdp.kzta2020.utils.ConfigUtil;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverInitializer {
+    private DriverManager driverManager;
+    protected WebDriver driver;
 
-    private static WebDriver driver;
-
-    private WebDriverInitializer() {
+    @BeforeTest(groups = {"UiTest"})
+    public void beforeTest() {
+        driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
     }
 
-    public static WebDriver getDriverInstance() {
-        if (driver != null) {
-            return driver;
-        }
-        return driver = setUp();
-    }
-
-    @BeforeMethod
-    public static WebDriver setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    @BeforeMethod(groups = {"UiTest"})
+    public WebDriver beforeMethod() {
+        driver = driverManager.getDriver();
+        ConfigUtil.getConfiguration();
         driver = new WebDriverDecorator(driver);
         driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -34,9 +32,8 @@ public class WebDriverInitializer {
         return driver;
     }
 
-    @AfterMethod
-    public static void kill() {
-        driver.quit();
-        driver = null;
+    @AfterMethod(groups = {"UiTest"})
+    public void afterMethod() {
+        driverManager.quitDriver();
     }
 }
