@@ -4,7 +4,6 @@ import com.epam.cdp.kzta2020.business_objects.User;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import com.epam.cdp.kzta2020.utils.AlertHandler;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends AbstractPage {
 

@@ -2,7 +2,6 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.pages.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class HomePage extends AbstractPage {
     private static final By PERSONAL_ACCOUNT_PAGE_LOCATOR = By.cssSelector("li.header-menu__list-item:nth-child(2)");

@@ -3,7 +3,6 @@ package com.epam.cdp.kzta2020.pages.search.search_with_photo;
 import com.epam.cdp.kzta2020.domain.SearchWithPhotoData;
 import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
     private static final By YEAR_INPUT_LOCATOR = By.id("year[from]");
