@@ -6,8 +6,6 @@ import com.epam.cdp.kzta2020.driver.wd_factory.DriverType;
 import com.epam.cdp.kzta2020.driver.wd_factory.WDFactory;
 import com.epam.cdp.kzta2020.utils.ConfigUtil;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +17,6 @@ public class WebDriverInitializer {
     private WebDriverInitializer() {
     }
 
-    @BeforeTest
     public void beforeTest() {
         driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
     }
@@ -37,7 +34,6 @@ public class WebDriverInitializer {
         return driver;
     }
 
-    @AfterMethod(groups = {"UiTest"})
     public static void kill() {
         driver.quit();
         driver = null;
