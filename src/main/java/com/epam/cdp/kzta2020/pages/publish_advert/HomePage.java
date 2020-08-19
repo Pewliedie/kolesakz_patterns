@@ -9,13 +9,9 @@ public class HomePage extends AbstractPage {
     private static final By LOGGED_ACCOUNT_LOCATOR = By.cssSelector("span[class='header-menu-dropdown__toggler-label']");
     private static final By MY_ADVERTS_LOCATOR = By.xpath("//li[@class='header-menu__list-item']//li[2]");
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
     public LoginPage openLogInPage() {
         driver.findElement(PERSONAL_ACCOUNT_PAGE_LOCATOR).click();
-        return new LoginPage(getDriver());
+        return new LoginPage();
     }
 
     public AccountPage openAccountPage() {
@@ -23,6 +19,6 @@ public class HomePage extends AbstractPage {
         driver.findElement(LOGGED_ACCOUNT_LOCATOR).click();
         driver.findElement(MY_ADVERTS_LOCATOR).click();
         waitForElementVisibility(By.xpath("//div[@class='col-xs-9']"));
-        return new AccountPage(getDriver());
+        return new AccountPage();
     }
 }

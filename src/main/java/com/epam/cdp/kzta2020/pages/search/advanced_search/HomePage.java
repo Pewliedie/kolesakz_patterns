@@ -21,10 +21,6 @@ public class HomePage extends BasePage {
     private static final By ENGINE_VOLUME_TO_LOCATOR = By.cssSelector("#auto-car-volume\\[to\\]");
     private static final String ITEM_SELECTED_LOCATOR = "li[data-label='%s']";
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
     public HomePage configureAdvancedSearch(AdvancedSearchData advancedSearchData) {
         advancedSearchData.getCity().ifPresent(this::chooseCity);
         advancedSearchData.getPriceFrom().ifPresent(this::fillPriceFrom);

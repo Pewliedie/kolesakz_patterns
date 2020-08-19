@@ -16,10 +16,6 @@ public class BasePage extends AbstractPage {
     private static final String MARK_LOCATOR = "span[data-alias='%s']";
     private static final By FOUND_RESULT_LOCATOR = By.cssSelector("a.list-link.ddl_product_link");
 
-    public BasePage(WebDriver driver) {
-        super(driver);
-    }
-
     public BasePage openAutoSection() {
         waitForElementEnabled(AUTO_SECTION_LOCATOR);
         driver.findElement(AUTO_SECTION_LOCATOR).click();

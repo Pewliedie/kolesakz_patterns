@@ -2,9 +2,9 @@ package com.epam.cdp.kzta2020.driver.wd_factory;
 
 public class DriverManagerFactory {
 
-    public static DriverManager getManager(DriverType type) {
+    public static WDFactory getManager(DriverType type) {
 
-        DriverManager driverManager;
+        WDFactory driverManager;
 
         switch (type) {
             case CHROME:
@@ -20,6 +20,5 @@ public class DriverManagerFactory {
                 throw new IllegalStateException("Unexpected value: " + type);
         }
         return driverManager;
-
     }
 }

@@ -23,10 +23,6 @@ public class CustomizationAdPage extends AbstractPage {
     private static final String CITY_LOCATOR = "//ul/li[contains(.,'%s')]";
     private static final String ENGINE_TYPE_LOCATOR = "//label[contains(text(),'%s')]";
 
-    public CustomizationAdPage(WebDriver driver) {
-        super(driver);
-    }
-
     public CustomizationAdPage customizeAdvert(PostAdData kolesaPostAdData) {
         kolesaPostAdData.getCategory1().ifPresent(this::configureCategory1);
         kolesaPostAdData.getCategory2().ifPresent(this::configureCategory2);
@@ -108,7 +104,7 @@ public class CustomizationAdPage extends AbstractPage {
     public HomePage returnToHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
-        return new HomePage(getDriver());
+        return new HomePage();
     }
 
     public CustomizationAdPage postAdvertFromCustomization() {
@@ -121,6 +117,6 @@ public class CustomizationAdPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
-        return new PostTypePage(getDriver());
+        return new PostTypePage();
     }
 }
