@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverInitializer {
     private static WDFactory driverManager;
     private static WebDriver driver;
+
+
     private WebDriverInitializer() {
     }
 
@@ -22,7 +24,7 @@ public class WebDriverInitializer {
         driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
     }
 
-    public static WebDriver setUpDriver(){
+    public static WebDriver setUpDriver() {
         if (driver != null) {
             return driver;
         }
@@ -36,7 +38,7 @@ public class WebDriverInitializer {
     }
 
     @AfterMethod(groups = {"UiTest"})
-    public static void kill(){
+    public static void kill() {
         driver.quit();
         driver = null;
     }
