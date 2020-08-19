@@ -11,7 +11,6 @@ import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
 import com.epam.cdp.kzta2020.utils.CarBOCreator;
 import com.epam.cdp.kzta2020.utils.RandomNumberGenerator;
 import com.epam.cdp.kzta2020.utils.UserCreator;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;

@@ -13,7 +13,7 @@ public abstract class AbstractPage {
     protected WebDriver driver;
     private final Configuration configuration = ConfigUtil.getConfiguration();
     public AbstractPage() {
-        this.driver = WebDriverInitializer.getDriver();
+        this.driver = WebDriverInitializer.setUpDriver();
     }
 
     public void waitForElementVisibility(By locator) {

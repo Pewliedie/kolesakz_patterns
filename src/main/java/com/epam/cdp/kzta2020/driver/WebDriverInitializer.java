@@ -22,7 +22,7 @@ public class WebDriverInitializer {
         driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver setUpDriver(){
         if (driver != null) {
             return driver;
         }
