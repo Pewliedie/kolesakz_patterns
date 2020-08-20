@@ -4,9 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class FirefoxDriverManager extends WDFactory {
+public class FirefoxDriverManager extends Factory {
     @Override
-    public WebDriver factoryMethod() {
+    public WebDriver getLocalDriver() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         return driver;

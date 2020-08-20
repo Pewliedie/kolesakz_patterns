@@ -2,9 +2,9 @@ package com.epam.cdp.kzta2020.driver.wd_factory;
 
 public class DriverManagerFactory {
 
-    public static WDFactory getManager(DriverType type) {
+    public static Factory getManager(DriverType type) {
 
-        WDFactory driverManager;
+        Factory driverManager;
 
         switch (type) {
             case CHROME:

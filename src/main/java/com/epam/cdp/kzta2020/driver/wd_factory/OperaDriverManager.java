@@ -4,9 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
-public class OperaDriverManager extends WDFactory {
+public class OperaDriverManager extends Factory {
     @Override
-    public WebDriver factoryMethod() {
+    public WebDriver getLocalDriver() {
         WebDriverManager.operadriver().setup();
         driver = new OperaDriver();
         return driver;
