@@ -2,13 +2,12 @@ package com.epam.cdp.kzta2020.pages.search.advanced_search;
 
 import com.epam.cdp.kzta2020.business_objects.Car;
 import com.epam.cdp.kzta2020.domain.AdvancedSearchData;
-import com.epam.cdp.kzta2020.pages.search.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ByChained;
 
-public class HomePage extends BasePage {
+public class HomePage extends com.epam.cdp.kzta2020.pages.search.search_with_basic_parameters.HomePage {
 
     private static final By ADVANCED_SEARCH_LOCATOR = By.cssSelector("button.set-optional span.label");
     private static final By COUNTRY_PARAMETER_LOCATOR = By.cssSelector("div.element-group.element-group-parameter-mark-country");
@@ -21,7 +20,7 @@ public class HomePage extends BasePage {
     private static final String ITEM_SELECTED_LOCATOR = "li[data-label='%s']";
 
     public HomePage configureAdvancedSearch(AdvancedSearchData advancedSearchData) {
-        advancedSearchData.getCity().ifPresent(this::chooseCity);
+        advancedSearchData.getCity().ifPresent(this::choseLocation);
         advancedSearchData.getPriceFrom().ifPresent(this::fillPriceFrom);
         openAdvancedSearch();
         advancedSearchData.getCountry().ifPresent(this::configureCountry);
@@ -35,7 +34,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage configureRandomSearch(Car car) {
-        car.getLocation().ifPresent(this::chooseCity);
+        car.getLocation().ifPresent(this::choseLocation);
         car.getPriceFrom().ifPresent(this::fillPriceFrom);
         car.getPriceTo().ifPresent(this::fillPriceTO);
         car.getMark().ifPresent(this::configureMark);

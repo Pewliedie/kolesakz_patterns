@@ -5,23 +5,23 @@ public class DataFactory {
         AdvancedSearchData advancedSearchData = new AdvancedSearchData();
         advancedSearchData.setCity("Алматы");
         advancedSearchData.setPriceFrom("110000000");
-        advancedSearchData.setCountry("Англия");
+        advancedSearchData.setCountry("Германия");
         advancedSearchData.setBodyType("седан");
         advancedSearchData.setEngineType("бензин");
         advancedSearchData.setLocationOfWheel("слева");
         advancedSearchData.setDriveUnit("полный привод");
-        advancedSearchData.setEngineVolumeFrom("5.5");
-        advancedSearchData.setEngineVolumeTo("6.7");
-        advancedSearchData.setEngineVolumeAndType("6 (бензин)");
+        advancedSearchData.setEngineVolumeFrom("6.3");
+        advancedSearchData.setEngineVolumeTo("6.3");
+        advancedSearchData.setEngineVolumeAndType("6.3 (бензин)");
         return advancedSearchData;
     }
 
     public static SearchWithPhotoData getSearchWithPhotoCarData(){
         SearchWithPhotoData kolesaSearchWithPhotoData = new SearchWithPhotoData();
-        kolesaSearchWithPhotoData.setCity("Караганда");
+        kolesaSearchWithPhotoData.setCity("Алматы");
         kolesaSearchWithPhotoData.setPriceFrom("60000000");
-        kolesaSearchWithPhotoData.setModelYear("2020");
-        kolesaSearchWithPhotoData.setMark("bmw");
+        kolesaSearchWithPhotoData.setModelYear("2018");
+        kolesaSearchWithPhotoData.setMark("tesla");
         return kolesaSearchWithPhotoData;
     }
 

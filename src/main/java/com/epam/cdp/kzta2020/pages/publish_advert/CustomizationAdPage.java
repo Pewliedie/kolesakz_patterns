@@ -2,6 +2,7 @@ package com.epam.cdp.kzta2020.pages.publish_advert;
 
 import com.epam.cdp.kzta2020.domain.PostAdData;
 import com.epam.cdp.kzta2020.pages.AbstractPage;
+import com.epam.cdp.kzta2020.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -100,10 +101,10 @@ public class CustomizationAdPage extends AbstractPage {
         return this;
     }
 
-    public HomePage returnToHomePage() {
+    public BasePage returnOnHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
-        return new HomePage();
+        return new BasePage();
     }
 
     public CustomizationAdPage postAdvertFromCustomization() {

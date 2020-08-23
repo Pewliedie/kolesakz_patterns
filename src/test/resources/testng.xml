@@ -2,15 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="UiTestSuite">
 
-    <test verbose="2"
-          name="UiTest">
-        <groups>
-            <run>
-                <include name = "UiTest" />
-            </run>
-        </groups>
+    <test name="GithubTestViaCucumberAndTestNG">
         <classes>
-            <class name="ui_tests.Kolesa"/>
+            <class name="com.epam.cdp.kzta2020.cucumber.CucumberRunner" />
         </classes>
     </test>
+
 </suite>

@@ -5,13 +5,13 @@ import com.epam.cdp.kzta2020.pages.AbstractPage;
 import com.epam.cdp.kzta2020.utils.AlertHandler;
 import org.openqa.selenium.By;
 
-public class LoginPage extends AbstractPage {
+public class SignInPage extends AbstractPage {
 
     private static final By PHONE_NUMBER_INPUT_LOCATOR = By.id("login");
     private static final By PASSWORD_INPUT_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector(".form-item button");
 
-    public LoginPage signIn(User user){
+    public SignInPage signIn(User user){
         fillNumberInput(user.getLogin());
         clickLoginButton();
         fillPasswordInput(user.getPassword());
@@ -19,19 +19,19 @@ public class LoginPage extends AbstractPage {
         return this;
     }
 
-    public LoginPage fillNumberInput(String number) {
+    public SignInPage fillNumberInput(String number) {
         waitForElementVisibility(PHONE_NUMBER_INPUT_LOCATOR);
         driver.findElement(PHONE_NUMBER_INPUT_LOCATOR).sendKeys(number);
         return this;
     }
 
-    public LoginPage clickLoginButton() {
+    public SignInPage clickLoginButton() {
         driver.findElement(LOGIN_BUTTON_LOCATOR).click();
         AlertHandler.waitForAlertDisplayed(driver);
         return this;
     }
 
-    public LoginPage fillPasswordInput(String password) {
+    public SignInPage fillPasswordInput(String password) {
         waitForElementVisibility(PASSWORD_INPUT_LOCATOR);
         driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
         return this;
