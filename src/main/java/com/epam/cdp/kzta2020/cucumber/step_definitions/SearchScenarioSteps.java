@@ -58,8 +58,8 @@ public class SearchScenarioSteps {
         new HomePage().configureAdvancedSearch(DataFactory.getAdvancedSearchData());
     }
 
-    @Then("^random parameters matches with result \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"$")
-    public void randomParametersMatchesWithResult(String location, String priceFrom, String priceTo, String mark, String model) {
+    @Then("^parameters matches with result \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"$")
+    public void parametersMatchesWithResult(String location, String priceFrom, String priceTo, String mark, String model) {
         SoftAssert softAssert3 = new SoftAssert();
         Car car = CarBOCreator.createCar(location, priceFrom, priceTo, mark, model);
         FoundResultPage foundResultPage = new FoundResultPage().switchTab().dismissHint();

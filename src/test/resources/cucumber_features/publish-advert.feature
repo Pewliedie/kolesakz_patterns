@@ -9,4 +9,4 @@ Feature: publish advert
     And open draft page
     And publish advert from customization
     And open account page
-    Then advert is posted
+    Then advert should be posted

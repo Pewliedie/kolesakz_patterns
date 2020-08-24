@@ -47,7 +47,7 @@ public class PublishAdvertSteps {
         new DraftPage().editAdvert().postAdvertFromCustomization().chooseType().chooseFreeAdvert();
     }
 
-    @When("^advert is posted$")
+    @When("^advert should be posted$")
     public void advertIsDisplayed() {
         AccountPage accountPage = new AccountPage();
         Assert.assertTrue(accountPage.isAdvertPosted(), "Advert is not posted");

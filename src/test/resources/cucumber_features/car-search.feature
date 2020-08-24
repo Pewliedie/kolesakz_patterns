@@ -8,7 +8,7 @@ Feature: car search
     When configure random search "<location>","<priceFrom>","<priceTo>","<mark>","<model>"
     And click show results
     And open random found result
-    Then random parameters matches with result "<location>","<priceFrom>","<priceTo>","<mark>","<model>"
+    Then parameters matches with result "<location>","<priceFrom>","<priceTo>","<mark>","<model>"
     Examples:
       | location  | priceFrom | priceTo    | mark          | model |
       | Алматы    | 5 000 000 | 8 000 000  | toyota        | camry |
@@ -26,4 +26,3 @@ Feature: car search
     And click show results
     And open found result
     Then advanced parameters matches with result
-
