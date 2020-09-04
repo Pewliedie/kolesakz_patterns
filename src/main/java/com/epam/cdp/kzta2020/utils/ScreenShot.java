@@ -19,18 +19,24 @@ public class ScreenShot {
             String screenShotName = SCREENSHOTS_NAME_TPL + System.nanoTime();
             File copy = new File(screenShotName + ".png");
             FileUtils.copyFile(screenShot, copy);
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void highlightAndTakeScreenShot(WebDriver driver, By locator) {
-        JsExecutorUtils.highlightElement(driver,locator);
-        File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            String screenShootName = SCREENSHOTS_NAME_TPL + System.nanoTime();
-            File copy = new File(screenShootName + ".png");
-            FileUtils.copyFile(screenShot, copy);
-        } catch (IOException ignored) {
-        }
+        JsExecutorUtils.highlightElement(driver, locator);
+        takeScreenShot(driver);
     }
+
+//    public static void highlightAndTakeScreenShot(WebDriver driver, By locator) {
+//        JsExecutorUtils.highlightElement(driver,locator);
+//        File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//        try {
+//            String screenShootName = SCREENSHOTS_NAME_TPL + System.nanoTime();
+//            File copy = new File(screenShootName + ".png");
+//            FileUtils.copyFile(screenShot, copy);
+//        } catch (IOException ignored) {
+//        }
+//    }
 }

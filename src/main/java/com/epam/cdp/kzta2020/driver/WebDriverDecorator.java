@@ -1,5 +1,6 @@
 package com.epam.cdp.kzta2020.driver;
 
+import com.epam.cdp.kzta2020.utils.JsExecutorUtils;
 import com.epam.cdp.kzta2020.utils.ScreenShot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -39,7 +40,8 @@ public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
 
     @Override
     public WebElement findElement(By locator) {
-        ScreenShot.highlightAndTakeScreenShot(driver, locator);
+        JsExecutorUtils.highlightElement(driver,locator);
+
         return driver.findElement(locator);
     }
 

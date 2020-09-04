@@ -18,6 +18,7 @@ public class BasePage extends AbstractPage {
 
     public BasePage openHomePage(){
         driver.get(Configuration.getBaseUrl());
+        logger.info("application started");
         return this;
     }
 
@@ -38,6 +39,7 @@ public class BasePage extends AbstractPage {
     public BasePage openAutoSection() {
         waitForElementEnabled(AUTO_SECTION_LOCATOR);
         driver.findElement(AUTO_SECTION_LOCATOR).click();
+        logger.info("auto section is opened");
         return this;
     }
 
@@ -46,6 +48,7 @@ public class BasePage extends AbstractPage {
         WebElement element = driver.findElement(FOUND_RESULT_LOCATOR);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(FOUND_RESULT_LOCATOR).click();
+        logger.info("opened found result");
         return this;
     }
 
