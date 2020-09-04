@@ -5,6 +5,8 @@ import com.epam.cdp.kzta2020.driver.wd_factory.DriverManagerFactory;
 import com.epam.cdp.kzta2020.driver.wd_factory.DriverType;
 import com.epam.cdp.kzta2020.driver.wd_factory.Factory;
 import com.epam.cdp.kzta2020.utils.ConfigUtil;
+import com.epam.cdp.kzta2020.utils.ScreenShot;
+import cucumber.api.Scenario;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +32,12 @@ public class WebDriverInitializer {
         return driver;
     }
 
-    public static void kill() {
+    public static void kill(Scenario scenario) {
+        if (scenario.isFailed()) {
+//            System.out.println(scenario.getId());
+//            System.out.println(scenario.getId().replace(" ", "_").replace(";", "_"));
+            ScreenShot.takeScreenShot(driver, scenario.getId().replace(" ", "_").replace(";", "_"));
+        }
         driver.quit();
         driver = null;
     }

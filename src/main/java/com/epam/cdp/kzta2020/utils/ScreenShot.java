@@ -2,41 +2,26 @@ package com.epam.cdp.kzta2020.utils;
 
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ScreenShot {
-    public static final String SCREENSHOTS_NAME_TPL = "screenshots/src";
+    public static final String SCREENSHOTS_PATH = "screenshots/";
 
-    public static void takeScreenShot(WebDriver driver) {
+    public static void takeScreenShot(WebDriver driver, String failedStep) {
         File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            String screenShotName = SCREENSHOTS_NAME_TPL + System.nanoTime();
-            File copy = new File(screenShotName + ".png");
+            String screenShotName = SCREENSHOTS_PATH + new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
+            File copy = new File(screenShotName + failedStep + ".png");
             FileUtils.copyFile(screenShot, copy);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public static void highlightAndTakeScreenShot(WebDriver driver, By locator) {
-        JsExecutorUtils.highlightElement(driver, locator);
-        takeScreenShot(driver);
-    }
-
-//    public static void highlightAndTakeScreenShot(WebDriver driver, By locator) {
-//        JsExecutorUtils.highlightElement(driver,locator);
-//        File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        try {
-//            String screenShootName = SCREENSHOTS_NAME_TPL + System.nanoTime();
-//            File copy = new File(screenShootName + ".png");
-//            FileUtils.copyFile(screenShot, copy);
-//        } catch (IOException ignored) {
-//        }
-//    }
 }

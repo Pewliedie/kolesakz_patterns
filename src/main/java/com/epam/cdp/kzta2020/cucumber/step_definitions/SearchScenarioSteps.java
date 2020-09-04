@@ -8,12 +8,12 @@ import com.epam.cdp.kzta2020.pages.search.advanced_search.FoundResultPage;
 import com.epam.cdp.kzta2020.pages.search.advanced_search.HomePage;
 import com.epam.cdp.kzta2020.utils.CarBOCreator;
 import com.epam.cdp.kzta2020.utils.RandomNumberGenerator;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
 
 public class SearchScenarioSteps {
@@ -89,7 +89,7 @@ public class SearchScenarioSteps {
     }
 
     @After
-    public void close(){
-        WebDriverInitializer.kill();
+    public void close(Scenario scenario){
+        WebDriverInitializer.kill(scenario);
     }
 }

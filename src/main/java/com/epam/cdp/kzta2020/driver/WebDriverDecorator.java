@@ -1,16 +1,12 @@
 package com.epam.cdp.kzta2020.driver;
 
 import com.epam.cdp.kzta2020.utils.JsExecutorUtils;
-import com.epam.cdp.kzta2020.utils.ScreenShot;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 import java.util.Set;
 
-public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
+public class WebDriverDecorator implements WebDriver, JavascriptExecutor, TakesScreenshot {
 
     protected WebDriver driver;
 
@@ -41,7 +37,6 @@ public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
     @Override
     public WebElement findElement(By locator) {
         JsExecutorUtils.highlightElement(driver,locator);
-
         return driver.findElement(locator);
     }
 
@@ -93,5 +88,10 @@ public class WebDriverDecorator implements WebDriver, JavascriptExecutor {
     @Override
     public Object executeAsyncScript(String s, Object... objects) {
         return ((JavascriptExecutor) driver).executeAsyncScript(s,objects);
+    }
+
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
+        return ((TakesScreenshot)driver).getScreenshotAs(outputType);
     }
 }
