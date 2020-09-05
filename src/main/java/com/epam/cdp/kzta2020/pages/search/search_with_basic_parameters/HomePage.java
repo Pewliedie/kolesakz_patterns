@@ -25,12 +25,14 @@ public class HomePage extends com.epam.cdp.kzta2020.pages.BasePage {
     public BasePage choseLocation(String city) {
         waitForElementEnabled(By.xpath(String.format(CITY_LOCATOR, city)));
         driver.findElement(By.xpath(String.format(CITY_LOCATOR, city))).click();
+        logger.info("set location");
         return this;
     }
 
     public HomePage fillYearModel(String year) {
         waitForElementVisibility(YEAR_INPUT_LOCATOR);
         driver.findElement(YEAR_INPUT_LOCATOR).sendKeys(year);
+        logger.info("set year model");
         return this;
     }
 
@@ -39,30 +41,35 @@ public class HomePage extends com.epam.cdp.kzta2020.pages.BasePage {
         driver.findElement(ADDITION_MARKS_LOCATOR).click();
         waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, mark)));
         driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, mark))).click();
+        logger.info("set mark");
         return this;
     }
 
     public HomePage enablePhotoCheckbox() {
         waitForElementEnabled(CHECKBOX_PHOTO_LOCATOR);
         driver.findElement(CHECKBOX_PHOTO_LOCATOR).click();
+        logger.info("enable photo checkbox");
         return this;
     }
 
     public BasePage fillPriceFrom(String price) {
         waitForElementVisibility(PRICE_INPUT_FROM_LOCATOR);
         driver.findElement(PRICE_INPUT_FROM_LOCATOR).sendKeys(price);
+        logger.info("set price from");
         return this;
     }
 
     public BasePage fillPriceTO(String priceTO) {
         waitForElementVisibility(PRICE_INPUT_TO_LOCATOR);
         driver.findElement(PRICE_INPUT_TO_LOCATOR).sendKeys(priceTO);
+        logger.info("set price to");
         return this;
     }
 
     public BasePage configureModel(String model) {
         waitForElementEnabled(By.cssSelector(String.format(MARK_LOCATOR, model)));
         driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
+        logger.info("set model");
         return this;
     }
 }

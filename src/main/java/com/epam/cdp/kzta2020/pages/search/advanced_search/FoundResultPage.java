@@ -26,18 +26,19 @@ public class FoundResultPage extends AbstractPage {
     private static final By MARK_LOCATOR = By.cssSelector("h1.offer__title > span:nth-child(1)");
     private static final By MODEL_LOCATOR = By.cssSelector("h1.offer__title > span:nth-child(2)");
 
-
     AdvancedSearchData data = DataFactory.getAdvancedSearchData();
 
     public FoundResultPage switchTab() {
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
+        logger.info("switched tab");
         return this;
     }
 
     public FoundResultPage dismissHint() {
         waitForElementEnabled(DISMISS_HINT_BUTTON_LOCATOR);
         driver.findElement(DISMISS_HINT_BUTTON_LOCATOR).click();
+        logger.info("dismiss hint");
         ((JavascriptExecutor) driver).executeScript("scrollTo(0,150)");
         return this;
     }

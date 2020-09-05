@@ -45,42 +45,50 @@ public class HomePage extends com.epam.cdp.kzta2020.pages.search.search_with_bas
     public HomePage openAdvancedSearch() {
         waitForElementVisibility(ADVANCED_SEARCH_LOCATOR);
         driver.findElement(ADVANCED_SEARCH_LOCATOR).click();
+        logger.info("open advanced search section");
         return this;
     }
 
     public HomePage configureCountry(String param) {
         select(param, COUNTRY_PARAMETER_LOCATOR);
+        logger.info("set country");
         return this;
     }
 
     public HomePage configureBodyType(String param) {
         select(param, CAR_BODY_TYPE_LOCATOR);
+        logger.info("set body type");
         return this;
     }
 
     public HomePage configureEngineType(String param) {
         select(param, ENGINE_TYPE_LOCATOR);
+        logger.info("set engine type");
         return this;
     }
 
     public HomePage configureLocationWheel(String param) {
         select(param, LOCATION_OF_WHEEL_LOCATOR);
+        logger.info("set location of the wheel");
         return this;
     }
 
     public HomePage configureDriveUnit(String param) {
         select(param, DRIVE_UNIT_LOCATOR);
+        logger.info("set drive unit");
         return this;
     }
 
     public HomePage configureEngineVolumeFrom(String volumeFrom) {
         ((JavascriptExecutor) driver).executeScript("scrollTo(0,150)");
         driver.findElement(ENGINE_VOLUME_FROM_LOCATOR).sendKeys(volumeFrom);
+        logger.info("set engine volume from");
         return this;
     }
 
     public HomePage configureEngineVolumeTO(String volumeTo) {
         driver.findElement(ENGINE_VOLUME_TO_LOCATOR).sendKeys(volumeTo);
+        logger.info("set engine volume to");
         return this;
     }
 

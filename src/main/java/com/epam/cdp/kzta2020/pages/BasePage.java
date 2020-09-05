@@ -24,6 +24,7 @@ public class BasePage extends AbstractPage {
 
     public SignInPage openSignIn() {
         driver.findElement(PERSONAL_ACCOUNT_PAGE_LOCATOR).click();
+        logger.info("open sigh in");
         return new SignInPage();
     }
 
@@ -31,7 +32,7 @@ public class BasePage extends AbstractPage {
         waitForElementVisibility(LOGGED_ACCOUNT_LOCATOR);
         driver.findElement(LOGGED_ACCOUNT_LOCATOR).click();
         driver.findElement(MY_ADVERTS_LOCATOR).click();
-        waitForElementVisibility(By.xpath("//div[@class='col-xs-9']"));
+        logger.info("open account page");
         return new AccountPage();
     }
 
@@ -39,7 +40,7 @@ public class BasePage extends AbstractPage {
     public BasePage openAutoSection() {
         waitForElementEnabled(AUTO_SECTION_LOCATOR);
         driver.findElement(AUTO_SECTION_LOCATOR).click();
-        logger.info("auto section is opened");
+        logger.info("open auto section");
         return this;
     }
 
@@ -48,7 +49,7 @@ public class BasePage extends AbstractPage {
         WebElement element = driver.findElement(FOUND_RESULT_LOCATOR);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(FOUND_RESULT_LOCATOR).click();
-        logger.info("opened found result");
+        logger.info("open found result");
         return this;
     }
 
@@ -57,11 +58,13 @@ public class BasePage extends AbstractPage {
         WebElement element = driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber)));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(By.xpath(String.format(RANDOM_RESULT_LOCATOR, randomNumber))).click();
+        logger.info("open random result");
         return this;
     }
 
     public BasePage showResult() {
         driver.findElement(SEARCH_BUTTON_LOCATOR).click();
+        logger.info("show result");
         return this;
     }
 }

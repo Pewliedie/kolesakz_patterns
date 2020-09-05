@@ -14,7 +14,7 @@ public abstract class AbstractPage {
     protected WebDriver driver;
     private final Configuration configuration = ConfigUtil.getConfiguration();
 
-    protected Logger logger = Logger.getLogger("kolesa_logger");
+    protected static final Logger logger = Logger.getLogger("kolesa_logger");
 
     public AbstractPage() {
         this.driver = WebDriverInitializer.setUpDriver();

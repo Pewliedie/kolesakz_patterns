@@ -14,7 +14,7 @@ public class SignInPage extends AbstractPage {
     public SignInPage signIn(User user){
         fillNumberInput(user.getLogin());
         clickLoginButton();
-        fillPasswordInput(user.getPassword());
+        fillPassword(user.getPassword());
         clickLoginButton();
         return this;
     }
@@ -22,6 +22,7 @@ public class SignInPage extends AbstractPage {
     public SignInPage fillNumberInput(String number) {
         waitForElementVisibility(PHONE_NUMBER_INPUT_LOCATOR);
         driver.findElement(PHONE_NUMBER_INPUT_LOCATOR).sendKeys(number);
+        logger.info("fill login");
         return this;
     }
 
@@ -31,9 +32,10 @@ public class SignInPage extends AbstractPage {
         return this;
     }
 
-    public SignInPage fillPasswordInput(String password) {
+    public SignInPage fillPassword(String password) {
         waitForElementVisibility(PASSWORD_INPUT_LOCATOR);
         driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
+        logger.info("fill password");
         return this;
     }
 }

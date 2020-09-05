@@ -10,6 +10,7 @@ public class DraftPage extends AbstractPage {
     public CustomizationAdPage editAdvert() {
         waitForElementVisibility(EDIT_TEXT_DRAFT_ADVERT_LOCATOR);
         driver.findElement(EDIT_TEXT_DRAFT_ADVERT_LOCATOR).click();
+        logger.info("click edit advert");
         return new CustomizationAdPage();
     }
 }

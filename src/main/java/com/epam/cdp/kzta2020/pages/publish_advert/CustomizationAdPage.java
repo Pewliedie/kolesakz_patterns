@@ -41,30 +41,35 @@ public class CustomizationAdPage extends AbstractPage {
     public CustomizationAdPage configureCategory1(String category1) {
         waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category1)));
         driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category1))).click();
+        logger.info("set category");
         return this;
     }
 
     public CustomizationAdPage configureCategory2(String category2) {
         waitForElementEnabled(By.xpath(String.format(CATEGORY_LOCATOR, category2)));
         driver.findElement(By.xpath(String.format(CATEGORY_LOCATOR, category2))).click();
+        logger.info("set category 2");
         return this;
     }
 
     public CustomizationAdPage configureMark(String mark) {
         waitForElementEnabled(By.xpath(String.format(MARK_LOCATOR, mark)));
         driver.findElement(By.xpath(String.format(MARK_LOCATOR, mark))).click();
+        logger.info("set mark");
         return this;
     }
 
     public CustomizationAdPage configureModel(String model) {
         waitForElementEnabled(By.xpath(String.format(MODEL_LOCATOR, model)));
         driver.findElement(By.xpath(String.format(MODEL_LOCATOR, model))).click();
+        logger.info("set model");
         return this;
     }
 
     public CustomizationAdPage configureModelYear(String year) {
         waitForElementEnabled(By.xpath(String.format(MODEL_YEAR_LOCATOR, year)));
         driver.findElement(By.xpath(String.format(MODEL_YEAR_LOCATOR, year))).click();
+        logger.info("set model year");
         return this;
     }
 
@@ -72,18 +77,21 @@ public class CustomizationAdPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("scroll(0,300)");
         waitForElementEnabled(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type)));
         driver.findElement(By.xpath(String.format(ENGINE_TYPE_LOCATOR, type))).click();
+        logger.info("set engine type");
         return this;
     }
 
     public CustomizationAdPage configureModification(String modification) {
         waitForElementEnabled(By.xpath(String.format(MODIFICATION_LOCATOR, modification)));
         driver.findElement(By.xpath(String.format(MODIFICATION_LOCATOR, modification))).click();
+        logger.info("set modification");
         return this;
     }
 
     public CustomizationAdPage fillPrice(String price) {
         waitForElementVisibility(ADVERT_OPTION_PRICE_INPUT_LOCATOR);
         driver.findElement(ADVERT_OPTION_PRICE_INPUT_LOCATOR).sendKeys(price);
+        logger.info("set price");
         return this;
     }
 
@@ -92,24 +100,28 @@ public class CustomizationAdPage extends AbstractPage {
         WebElement item = driver.findElement(new ByChained(ADVERT_OPTION_CHOOSE_CITY_LOCATOR, By.xpath(String.format("//ul/li[contains(.,'%s')]", city))));
         waitForElementEnabled(By.xpath(String.format(CITY_LOCATOR, city)));
         item.click();
+        logger.info("set city");
         return this;
     }
 
     public CustomizationAdPage fillEmail(String email) {
         waitForElementVisibility(ADVERT_OPTION_EMAIL_INPUT_LOCATOR);
         driver.findElement(ADVERT_OPTION_EMAIL_INPUT_LOCATOR).sendKeys(email);
+        logger.info("set email");
         return this;
     }
 
     public BasePage returnOnHomePage() {
         waitForElementVisibility(HEADER_LOGO_IMAGE_BUTTON_LOCATOR);
         driver.findElement(HEADER_LOGO_IMAGE_BUTTON_LOCATOR).click();
+        logger.info("return on home page");
         return new BasePage();
     }
 
     public CustomizationAdPage postAdvertFromCustomization() {
         waitForElementVisibility(CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR);
         driver.findElement(CONTINUE_CUSTOMIZATION_BUTTON_LOCATOR).click();
+        logger.info("post advert from customization");
         return this;
     }
 
@@ -117,6 +129,7 @@ public class CustomizationAdPage extends AbstractPage {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForElementVisibility(PUBLISH_ADVERT_BUTTON_LOCATOR);
         driver.findElement(PUBLISH_ADVERT_BUTTON_LOCATOR).click();
+        logger.info("choose post type");
         return new PostTypePage();
     }
 }

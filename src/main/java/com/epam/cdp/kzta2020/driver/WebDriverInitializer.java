@@ -7,6 +7,7 @@ import com.epam.cdp.kzta2020.driver.wd_factory.Factory;
 import com.epam.cdp.kzta2020.utils.ConfigUtil;
 import com.epam.cdp.kzta2020.utils.ScreenShot;
 import cucumber.api.Scenario;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverInitializer {
     private static Factory driverManager;
     private static WebDriver driver;
+    private static final Logger logger = Logger.getLogger("kolesa_logger");
 
 
     private WebDriverInitializer() {
@@ -26,19 +28,24 @@ public class WebDriverInitializer {
         driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
         ConfigUtil.getConfiguration();
         driver = new WebDriverDecorator(driverManager.getLocalDriver());
+        logger.info("driver instantiated successfully");
+
         driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(Configuration.getBaseUrl());
+        logger.info("Web application launched");
         return driver;
     }
 
     public static void kill(Scenario scenario) {
         if (scenario.isFailed()) {
-//            System.out.println(scenario.getId());
-//            System.out.println(scenario.getId().replace(" ", "_").replace(";", "_"));
-            ScreenShot.takeScreenShot(driver, scenario.getId().replace(" ", "_").replace(";", "_"));
+            ScreenShot.takeScreenShot(driver, scenario.getId()
+                    .replace(" ", "_")
+                    .replace(";", "_"));
+            logger.info("take screenshot of failed test");
         }
         driver.quit();
         driver = null;
+        logger.info("close browser");
     }
 }

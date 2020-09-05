@@ -5,14 +5,15 @@ import org.openqa.selenium.By;
 
 public class PostTypePage extends AbstractPage {
 
-    private static final By PUBLISH_FREE_ADVERT_LOCATOR = By.xpath("//div[contains(text(),'Подать без продвижения')]");
+    private static final By PUBLISH_FREE_ADVERT_LOCATOR = By.xpath("//a[@class='package__free-apply-link']");
     private static final By AD_SENT_TO_MODERATOR_TEXT_LOCATOR = By.xpath("//h1");
 
     private static final String AD_SENT_TO_MODERATOR_TEXT = "Объявление отправлено на проверку!";
 
-    public PostTypePage chooseFreeAdvert() {
+    public PostTypePage chooseFreePostType() {
         waitForElementVisibility(PUBLISH_FREE_ADVERT_LOCATOR);
         driver.findElement(PUBLISH_FREE_ADVERT_LOCATOR).click();
+        logger.info("choose free post type");
         return this;
     }
 

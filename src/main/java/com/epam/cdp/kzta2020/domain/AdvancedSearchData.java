@@ -16,7 +16,6 @@ public class AdvancedSearchData extends CommonData {
         this.country = country;
     }
 
-
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
     }

@@ -44,7 +44,7 @@ public class PublishAdvertSteps {
 
     @When("^publish advert from customization$")
     public void publishAdvertFromCustomization() {
-        new DraftPage().editAdvert().postAdvertFromCustomization().chooseType().chooseFreeAdvert();
+        new DraftPage().editAdvert().postAdvertFromCustomization().chooseType().chooseFreePostType();
     }
 
     @When("^advert should be posted$")
