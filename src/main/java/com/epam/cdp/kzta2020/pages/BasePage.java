@@ -18,7 +18,6 @@ public class BasePage extends AbstractPage {
 
     public BasePage openHomePage(){
         driver.get(Configuration.getBaseUrl());
-        logger.info("application started");
         return this;
     }
 
