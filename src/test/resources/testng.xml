@@ -7,5 +7,7 @@
             <class name="com.epam.cdp.kzta2020.cucumber.CucumberRunner" />
         </classes>
     </test>
-
+    <listeners>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
 </suite>
