@@ -19,9 +19,9 @@ public class DataFactory {
     public static SearchWithPhotoData getSearchWithPhotoCarData(){
         SearchWithPhotoData kolesaSearchWithPhotoData = new SearchWithPhotoData();
         kolesaSearchWithPhotoData.setCity("Алматы");
-        kolesaSearchWithPhotoData.setPriceFrom("60000000");
-        kolesaSearchWithPhotoData.setModelYear("2018");
-        kolesaSearchWithPhotoData.setMark("tesla");
+        kolesaSearchWithPhotoData.setPriceFrom("90000000");
+        kolesaSearchWithPhotoData.setModelYear("2020");
+        kolesaSearchWithPhotoData.setMark("bmw");
         return kolesaSearchWithPhotoData;
     }
 

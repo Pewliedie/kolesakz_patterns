@@ -7,8 +7,7 @@ import org.openqa.selenium.By;
 public class HomePage extends com.epam.cdp.kzta2020.pages.BasePage {
     private static final By YEAR_INPUT_LOCATOR = By.id("year[from]");
     private static final By ADDITION_MARKS_LOCATOR = By.xpath("//span[@class='arrow-link']");
-//    private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox-0']");
-    private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox']");
+    private static final By CHECKBOX_PHOTO_LOCATOR = By.xpath("//label[@for='_sys-hasphoto-checkbox-0']");
     private static final String MARK_LOCATOR = "span[data-alias='%s']";
     private static final By PRICE_INPUT_FROM_LOCATOR = By.id("price[from]");
     private static final By PRICE_INPUT_TO_LOCATOR = By.id("price[to]");
@@ -71,5 +70,11 @@ public class HomePage extends com.epam.cdp.kzta2020.pages.BasePage {
         driver.findElement(By.cssSelector(String.format(MARK_LOCATOR, model))).click();
         logger.info("set model");
         return this;
+    }
+
+    public BasePage brokenMethod(){
+        logger.error("something went wrong");
+        throw new RuntimeException();
+
     }
 }

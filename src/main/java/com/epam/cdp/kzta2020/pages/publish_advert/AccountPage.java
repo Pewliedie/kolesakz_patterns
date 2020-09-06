@@ -25,6 +25,7 @@ public class AccountPage extends AbstractPage {
     }
 
     public boolean isAdvertPosted(){
+        waitForElementVisibility(ADVERTS_ON_PAGE_TEXT_LOCATOR);
         return driver.findElement(ADVERTS_ON_PAGE_TEXT_LOCATOR).getText().equals(ADVERTS_ON_PAGE_TEXT);
     }
 }

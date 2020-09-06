@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="UiTestSuite">
 
-    <test name="GithubTestViaCucumberAndTestNG">
+    <test name="Kolesa_kz">
         <classes>
-            <class name="com.epam.cdp.kzta2020.cucumber.CucumberRunner" />
+            <class name="com.epam.cdp.kzta2020.ui_test.Kolesa" />
         </classes>
     </test>
     <listeners>

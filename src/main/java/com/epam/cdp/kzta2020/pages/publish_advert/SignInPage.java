@@ -13,9 +13,10 @@ public class SignInPage extends AbstractPage {
 
     public SignInPage signIn(User user){
         fillNumberInput(user.getLogin());
-        clickLoginButton();
+        clickContinueButton();
         fillPassword(user.getPassword());
         clickLoginButton();
+        logger.info("signed in");
         return this;
     }
 
@@ -29,6 +30,13 @@ public class SignInPage extends AbstractPage {
     public SignInPage clickLoginButton() {
         driver.findElement(LOGIN_BUTTON_LOCATOR).click();
         AlertHandler.waitForAlertDisplayed(driver);
+        logger.info("click login");
+        return this;
+    }
+
+    public SignInPage clickContinueButton() {
+        driver.findElement(LOGIN_BUTTON_LOCATOR).click();
+        logger.info("click continue");
         return this;
     }
 

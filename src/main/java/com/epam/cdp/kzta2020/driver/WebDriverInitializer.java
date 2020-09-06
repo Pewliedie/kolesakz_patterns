@@ -6,9 +6,10 @@ import com.epam.cdp.kzta2020.driver.wd_factory.DriverType;
 import com.epam.cdp.kzta2020.driver.wd_factory.Factory;
 import com.epam.cdp.kzta2020.utils.ConfigUtil;
 import com.epam.cdp.kzta2020.utils.ScreenShot;
-import cucumber.api.Scenario;
+import com.epam.reportportal.message.ReportPortalMessage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,6 @@ public class WebDriverInitializer {
     private static Factory driverManager;
     private static WebDriver driver;
     private static final Logger logger = Logger.getLogger("kolesa_logger");
-
 
     private WebDriverInitializer() {
     }
@@ -33,15 +33,13 @@ public class WebDriverInitializer {
         driver.manage().timeouts().pageLoadTimeout(Configuration.getPageLoadTimeOut(), TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(Configuration.getBaseUrl());
-        logger.info("Web application launched");
+        logger.info("web application launched");
         return driver;
     }
 
-    public static void kill(Scenario scenario) {
-        if (scenario.isFailed()) {
-            ScreenShot.takeScreenShot(driver, scenario.getId()
-                    .replace(" ", "_")
-                    .replace(";", "_"));
+    public static void kill(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            ScreenShot.takeScreenShot(driver, result.getInstanceName(), result.getName());
             logger.info("take screenshot of failed test");
         }
         driver.quit();

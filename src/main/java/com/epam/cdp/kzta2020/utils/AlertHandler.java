@@ -1,7 +1,6 @@
 package com.epam.cdp.kzta2020.utils;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +14,7 @@ public class AlertHandler {
         try {
             wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().dismiss();
-        } catch (NoAlertPresentException | TimeoutException e) {
+        } catch (TimeoutException e) {
             e.printStackTrace();
             logger.error("exception in alert handler " + e);
         }

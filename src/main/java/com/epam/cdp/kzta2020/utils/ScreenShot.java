@@ -14,11 +14,11 @@ import java.util.Date;
 public class ScreenShot {
     private static final String SCREENSHOTS_PATH = "screenshots/";
 
-    public static void takeScreenShot(WebDriver driver, String failedStep) {
+    public static void takeScreenShot(WebDriver driver, String instanceName, String testName) {
         File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             String screenShotName = SCREENSHOTS_PATH + new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
-            File copy = new File(screenShotName + failedStep + ".png");
+            File copy = new File(screenShotName + instanceName + "-" + testName + ".png");
             FileUtils.copyFile(screenShot, copy);
         } catch (IOException e) {
             e.printStackTrace();
